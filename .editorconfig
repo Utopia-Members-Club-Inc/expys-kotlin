@@ -1,0 +1,17 @@
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[*.{kt,kts}]
+indent_style = space
+indent_size = 2
+max_line_length = 120
+# Match the hand-written style (two-space indent, explicit imports). ktlint reads
+# this file; the generated models are excluded from linting in build.gradle.kts.
+ktlint_code_style = intellij_idea
+ktlint_standard_no-wildcard-imports = enabled
+ktlint_standard_filename = disabled

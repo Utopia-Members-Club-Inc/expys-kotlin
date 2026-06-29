@@ -1,0 +1,1451 @@
+public final class com/expys/sdk/ApiError {
+	public fun <init> (ILjava/lang/String;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/String;)V
+	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()I
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/lang/Long;
+	public final fun component5 ()Ljava/lang/String;
+	public final fun copy (ILjava/lang/String;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/String;)Lcom/expys/sdk/ApiError;
+	public static synthetic fun copy$default (Lcom/expys/sdk/ApiError;ILjava/lang/String;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/String;ILjava/lang/Object;)Lcom/expys/sdk/ApiError;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCode ()Ljava/lang/String;
+	public final fun getKind ()Lcom/expys/sdk/ApiErrorKind;
+	public final fun getMessage ()Ljava/lang/String;
+	public final fun getRequestId ()Ljava/lang/String;
+	public final fun getRetryAfterMs ()Ljava/lang/Long;
+	public final fun getStatus ()I
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/expys/sdk/ApiErrorKind : java/lang/Enum {
+	public static final field CONFLICT Lcom/expys/sdk/ApiErrorKind;
+	public static final field FORBIDDEN Lcom/expys/sdk/ApiErrorKind;
+	public static final field NOT_FOUND Lcom/expys/sdk/ApiErrorKind;
+	public static final field OTHER Lcom/expys/sdk/ApiErrorKind;
+	public static final field RATE_LIMITED Lcom/expys/sdk/ApiErrorKind;
+	public static final field SERVER Lcom/expys/sdk/ApiErrorKind;
+	public static final field UNAUTHORIZED Lcom/expys/sdk/ApiErrorKind;
+	public static final field VALIDATION Lcom/expys/sdk/ApiErrorKind;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lcom/expys/sdk/ApiErrorKind;
+	public static fun values ()[Lcom/expys/sdk/ApiErrorKind;
+}
+
+public final class com/expys/sdk/ExpysClient {
+	public static final field Companion Lcom/expys/sdk/ExpysClient$Companion;
+	public final fun analyticsOffers (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun analyticsSummary (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun analyticsTimeseries (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun createRedemption (Lcom/expys/sdk/models/CreateRedemptionRequest;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun createRedemption$default (Lcom/expys/sdk/ExpysClient;Lcom/expys/sdk/models/CreateRedemptionRequest;Ljava/lang/String;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public final fun createWebhook (Lcom/expys/sdk/models/CreateWebhookRequest;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun createWebhook$default (Lcom/expys/sdk/ExpysClient;Lcom/expys/sdk/models/CreateWebhookRequest;Ljava/lang/String;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public final fun creditPoints (Lcom/expys/sdk/models/CreditWalletRequest;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun creditPoints$default (Lcom/expys/sdk/ExpysClient;Lcom/expys/sdk/models/CreditWalletRequest;Ljava/lang/String;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public final fun deleteWebhook (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun eligibility (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun eligibility$default (Lcom/expys/sdk/ExpysClient;Ljava/lang/String;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public final fun exchangeToken (Lcom/expys/sdk/models/TokenExchangeRequest;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun exchangeToken$default (Lcom/expys/sdk/ExpysClient;Lcom/expys/sdk/models/TokenExchangeRequest;Ljava/lang/String;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public final fun getMember (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun getRedemption (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun listConversations (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun listConversations$default (Lcom/expys/sdk/ExpysClient;Ljava/lang/String;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public final fun listMessages (Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun listMessages$default (Lcom/expys/sdk/ExpysClient;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public final fun listOffers (Ljava/lang/Integer;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun listOffers$default (Lcom/expys/sdk/ExpysClient;Ljava/lang/Integer;Ljava/lang/String;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public final fun listRedemptions (Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun listRedemptions$default (Lcom/expys/sdk/ExpysClient;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public final fun listWebhooks (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun removeMember (Ljava/lang/String;Ljava/lang/Boolean;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun removeMember$default (Lcom/expys/sdk/ExpysClient;Ljava/lang/String;Ljava/lang/Boolean;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public final fun sendMessage (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun sendMessage$default (Lcom/expys/sdk/ExpysClient;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public final fun setMember (Ljava/lang/String;Lcom/expys/sdk/models/SetMemberRequest;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun streamMessages (Ljava/lang/String;)Lkotlinx/coroutines/flow/Flow;
+	public final fun wallet (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun walletTransactions (Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun walletTransactions$default (Lcom/expys/sdk/ExpysClient;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+}
+
+public final class com/expys/sdk/ExpysClient$Companion {
+	public final fun create (Lcom/expys/sdk/ExpysConfiguration;Lcom/expys/sdk/HttpClient;)Lcom/expys/sdk/ExpysClient;
+	public static synthetic fun create$default (Lcom/expys/sdk/ExpysClient$Companion;Lcom/expys/sdk/ExpysConfiguration;Lcom/expys/sdk/HttpClient;ILjava/lang/Object;)Lcom/expys/sdk/ExpysClient;
+}
+
+public final class com/expys/sdk/ExpysConfiguration {
+	public static final field Companion Lcom/expys/sdk/ExpysConfiguration$Companion;
+	public static final field DEFAULT_BASE_URL Ljava/lang/String;
+	public fun <init> (Ljava/lang/String;Lcom/expys/sdk/ExpysEnvironment;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;Lkotlin/jvm/functions/Function1;ILjava/lang/Long;JLjava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Lcom/expys/sdk/ExpysEnvironment;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;Lkotlin/jvm/functions/Function1;ILjava/lang/Long;JLjava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component10 ()Ljava/lang/String;
+	public final fun component2 ()Lcom/expys/sdk/ExpysEnvironment;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5 ()Ljava/lang/Long;
+	public final fun component6 ()Lkotlin/jvm/functions/Function1;
+	public final fun component7 ()I
+	public final fun component8 ()Ljava/lang/Long;
+	public final fun component9 ()J
+	public final fun copy (Ljava/lang/String;Lcom/expys/sdk/ExpysEnvironment;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;Lkotlin/jvm/functions/Function1;ILjava/lang/Long;JLjava/lang/String;)Lcom/expys/sdk/ExpysConfiguration;
+	public static synthetic fun copy$default (Lcom/expys/sdk/ExpysConfiguration;Ljava/lang/String;Lcom/expys/sdk/ExpysEnvironment;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;Lkotlin/jvm/functions/Function1;ILjava/lang/Long;JLjava/lang/String;ILjava/lang/Object;)Lcom/expys/sdk/ExpysConfiguration;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getBaseUrl ()Ljava/lang/String;
+	public final fun getEnvironment ()Lcom/expys/sdk/ExpysEnvironment;
+	public final fun getMaxRetries ()I
+	public final fun getOrgId ()Ljava/lang/String;
+	public final fun getRefreshSkewMs ()J
+	public final fun getRefreshToken ()Lkotlin/jvm/functions/Function1;
+	public final fun getTimeoutMs ()Ljava/lang/Long;
+	public final fun getToken ()Ljava/lang/String;
+	public final fun getTokenExpiresAtMs ()Ljava/lang/Long;
+	public final fun getUserAgentSuffix ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/expys/sdk/ExpysConfiguration$Companion {
+}
+
+public final class com/expys/sdk/ExpysEnvironment : java/lang/Enum {
+	public static final field LIVE Lcom/expys/sdk/ExpysEnvironment;
+	public static final field SANDBOX Lcom/expys/sdk/ExpysEnvironment;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lcom/expys/sdk/ExpysEnvironment;
+	public static fun values ()[Lcom/expys/sdk/ExpysEnvironment;
+}
+
+public abstract class com/expys/sdk/ExpysException : java/lang/Exception {
+	public synthetic fun <init> (Ljava/lang/String;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+}
+
+public final class com/expys/sdk/ExpysException$Api : com/expys/sdk/ExpysException {
+	public fun <init> (Lcom/expys/sdk/ApiError;)V
+	public final fun component1 ()Lcom/expys/sdk/ApiError;
+	public final fun copy (Lcom/expys/sdk/ApiError;)Lcom/expys/sdk/ExpysException$Api;
+	public static synthetic fun copy$default (Lcom/expys/sdk/ExpysException$Api;Lcom/expys/sdk/ApiError;ILjava/lang/Object;)Lcom/expys/sdk/ExpysException$Api;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getError ()Lcom/expys/sdk/ApiError;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/expys/sdk/ExpysException$Decoding : com/expys/sdk/ExpysException {
+	public fun <init> (Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;)Lcom/expys/sdk/ExpysException$Decoding;
+	public static synthetic fun copy$default (Lcom/expys/sdk/ExpysException$Decoding;Ljava/lang/String;ILjava/lang/Object;)Lcom/expys/sdk/ExpysException$Decoding;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getDetail ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/expys/sdk/ExpysException$Network : com/expys/sdk/ExpysException {
+	public fun <init> (Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;)Lcom/expys/sdk/ExpysException$Network;
+	public static synthetic fun copy$default (Lcom/expys/sdk/ExpysException$Network;Ljava/lang/String;ILjava/lang/Object;)Lcom/expys/sdk/ExpysException$Network;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getDetail ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/expys/sdk/ExpysException$NotConfigured : com/expys/sdk/ExpysException {
+	public fun <init> (Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;)Lcom/expys/sdk/ExpysException$NotConfigured;
+	public static synthetic fun copy$default (Lcom/expys/sdk/ExpysException$NotConfigured;Ljava/lang/String;ILjava/lang/Object;)Lcom/expys/sdk/ExpysException$NotConfigured;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getDetail ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/expys/sdk/ExpysException$Timeout : com/expys/sdk/ExpysException {
+	public static final field INSTANCE Lcom/expys/sdk/ExpysException$Timeout;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/expys/sdk/ExpysVersion {
+	public static final field INSTANCE Lcom/expys/sdk/ExpysVersion;
+	public static final field SDK Ljava/lang/String;
+	public static final field SPEC Ljava/lang/String;
+	public static final field USER_AGENT Ljava/lang/String;
+	public final fun buildUserAgent (Lcom/expys/sdk/ExpysEnvironment;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+}
+
+public abstract interface class com/expys/sdk/HttpClient {
+	public abstract fun send (Lcom/expys/sdk/HttpRequest;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun stream (Lcom/expys/sdk/HttpRequest;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class com/expys/sdk/HttpClient$DefaultImpls {
+	public static fun stream (Lcom/expys/sdk/HttpClient;Lcom/expys/sdk/HttpRequest;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class com/expys/sdk/HttpRequest {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/util/Map;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;Ljava/lang/String;)Lcom/expys/sdk/HttpRequest;
+	public static synthetic fun copy$default (Lcom/expys/sdk/HttpRequest;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;Ljava/lang/String;ILjava/lang/Object;)Lcom/expys/sdk/HttpRequest;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getBody ()Ljava/lang/String;
+	public final fun getHeaders ()Ljava/util/Map;
+	public final fun getMethod ()Ljava/lang/String;
+	public final fun getUrl ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/expys/sdk/HttpResponse {
+	public fun <init> (ILjava/util/Map;Ljava/lang/String;)V
+	public final fun component1 ()I
+	public final fun component2 ()Ljava/util/Map;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun copy (ILjava/util/Map;Ljava/lang/String;)Lcom/expys/sdk/HttpResponse;
+	public static synthetic fun copy$default (Lcom/expys/sdk/HttpResponse;ILjava/util/Map;Ljava/lang/String;ILjava/lang/Object;)Lcom/expys/sdk/HttpResponse;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getBody ()Ljava/lang/String;
+	public final fun getHeaders ()Ljava/util/Map;
+	public final fun getStatus ()I
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/expys/sdk/IdempotencyKt {
+	public static final fun generateIdempotencyKey ()Ljava/lang/String;
+}
+
+public final class com/expys/sdk/OkHttpEngine : com/expys/sdk/HttpClient {
+	public fun <init> ()V
+	public fun <init> (Lokhttp3/OkHttpClient;)V
+	public synthetic fun <init> (Lokhttp3/OkHttpClient;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun send (Lcom/expys/sdk/HttpRequest;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun stream (Lcom/expys/sdk/HttpRequest;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class com/expys/sdk/StreamingResponse {
+	public fun <init> (ILjava/util/Map;Lkotlinx/coroutines/flow/Flow;)V
+	public final fun component1 ()I
+	public final fun component2 ()Ljava/util/Map;
+	public final fun component3 ()Lkotlinx/coroutines/flow/Flow;
+	public final fun copy (ILjava/util/Map;Lkotlinx/coroutines/flow/Flow;)Lcom/expys/sdk/StreamingResponse;
+	public static synthetic fun copy$default (Lcom/expys/sdk/StreamingResponse;ILjava/util/Map;Lkotlinx/coroutines/flow/Flow;ILjava/lang/Object;)Lcom/expys/sdk/StreamingResponse;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getHeaders ()Ljava/util/Map;
+	public final fun getLines ()Lkotlinx/coroutines/flow/Flow;
+	public final fun getStatus ()I
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/expys/sdk/TokenRefresh {
+	public fun <init> (Ljava/lang/String;Ljava/lang/Long;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Long;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/Long;
+	public final fun copy (Ljava/lang/String;Ljava/lang/Long;)Lcom/expys/sdk/TokenRefresh;
+	public static synthetic fun copy$default (Lcom/expys/sdk/TokenRefresh;Ljava/lang/String;Ljava/lang/Long;ILjava/lang/Object;)Lcom/expys/sdk/TokenRefresh;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAccessToken ()Ljava/lang/String;
+	public final fun getExpiresAtMs ()Ljava/lang/Long;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/expys/sdk/models/Conversation {
+	public static final field Companion Lcom/expys/sdk/models/Conversation$Companion;
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/expys/sdk/models/Conversation;
+	public static synthetic fun copy$default (Lcom/expys/sdk/models/Conversation;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lcom/expys/sdk/models/Conversation;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getId ()Ljava/lang/String;
+	public final fun getLastMessageAt ()Ljava/lang/String;
+	public final fun getTitle ()Ljava/lang/String;
+	public final fun getType ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class com/expys/sdk/models/Conversation$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lcom/expys/sdk/models/Conversation$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lcom/expys/sdk/models/Conversation;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lcom/expys/sdk/models/Conversation;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/Conversation$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/CreateRedemptionRequest {
+	public static final field Companion Lcom/expys/sdk/models/CreateRedemptionRequest$Companion;
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;)Lcom/expys/sdk/models/CreateRedemptionRequest;
+	public static synthetic fun copy$default (Lcom/expys/sdk/models/CreateRedemptionRequest;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lcom/expys/sdk/models/CreateRedemptionRequest;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getExternalUserID ()Ljava/lang/String;
+	public final fun getOffer ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class com/expys/sdk/models/CreateRedemptionRequest$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lcom/expys/sdk/models/CreateRedemptionRequest$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lcom/expys/sdk/models/CreateRedemptionRequest;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lcom/expys/sdk/models/CreateRedemptionRequest;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/CreateRedemptionRequest$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/CreateWebhookRequest {
+	public static final field Companion Lcom/expys/sdk/models/CreateWebhookRequest$Companion;
+	public fun <init> (Ljava/util/List;Ljava/net/URI;)V
+	public final fun component1 ()Ljava/util/List;
+	public final fun component2 ()Ljava/net/URI;
+	public final fun copy (Ljava/util/List;Ljava/net/URI;)Lcom/expys/sdk/models/CreateWebhookRequest;
+	public static synthetic fun copy$default (Lcom/expys/sdk/models/CreateWebhookRequest;Ljava/util/List;Ljava/net/URI;ILjava/lang/Object;)Lcom/expys/sdk/models/CreateWebhookRequest;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getEvents ()Ljava/util/List;
+	public final fun getUrl ()Ljava/net/URI;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class com/expys/sdk/models/CreateWebhookRequest$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lcom/expys/sdk/models/CreateWebhookRequest$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lcom/expys/sdk/models/CreateWebhookRequest;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lcom/expys/sdk/models/CreateWebhookRequest;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/CreateWebhookRequest$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/CreditWalletRequest {
+	public static final field Companion Lcom/expys/sdk/models/CreditWalletRequest$Companion;
+	public fun <init> (ILjava/lang/String;Ljava/lang/String;)V
+	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()I
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun copy (ILjava/lang/String;Ljava/lang/String;)Lcom/expys/sdk/models/CreditWalletRequest;
+	public static synthetic fun copy$default (Lcom/expys/sdk/models/CreditWalletRequest;ILjava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lcom/expys/sdk/models/CreditWalletRequest;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAmount ()I
+	public final fun getExternalUserID ()Ljava/lang/String;
+	public final fun getReason ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class com/expys/sdk/models/CreditWalletRequest$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lcom/expys/sdk/models/CreditWalletRequest$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lcom/expys/sdk/models/CreditWalletRequest;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lcom/expys/sdk/models/CreditWalletRequest;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/CreditWalletRequest$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/CreditWalletResponse {
+	public static final field Companion Lcom/expys/sdk/models/CreditWalletResponse$Companion;
+	public fun <init> (DLcom/expys/sdk/models/Currency;)V
+	public final fun component1 ()D
+	public final fun component2 ()Lcom/expys/sdk/models/Currency;
+	public final fun copy (DLcom/expys/sdk/models/Currency;)Lcom/expys/sdk/models/CreditWalletResponse;
+	public static synthetic fun copy$default (Lcom/expys/sdk/models/CreditWalletResponse;DLcom/expys/sdk/models/Currency;ILjava/lang/Object;)Lcom/expys/sdk/models/CreditWalletResponse;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getBalance ()D
+	public final fun getCurrency ()Lcom/expys/sdk/models/Currency;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class com/expys/sdk/models/CreditWalletResponse$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lcom/expys/sdk/models/CreditWalletResponse$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lcom/expys/sdk/models/CreditWalletResponse;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lcom/expys/sdk/models/CreditWalletResponse;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/CreditWalletResponse$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/Currency {
+	public static final field Companion Lcom/expys/sdk/models/Currency$Companion;
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;)Lcom/expys/sdk/models/Currency;
+	public static synthetic fun copy$default (Lcom/expys/sdk/models/Currency;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lcom/expys/sdk/models/Currency;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getName ()Ljava/lang/String;
+	public final fun getSymbol ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class com/expys/sdk/models/Currency$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lcom/expys/sdk/models/Currency$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lcom/expys/sdk/models/Currency;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lcom/expys/sdk/models/Currency;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/Currency$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/DeleteWebhookResponse {
+	public static final field Companion Lcom/expys/sdk/models/DeleteWebhookResponse$Companion;
+	public fun <init> (Ljava/lang/String;Z)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Z
+	public final fun copy (Ljava/lang/String;Z)Lcom/expys/sdk/models/DeleteWebhookResponse;
+	public static synthetic fun copy$default (Lcom/expys/sdk/models/DeleteWebhookResponse;Ljava/lang/String;ZILjava/lang/Object;)Lcom/expys/sdk/models/DeleteWebhookResponse;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getId ()Ljava/lang/String;
+	public final fun getOk ()Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class com/expys/sdk/models/DeleteWebhookResponse$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lcom/expys/sdk/models/DeleteWebhookResponse$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lcom/expys/sdk/models/DeleteWebhookResponse;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lcom/expys/sdk/models/DeleteWebhookResponse;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/DeleteWebhookResponse$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/GetAnalyticsOffersResponse {
+	public static final field Companion Lcom/expys/sdk/models/GetAnalyticsOffersResponse$Companion;
+	public fun <init> (Ljava/util/List;)V
+	public final fun component1 ()Ljava/util/List;
+	public final fun copy (Ljava/util/List;)Lcom/expys/sdk/models/GetAnalyticsOffersResponse;
+	public static synthetic fun copy$default (Lcom/expys/sdk/models/GetAnalyticsOffersResponse;Ljava/util/List;ILjava/lang/Object;)Lcom/expys/sdk/models/GetAnalyticsOffersResponse;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getOffers ()Ljava/util/List;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class com/expys/sdk/models/GetAnalyticsOffersResponse$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lcom/expys/sdk/models/GetAnalyticsOffersResponse$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lcom/expys/sdk/models/GetAnalyticsOffersResponse;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lcom/expys/sdk/models/GetAnalyticsOffersResponse;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/GetAnalyticsOffersResponse$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/GetAnalyticsSummaryResponse {
+	public static final field Companion Lcom/expys/sdk/models/GetAnalyticsSummaryResponse$Companion;
+	public fun <init> (DDDDLcom/expys/sdk/models/RedemptionStatusCounts;)V
+	public final fun component1 ()D
+	public final fun component2 ()D
+	public final fun component3 ()D
+	public final fun component4 ()D
+	public final fun component5 ()Lcom/expys/sdk/models/RedemptionStatusCounts;
+	public final fun copy (DDDDLcom/expys/sdk/models/RedemptionStatusCounts;)Lcom/expys/sdk/models/GetAnalyticsSummaryResponse;
+	public static synthetic fun copy$default (Lcom/expys/sdk/models/GetAnalyticsSummaryResponse;DDDDLcom/expys/sdk/models/RedemptionStatusCounts;ILjava/lang/Object;)Lcom/expys/sdk/models/GetAnalyticsSummaryResponse;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCompletionRate ()D
+	public final fun getMemberCount ()D
+	public final fun getPointsMinted ()D
+	public final fun getPointsSpent ()D
+	public final fun getRedemptions ()Lcom/expys/sdk/models/RedemptionStatusCounts;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class com/expys/sdk/models/GetAnalyticsSummaryResponse$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lcom/expys/sdk/models/GetAnalyticsSummaryResponse$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lcom/expys/sdk/models/GetAnalyticsSummaryResponse;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lcom/expys/sdk/models/GetAnalyticsSummaryResponse;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/GetAnalyticsSummaryResponse$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/GetAnalyticsTimeseriesResponse {
+	public static final field Companion Lcom/expys/sdk/models/GetAnalyticsTimeseriesResponse$Companion;
+	public fun <init> (Ljava/util/List;)V
+	public final fun component1 ()Ljava/util/List;
+	public final fun copy (Ljava/util/List;)Lcom/expys/sdk/models/GetAnalyticsTimeseriesResponse;
+	public static synthetic fun copy$default (Lcom/expys/sdk/models/GetAnalyticsTimeseriesResponse;Ljava/util/List;ILjava/lang/Object;)Lcom/expys/sdk/models/GetAnalyticsTimeseriesResponse;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getBuckets ()Ljava/util/List;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class com/expys/sdk/models/GetAnalyticsTimeseriesResponse$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lcom/expys/sdk/models/GetAnalyticsTimeseriesResponse$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lcom/expys/sdk/models/GetAnalyticsTimeseriesResponse;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lcom/expys/sdk/models/GetAnalyticsTimeseriesResponse;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/GetAnalyticsTimeseriesResponse$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/ListConversationsResponse {
+	public static final field Companion Lcom/expys/sdk/models/ListConversationsResponse$Companion;
+	public fun <init> (Ljava/util/List;)V
+	public final fun component1 ()Ljava/util/List;
+	public final fun copy (Ljava/util/List;)Lcom/expys/sdk/models/ListConversationsResponse;
+	public static synthetic fun copy$default (Lcom/expys/sdk/models/ListConversationsResponse;Ljava/util/List;ILjava/lang/Object;)Lcom/expys/sdk/models/ListConversationsResponse;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getConversations ()Ljava/util/List;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class com/expys/sdk/models/ListConversationsResponse$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lcom/expys/sdk/models/ListConversationsResponse$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lcom/expys/sdk/models/ListConversationsResponse;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lcom/expys/sdk/models/ListConversationsResponse;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/ListConversationsResponse$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/ListMessagesResponse {
+	public static final field Companion Lcom/expys/sdk/models/ListMessagesResponse$Companion;
+	public fun <init> (Ljava/util/List;Ljava/lang/String;)V
+	public final fun component1 ()Ljava/util/List;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun copy (Ljava/util/List;Ljava/lang/String;)Lcom/expys/sdk/models/ListMessagesResponse;
+	public static synthetic fun copy$default (Lcom/expys/sdk/models/ListMessagesResponse;Ljava/util/List;Ljava/lang/String;ILjava/lang/Object;)Lcom/expys/sdk/models/ListMessagesResponse;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getMessages ()Ljava/util/List;
+	public final fun getNextCursor ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class com/expys/sdk/models/ListMessagesResponse$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lcom/expys/sdk/models/ListMessagesResponse$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lcom/expys/sdk/models/ListMessagesResponse;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lcom/expys/sdk/models/ListMessagesResponse;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/ListMessagesResponse$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/ListRedemptionsResponse {
+	public static final field Companion Lcom/expys/sdk/models/ListRedemptionsResponse$Companion;
+	public fun <init> (Ljava/lang/String;Ljava/util/List;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/util/List;
+	public final fun copy (Ljava/lang/String;Ljava/util/List;)Lcom/expys/sdk/models/ListRedemptionsResponse;
+	public static synthetic fun copy$default (Lcom/expys/sdk/models/ListRedemptionsResponse;Ljava/lang/String;Ljava/util/List;ILjava/lang/Object;)Lcom/expys/sdk/models/ListRedemptionsResponse;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getNextCursor ()Ljava/lang/String;
+	public final fun getRedemptions ()Ljava/util/List;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class com/expys/sdk/models/ListRedemptionsResponse$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lcom/expys/sdk/models/ListRedemptionsResponse$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lcom/expys/sdk/models/ListRedemptionsResponse;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lcom/expys/sdk/models/ListRedemptionsResponse;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/ListRedemptionsResponse$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/ListTransactionsResponse {
+	public static final field Companion Lcom/expys/sdk/models/ListTransactionsResponse$Companion;
+	public fun <init> (Ljava/lang/String;Ljava/util/List;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/util/List;
+	public final fun copy (Ljava/lang/String;Ljava/util/List;)Lcom/expys/sdk/models/ListTransactionsResponse;
+	public static synthetic fun copy$default (Lcom/expys/sdk/models/ListTransactionsResponse;Ljava/lang/String;Ljava/util/List;ILjava/lang/Object;)Lcom/expys/sdk/models/ListTransactionsResponse;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getNextCursor ()Ljava/lang/String;
+	public final fun getTransactions ()Ljava/util/List;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class com/expys/sdk/models/ListTransactionsResponse$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lcom/expys/sdk/models/ListTransactionsResponse$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lcom/expys/sdk/models/ListTransactionsResponse;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lcom/expys/sdk/models/ListTransactionsResponse;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/ListTransactionsResponse$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/MemberEligibility {
+	public static final field Companion Lcom/expys/sdk/models/MemberEligibility$Companion;
+	public fun <init> (Ljava/lang/String;Lcom/expys/sdk/models/Wallet;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Lcom/expys/sdk/models/Wallet;
+	public final fun copy (Ljava/lang/String;Lcom/expys/sdk/models/Wallet;)Lcom/expys/sdk/models/MemberEligibility;
+	public static synthetic fun copy$default (Lcom/expys/sdk/models/MemberEligibility;Ljava/lang/String;Lcom/expys/sdk/models/Wallet;ILjava/lang/Object;)Lcom/expys/sdk/models/MemberEligibility;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getTier ()Ljava/lang/String;
+	public final fun getWallet ()Lcom/expys/sdk/models/Wallet;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class com/expys/sdk/models/MemberEligibility$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lcom/expys/sdk/models/MemberEligibility$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lcom/expys/sdk/models/MemberEligibility;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lcom/expys/sdk/models/MemberEligibility;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/MemberEligibility$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/MemberSummary {
+	public static final field Companion Lcom/expys/sdk/models/MemberSummary$Companion;
+	public fun <init> (Lkotlinx/serialization/json/JsonObject;Ljava/lang/String;Ljava/lang/String;Lcom/expys/sdk/models/RedemptionCounts;Ljava/lang/String;Lcom/expys/sdk/models/Wallet;)V
+	public final fun component1 ()Lkotlinx/serialization/json/JsonObject;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Lcom/expys/sdk/models/RedemptionCounts;
+	public final fun component5 ()Ljava/lang/String;
+	public final fun component6 ()Lcom/expys/sdk/models/Wallet;
+	public final fun copy (Lkotlinx/serialization/json/JsonObject;Ljava/lang/String;Ljava/lang/String;Lcom/expys/sdk/models/RedemptionCounts;Ljava/lang/String;Lcom/expys/sdk/models/Wallet;)Lcom/expys/sdk/models/MemberSummary;
+	public static synthetic fun copy$default (Lcom/expys/sdk/models/MemberSummary;Lkotlinx/serialization/json/JsonObject;Ljava/lang/String;Ljava/lang/String;Lcom/expys/sdk/models/RedemptionCounts;Ljava/lang/String;Lcom/expys/sdk/models/Wallet;ILjava/lang/Object;)Lcom/expys/sdk/models/MemberSummary;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAttributes ()Lkotlinx/serialization/json/JsonObject;
+	public final fun getDisplayName ()Ljava/lang/String;
+	public final fun getExternalUserID ()Ljava/lang/String;
+	public final fun getRedemptionCounts ()Lcom/expys/sdk/models/RedemptionCounts;
+	public final fun getTier ()Ljava/lang/String;
+	public final fun getWallet ()Lcom/expys/sdk/models/Wallet;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class com/expys/sdk/models/MemberSummary$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lcom/expys/sdk/models/MemberSummary$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lcom/expys/sdk/models/MemberSummary;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lcom/expys/sdk/models/MemberSummary;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/MemberSummary$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/Message {
+	public static final field Companion Lcom/expys/sdk/models/Message$Companion;
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/expys/sdk/models/Message;
+	public static synthetic fun copy$default (Lcom/expys/sdk/models/Message;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lcom/expys/sdk/models/Message;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAuthorID ()Ljava/lang/String;
+	public final fun getBody ()Ljava/lang/String;
+	public final fun getCreatedAt ()Ljava/lang/String;
+	public final fun getId ()Ljava/lang/String;
+	public final fun getType ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class com/expys/sdk/models/Message$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lcom/expys/sdk/models/Message$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lcom/expys/sdk/models/Message;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lcom/expys/sdk/models/Message;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/Message$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/Offer {
+	public static final field Companion Lcom/expys/sdk/models/Offer$Companion;
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5 ()Ljava/lang/Integer;
+	public final fun component6 ()Ljava/lang/String;
+	public final fun component7 ()Ljava/lang/String;
+	public final fun component8 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/expys/sdk/models/Offer;
+	public static synthetic fun copy$default (Lcom/expys/sdk/models/Offer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lcom/expys/sdk/models/Offer;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getDescription ()Ljava/lang/String;
+	public final fun getExpiresAt ()Ljava/lang/String;
+	public final fun getId ()Ljava/lang/String;
+	public final fun getKind ()Ljava/lang/String;
+	public final fun getPointsPrice ()Ljava/lang/Integer;
+	public final fun getShortDescription ()Ljava/lang/String;
+	public final fun getTitle ()Ljava/lang/String;
+	public final fun getType ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class com/expys/sdk/models/Offer$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lcom/expys/sdk/models/Offer$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lcom/expys/sdk/models/Offer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lcom/expys/sdk/models/Offer;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/Offer$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/OfferAnalytics {
+	public static final field Companion Lcom/expys/sdk/models/OfferAnalytics$Companion;
+	public fun <init> (DDLjava/lang/String;DD)V
+	public final fun component1 ()D
+	public final fun component2 ()D
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()D
+	public final fun component5 ()D
+	public final fun copy (DDLjava/lang/String;DD)Lcom/expys/sdk/models/OfferAnalytics;
+	public static synthetic fun copy$default (Lcom/expys/sdk/models/OfferAnalytics;DDLjava/lang/String;DDILjava/lang/Object;)Lcom/expys/sdk/models/OfferAnalytics;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCancellations ()D
+	public final fun getCompletions ()D
+	public final fun getOfferId ()Ljava/lang/String;
+	public final fun getPointsSpent ()D
+	public final fun getSignups ()D
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class com/expys/sdk/models/OfferAnalytics$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lcom/expys/sdk/models/OfferAnalytics$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lcom/expys/sdk/models/OfferAnalytics;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lcom/expys/sdk/models/OfferAnalytics;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/OfferAnalytics$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/OfferList {
+	public static final field Companion Lcom/expys/sdk/models/OfferList$Companion;
+	public fun <init> (Ljava/util/List;Ljava/lang/String;)V
+	public final fun component1 ()Ljava/util/List;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun copy (Ljava/util/List;Ljava/lang/String;)Lcom/expys/sdk/models/OfferList;
+	public static synthetic fun copy$default (Lcom/expys/sdk/models/OfferList;Ljava/util/List;Ljava/lang/String;ILjava/lang/Object;)Lcom/expys/sdk/models/OfferList;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getData ()Ljava/util/List;
+	public final fun getNextCursor ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class com/expys/sdk/models/OfferList$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lcom/expys/sdk/models/OfferList$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lcom/expys/sdk/models/OfferList;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lcom/expys/sdk/models/OfferList;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/OfferList$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/Redemption {
+	public static final field Companion Lcom/expys/sdk/models/Redemption$Companion;
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5 ()Ljava/lang/String;
+	public final fun component6 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/expys/sdk/models/Redemption;
+	public static synthetic fun copy$default (Lcom/expys/sdk/models/Redemption;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lcom/expys/sdk/models/Redemption;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCreatedAt ()Ljava/lang/String;
+	public final fun getEndAt ()Ljava/lang/String;
+	public final fun getId ()Ljava/lang/String;
+	public final fun getOffer ()Ljava/lang/String;
+	public final fun getStartAt ()Ljava/lang/String;
+	public final fun getStatus ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class com/expys/sdk/models/Redemption$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lcom/expys/sdk/models/Redemption$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lcom/expys/sdk/models/Redemption;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lcom/expys/sdk/models/Redemption;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/Redemption$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/RedemptionCounts {
+	public static final field Companion Lcom/expys/sdk/models/RedemptionCounts$Companion;
+	public fun <init> (DDDDDDD)V
+	public final fun component1 ()D
+	public final fun component2 ()D
+	public final fun component3 ()D
+	public final fun component4 ()D
+	public final fun component5 ()D
+	public final fun component6 ()D
+	public final fun component7 ()D
+	public final fun copy (DDDDDDD)Lcom/expys/sdk/models/RedemptionCounts;
+	public static synthetic fun copy$default (Lcom/expys/sdk/models/RedemptionCounts;DDDDDDDILjava/lang/Object;)Lcom/expys/sdk/models/RedemptionCounts;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAWAITING_CUSTOMER ()D
+	public final fun getAWAITING_VENDOR ()D
+	public final fun getCANCELED ()D
+	public final fun getCOMPLETED ()D
+	public final fun getOPEN ()D
+	public final fun getPURCHASED ()D
+	public final fun getSUBMITTED ()D
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class com/expys/sdk/models/RedemptionCounts$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lcom/expys/sdk/models/RedemptionCounts$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lcom/expys/sdk/models/RedemptionCounts;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lcom/expys/sdk/models/RedemptionCounts;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/RedemptionCounts$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/RedemptionStatusCounts {
+	public static final field Companion Lcom/expys/sdk/models/RedemptionStatusCounts$Companion;
+	public fun <init> (DDDDDDDD)V
+	public final fun component1 ()D
+	public final fun component2 ()D
+	public final fun component3 ()D
+	public final fun component4 ()D
+	public final fun component5 ()D
+	public final fun component6 ()D
+	public final fun component7 ()D
+	public final fun component8 ()D
+	public final fun copy (DDDDDDDD)Lcom/expys/sdk/models/RedemptionStatusCounts;
+	public static synthetic fun copy$default (Lcom/expys/sdk/models/RedemptionStatusCounts;DDDDDDDDILjava/lang/Object;)Lcom/expys/sdk/models/RedemptionStatusCounts;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAwaitingCustomer ()D
+	public final fun getAwaitingVendor ()D
+	public final fun getCanceled ()D
+	public final fun getCompleted ()D
+	public final fun getOpen ()D
+	public final fun getPurchased ()D
+	public final fun getSubmitted ()D
+	public final fun getTotal ()D
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class com/expys/sdk/models/RedemptionStatusCounts$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lcom/expys/sdk/models/RedemptionStatusCounts$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lcom/expys/sdk/models/RedemptionStatusCounts;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lcom/expys/sdk/models/RedemptionStatusCounts;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/RedemptionStatusCounts$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/RemoveMemberResponse {
+	public static final field Companion Lcom/expys/sdk/models/RemoveMemberResponse$Companion;
+	public fun <init> (ZZLjava/lang/String;)V
+	public final fun component1 ()Z
+	public final fun component2 ()Z
+	public final fun component3 ()Ljava/lang/String;
+	public final fun copy (ZZLjava/lang/String;)Lcom/expys/sdk/models/RemoveMemberResponse;
+	public static synthetic fun copy$default (Lcom/expys/sdk/models/RemoveMemberResponse;ZZLjava/lang/String;ILjava/lang/Object;)Lcom/expys/sdk/models/RemoveMemberResponse;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getArchived ()Z
+	public final fun getBalanceRetained ()Z
+	public final fun getExternalUserID ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class com/expys/sdk/models/RemoveMemberResponse$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lcom/expys/sdk/models/RemoveMemberResponse$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lcom/expys/sdk/models/RemoveMemberResponse;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lcom/expys/sdk/models/RemoveMemberResponse;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/RemoveMemberResponse$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/SendMessageRequest {
+	public static final field Companion Lcom/expys/sdk/models/SendMessageRequest$Companion;
+	public fun <init> (Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;)Lcom/expys/sdk/models/SendMessageRequest;
+	public static synthetic fun copy$default (Lcom/expys/sdk/models/SendMessageRequest;Ljava/lang/String;ILjava/lang/Object;)Lcom/expys/sdk/models/SendMessageRequest;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getMessage ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class com/expys/sdk/models/SendMessageRequest$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lcom/expys/sdk/models/SendMessageRequest$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lcom/expys/sdk/models/SendMessageRequest;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lcom/expys/sdk/models/SendMessageRequest;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/SendMessageRequest$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/SendMessageResponse {
+	public static final field Companion Lcom/expys/sdk/models/SendMessageResponse$Companion;
+	public fun <init> (Z)V
+	public final fun component1 ()Z
+	public final fun copy (Z)Lcom/expys/sdk/models/SendMessageResponse;
+	public static synthetic fun copy$default (Lcom/expys/sdk/models/SendMessageResponse;ZILjava/lang/Object;)Lcom/expys/sdk/models/SendMessageResponse;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getOk ()Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class com/expys/sdk/models/SendMessageResponse$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lcom/expys/sdk/models/SendMessageResponse$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lcom/expys/sdk/models/SendMessageResponse;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lcom/expys/sdk/models/SendMessageResponse;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/SendMessageResponse$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/SetMemberRequest {
+	public static final field Companion Lcom/expys/sdk/models/SetMemberRequest$Companion;
+	public fun <init> ()V
+	public fun <init> (Lkotlinx/serialization/json/JsonObject;Ljava/lang/String;Ljava/lang/String;)V
+	public synthetic fun <init> (Lkotlinx/serialization/json/JsonObject;Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Lkotlinx/serialization/json/JsonObject;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun copy (Lkotlinx/serialization/json/JsonObject;Ljava/lang/String;Ljava/lang/String;)Lcom/expys/sdk/models/SetMemberRequest;
+	public static synthetic fun copy$default (Lcom/expys/sdk/models/SetMemberRequest;Lkotlinx/serialization/json/JsonObject;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lcom/expys/sdk/models/SetMemberRequest;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAttributes ()Lkotlinx/serialization/json/JsonObject;
+	public final fun getDisplayName ()Ljava/lang/String;
+	public final fun getTier ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class com/expys/sdk/models/SetMemberRequest$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lcom/expys/sdk/models/SetMemberRequest$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lcom/expys/sdk/models/SetMemberRequest;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lcom/expys/sdk/models/SetMemberRequest;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/SetMemberRequest$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/SetMemberResponse {
+	public static final field Companion Lcom/expys/sdk/models/SetMemberResponse$Companion;
+	public fun <init> (Lkotlinx/serialization/json/JsonObject;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+	public final fun component1 ()Lkotlinx/serialization/json/JsonObject;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun copy (Lkotlinx/serialization/json/JsonObject;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/expys/sdk/models/SetMemberResponse;
+	public static synthetic fun copy$default (Lcom/expys/sdk/models/SetMemberResponse;Lkotlinx/serialization/json/JsonObject;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lcom/expys/sdk/models/SetMemberResponse;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAttributes ()Lkotlinx/serialization/json/JsonObject;
+	public final fun getDisplayName ()Ljava/lang/String;
+	public final fun getExternalUserID ()Ljava/lang/String;
+	public final fun getTier ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class com/expys/sdk/models/SetMemberResponse$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lcom/expys/sdk/models/SetMemberResponse$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lcom/expys/sdk/models/SetMemberResponse;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lcom/expys/sdk/models/SetMemberResponse;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/SetMemberResponse$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/TimeseriesBucket {
+	public static final field Companion Lcom/expys/sdk/models/TimeseriesBucket$Companion;
+	public fun <init> (Ljava/lang/String;DDDLjava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()D
+	public final fun component3 ()D
+	public final fun component4 ()D
+	public final fun component5 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;DDDLjava/lang/String;)Lcom/expys/sdk/models/TimeseriesBucket;
+	public static synthetic fun copy$default (Lcom/expys/sdk/models/TimeseriesBucket;Ljava/lang/String;DDDLjava/lang/String;ILjava/lang/Object;)Lcom/expys/sdk/models/TimeseriesBucket;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getEndTime ()Ljava/lang/String;
+	public final fun getPointsMinted ()D
+	public final fun getPointsSpent ()D
+	public final fun getSignups ()D
+	public final fun getStartTime ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class com/expys/sdk/models/TimeseriesBucket$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lcom/expys/sdk/models/TimeseriesBucket$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lcom/expys/sdk/models/TimeseriesBucket;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lcom/expys/sdk/models/TimeseriesBucket;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/TimeseriesBucket$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/TokenExchangeRequest {
+	public static final field Companion Lcom/expys/sdk/models/TokenExchangeRequest$Companion;
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/expys/sdk/models/TokenExchangeRequest;
+	public static synthetic fun copy$default (Lcom/expys/sdk/models/TokenExchangeRequest;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lcom/expys/sdk/models/TokenExchangeRequest;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getDisplayName ()Ljava/lang/String;
+	public final fun getEmail ()Ljava/lang/String;
+	public final fun getExternalUserID ()Ljava/lang/String;
+	public final fun getTier ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class com/expys/sdk/models/TokenExchangeRequest$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lcom/expys/sdk/models/TokenExchangeRequest$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lcom/expys/sdk/models/TokenExchangeRequest;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lcom/expys/sdk/models/TokenExchangeRequest;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/TokenExchangeRequest$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/TokenGrant {
+	public static final field Companion Lcom/expys/sdk/models/TokenGrant$Companion;
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;)Lcom/expys/sdk/models/TokenGrant;
+	public static synthetic fun copy$default (Lcom/expys/sdk/models/TokenGrant;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lcom/expys/sdk/models/TokenGrant;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAccessToken ()Ljava/lang/String;
+	public final fun getExpiresAt ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class com/expys/sdk/models/TokenGrant$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lcom/expys/sdk/models/TokenGrant$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lcom/expys/sdk/models/TokenGrant;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lcom/expys/sdk/models/TokenGrant;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/TokenGrant$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/Transaction {
+	public static final field Companion Lcom/expys/sdk/models/Transaction$Companion;
+	public fun <init> (DLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+	public final fun component1 ()D
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5 ()Ljava/lang/String;
+	public final fun component6 ()Ljava/lang/String;
+	public final fun copy (DLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/expys/sdk/models/Transaction;
+	public static synthetic fun copy$default (Lcom/expys/sdk/models/Transaction;DLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lcom/expys/sdk/models/Transaction;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAmount ()D
+	public final fun getCreatedAt ()Ljava/lang/String;
+	public final fun getId ()Ljava/lang/String;
+	public final fun getReason ()Ljava/lang/String;
+	public final fun getRedemptionID ()Ljava/lang/String;
+	public final fun getType ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class com/expys/sdk/models/Transaction$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lcom/expys/sdk/models/Transaction$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lcom/expys/sdk/models/Transaction;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lcom/expys/sdk/models/Transaction;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/Transaction$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/Wallet {
+	public static final field Companion Lcom/expys/sdk/models/Wallet$Companion;
+	public fun <init> (DDDLcom/expys/sdk/models/Currency;)V
+	public final fun component1 ()D
+	public final fun component2 ()D
+	public final fun component3 ()D
+	public final fun component4 ()Lcom/expys/sdk/models/Currency;
+	public final fun copy (DDDLcom/expys/sdk/models/Currency;)Lcom/expys/sdk/models/Wallet;
+	public static synthetic fun copy$default (Lcom/expys/sdk/models/Wallet;DDDLcom/expys/sdk/models/Currency;ILjava/lang/Object;)Lcom/expys/sdk/models/Wallet;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAmountReceived ()D
+	public final fun getAmountSpent ()D
+	public final fun getBalance ()D
+	public final fun getCurrency ()Lcom/expys/sdk/models/Currency;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class com/expys/sdk/models/Wallet$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lcom/expys/sdk/models/Wallet$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lcom/expys/sdk/models/Wallet;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lcom/expys/sdk/models/Wallet;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/Wallet$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/WebhookEndpoint {
+	public static final field Companion Lcom/expys/sdk/models/WebhookEndpoint$Companion;
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Lcom/expys/sdk/models/WebhookEndpoint$Environment;Ljava/util/List;Ljava/lang/String;Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Lcom/expys/sdk/models/WebhookEndpoint$Environment;
+	public final fun component4 ()Ljava/util/List;
+	public final fun component5 ()Ljava/lang/String;
+	public final fun component6 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Lcom/expys/sdk/models/WebhookEndpoint$Environment;Ljava/util/List;Ljava/lang/String;Ljava/lang/String;)Lcom/expys/sdk/models/WebhookEndpoint;
+	public static synthetic fun copy$default (Lcom/expys/sdk/models/WebhookEndpoint;Ljava/lang/String;Ljava/lang/String;Lcom/expys/sdk/models/WebhookEndpoint$Environment;Ljava/util/List;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lcom/expys/sdk/models/WebhookEndpoint;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCreatedAt ()Ljava/lang/String;
+	public final fun getDisabledAt ()Ljava/lang/String;
+	public final fun getEnvironment ()Lcom/expys/sdk/models/WebhookEndpoint$Environment;
+	public final fun getEvents ()Ljava/util/List;
+	public final fun getId ()Ljava/lang/String;
+	public final fun getUrl ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class com/expys/sdk/models/WebhookEndpoint$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lcom/expys/sdk/models/WebhookEndpoint$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lcom/expys/sdk/models/WebhookEndpoint;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lcom/expys/sdk/models/WebhookEndpoint;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/WebhookEndpoint$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/WebhookEndpoint$Environment : java/lang/Enum {
+	public static final field Companion Lcom/expys/sdk/models/WebhookEndpoint$Environment$Companion;
+	public static final field LIVE Lcom/expys/sdk/models/WebhookEndpoint$Environment;
+	public static final field SANDBOX Lcom/expys/sdk/models/WebhookEndpoint$Environment;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public final fun getValue ()Ljava/lang/String;
+	public static fun valueOf (Ljava/lang/String;)Lcom/expys/sdk/models/WebhookEndpoint$Environment;
+	public static fun values ()[Lcom/expys/sdk/models/WebhookEndpoint$Environment;
+}
+
+public final class com/expys/sdk/models/WebhookEndpoint$Environment$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/WebhookEndpointList {
+	public static final field Companion Lcom/expys/sdk/models/WebhookEndpointList$Companion;
+	public fun <init> (Ljava/util/List;)V
+	public final fun component1 ()Ljava/util/List;
+	public final fun copy (Ljava/util/List;)Lcom/expys/sdk/models/WebhookEndpointList;
+	public static synthetic fun copy$default (Lcom/expys/sdk/models/WebhookEndpointList;Ljava/util/List;ILjava/lang/Object;)Lcom/expys/sdk/models/WebhookEndpointList;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getData ()Ljava/util/List;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class com/expys/sdk/models/WebhookEndpointList$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lcom/expys/sdk/models/WebhookEndpointList$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lcom/expys/sdk/models/WebhookEndpointList;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lcom/expys/sdk/models/WebhookEndpointList;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/WebhookEndpointList$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/WebhookEndpointWithSecret {
+	public static final field Companion Lcom/expys/sdk/models/WebhookEndpointWithSecret$Companion;
+	public fun <init> (Ljava/lang/String;Lcom/expys/sdk/models/WebhookEndpointWithSecret$Environment;Ljava/util/List;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Lcom/expys/sdk/models/WebhookEndpointWithSecret$Environment;
+	public final fun component3 ()Ljava/util/List;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5 ()Ljava/lang/String;
+	public final fun component6 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Lcom/expys/sdk/models/WebhookEndpointWithSecret$Environment;Ljava/util/List;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/expys/sdk/models/WebhookEndpointWithSecret;
+	public static synthetic fun copy$default (Lcom/expys/sdk/models/WebhookEndpointWithSecret;Ljava/lang/String;Lcom/expys/sdk/models/WebhookEndpointWithSecret$Environment;Ljava/util/List;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lcom/expys/sdk/models/WebhookEndpointWithSecret;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCreatedAt ()Ljava/lang/String;
+	public final fun getEnvironment ()Lcom/expys/sdk/models/WebhookEndpointWithSecret$Environment;
+	public final fun getEvents ()Ljava/util/List;
+	public final fun getId ()Ljava/lang/String;
+	public final fun getSigningSecret ()Ljava/lang/String;
+	public final fun getUrl ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class com/expys/sdk/models/WebhookEndpointWithSecret$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lcom/expys/sdk/models/WebhookEndpointWithSecret$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lcom/expys/sdk/models/WebhookEndpointWithSecret;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lcom/expys/sdk/models/WebhookEndpointWithSecret;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/WebhookEndpointWithSecret$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/WebhookEndpointWithSecret$Environment : java/lang/Enum {
+	public static final field Companion Lcom/expys/sdk/models/WebhookEndpointWithSecret$Environment$Companion;
+	public static final field LIVE Lcom/expys/sdk/models/WebhookEndpointWithSecret$Environment;
+	public static final field SANDBOX Lcom/expys/sdk/models/WebhookEndpointWithSecret$Environment;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public final fun getValue ()Ljava/lang/String;
+	public static fun valueOf (Ljava/lang/String;)Lcom/expys/sdk/models/WebhookEndpointWithSecret$Environment;
+	public static fun values ()[Lcom/expys/sdk/models/WebhookEndpointWithSecret$Environment;
+}
+
+public final class com/expys/sdk/models/WebhookEndpointWithSecret$Environment$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
