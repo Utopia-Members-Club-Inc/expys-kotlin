@@ -1,20 +1,19 @@
-# Expys SDK (Kotlin/JVM)
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/expys-logo-white.svg" />
+    <img alt="Expys" src="assets/expys-logo-black.svg" width="150" />
+  </picture>
+</p>
 
-[![SDK CI](https://github.com/Utopia-Members-Club-Inc/utopia/actions/workflows/sdk-ci.yml/badge.svg)](https://github.com/Utopia-Members-Club-Inc/utopia/actions/workflows/sdk-ci.yml)
-[![Kotlin](https://img.shields.io/badge/Kotlin-2.0.21-blue.svg?logo=kotlin)](https://kotlinlang.org)
-[![JVM](https://img.shields.io/badge/JVM-17%2B-orange.svg)](https://openjdk.org)
-[![Android](https://img.shields.io/badge/Android-API%2021%2B-3DDC84.svg?logo=android)](#platform-support)
-[![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](./LICENSE)
+<h1 align="center">Expys SDK · Kotlin/JVM</h1>
 
-<!--
-The badges below go live once the package is published to Maven Central, the repo is
-connected to Codecov, and the Dokka docs are deployed to GitHub Pages (see
-CONTRIBUTING.md and sdk-ci.yml / sdk-docs.yml). Uncomment them then.
-
-[![Maven Central](https://img.shields.io/maven-central/v/com.expys/sdk.svg)](https://central.sonatype.com/artifact/com.expys/sdk)
-[![codecov](https://codecov.io/gh/Utopia-Members-Club-Inc/utopia/branch/main/graph/badge.svg?flag=sdk-kotlin)](https://codecov.io/gh/Utopia-Members-Club-Inc/utopia)
-[![API docs](https://img.shields.io/badge/API_docs-Dokka-blue.svg)](https://utopia-members-club-inc.github.io/utopia/)
--->
+<p align="center">
+  <a href="https://central.sonatype.com/artifact/com.expys/sdk"><img alt="Maven Central" src="https://img.shields.io/maven-central/v/com.expys/sdk?style=flat-square&labelColor=000000&color=9EC1DE" /></a>
+  <a href="https://kotlinlang.org"><img alt="Kotlin" src="https://img.shields.io/badge/Kotlin-2.0.21-9EC1DE?style=flat-square&labelColor=000000&logo=kotlin&logoColor=white" /></a>
+  <a href="https://openjdk.org"><img alt="JVM" src="https://img.shields.io/badge/JVM-17%2B-9EC1DE?style=flat-square&labelColor=000000" /></a>
+  <a href="#platform-support"><img alt="Android" src="https://img.shields.io/badge/Android-API%2021%2B-9EC1DE?style=flat-square&labelColor=000000&logo=android&logoColor=white" /></a>
+  <a href="./LICENSE"><img alt="license MIT" src="https://img.shields.io/badge/license-MIT-9EC1DE?style=flat-square&labelColor=000000" /></a>
+</p>
 
 Official Expys data SDK for Kotlin/JVM. Coroutine-native (suspend), OkHttp,
 kotlinx.serialization. A single pure-Kotlin/JVM artifact (no Android resources, no
