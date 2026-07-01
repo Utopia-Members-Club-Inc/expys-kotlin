@@ -34,6 +34,7 @@ import kotlinx.serialization.Contextual
  * @param description 
  * @param expiresAt 
  * @param id 
+ * @param images 
  * @param kind 
  * @param pointsPrice 
  * @param shortDescription 
@@ -52,6 +53,9 @@ public data class Offer (
 
     @SerialName(value = "id")
     val id: kotlin.String,
+
+    @SerialName(value = "images")
+    val images: kotlin.collections.List<kotlin.String>,
 
     @SerialName(value = "kind")
     val kind: kotlin.String,
