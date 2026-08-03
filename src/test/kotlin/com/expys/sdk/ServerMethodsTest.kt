@@ -2,6 +2,7 @@ package com.expys.sdk
 
 import com.expys.sdk.models.CreateWebhookRequest
 import com.expys.sdk.models.CreditWalletRequest
+import com.expys.sdk.models.GetBalanceResponse
 import com.expys.sdk.models.SetMemberRequest
 import com.expys.sdk.models.TokenExchangeRequest
 import kotlinx.coroutines.test.runTest
@@ -87,6 +88,21 @@ class ServerMethodsTest {
   }
 
   @Test
+  fun listMembersSendsPagingQuery() = runTest {
+    val http = FakeHttpClient(listOf(ok("""{"members":[],"nextCursor":null}""")))
+
+    val result = machineClient(http).listMembers(tier = "gold", limit = 2, cursor = "c1")
+
+    assertTrue(result.members.isEmpty())
+    assertEquals(null, result.nextCursor)
+    assertEquals("GET", http.requests[0].method)
+    assertTrue(http.requests[0].url.startsWith("https://api.test/v1/members?"))
+    assertTrue(http.requests[0].url.contains("tier=gold"))
+    assertTrue(http.requests[0].url.contains("limit=2"))
+    assertTrue(http.requests[0].url.contains("cursor=c1"))
+  }
+
+  @Test
   fun removeMemberDeletesWithoutBodyOrKey() = runTest {
     val http = FakeHttpClient(listOf(ok("""{"archived":true,"balanceRetained":false,"externalUserID":"u 1"}""")))
 
@@ -138,6 +154,25 @@ class ServerMethodsTest {
 
     assertEquals(0, result.offers.size)
     assertEquals("https://api.test/v1/analytics/offers", http.requests[0].url)
+  }
+
+  @Test
+  fun balanceGets() = runTest {
+    val http = FakeHttpClient(
+      listOf(
+        ok(
+          """{"balance":3800,"creditLimit":1000,"lifetimeSpent":1200,"settlementMode":"ORG_POOL"}""",
+        ),
+      ),
+    )
+
+    val result = machineClient(http).balance()
+
+    assertEquals(3800, result.balance)
+    assertEquals(1000, result.creditLimit)
+    assertEquals(1200, result.lifetimeSpent)
+    assertEquals(GetBalanceResponse.SettlementMode.ORG_POOL, result.settlementMode)
+    assertEquals("https://api.test/v1/balance", http.requests[0].url)
   }
 
   @Test
@@ -214,10 +249,12 @@ class ServerMethodsTest {
       { client.creditPoints(CreditWalletRequest(amount = 1, externalUserID = "u1")) },
       { client.setMember("u1", SetMemberRequest(tier = "g")) },
       { client.getMember("u1") },
+      { client.listMembers() },
       { client.removeMember("u1") },
       { client.analyticsSummary() },
       { client.analyticsOffers() },
       { client.analyticsTimeseries(from = "a", to = "b", interval = "day") },
+      { client.balance() },
       { client.createWebhook(CreateWebhookRequest(events = emptyList(), url = URI("https://x"))) },
       { client.listWebhooks() },
       { client.deleteWebhook("wh_1") },

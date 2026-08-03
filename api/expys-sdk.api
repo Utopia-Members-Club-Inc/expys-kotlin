@@ -38,6 +38,7 @@ public final class com/expys/sdk/ExpysClient {
 	public final fun analyticsOffers (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public final fun analyticsSummary (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public final fun analyticsTimeseries (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun balance (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public final fun createRedemption (Lcom/expys/sdk/models/CreateRedemptionRequest;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static synthetic fun createRedemption$default (Lcom/expys/sdk/ExpysClient;Lcom/expys/sdk/models/CreateRedemptionRequest;Ljava/lang/String;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 	public final fun createWebhook (Lcom/expys/sdk/models/CreateWebhookRequest;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
@@ -53,6 +54,8 @@ public final class com/expys/sdk/ExpysClient {
 	public final fun getRedemption (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public final fun listConversations (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static synthetic fun listConversations$default (Lcom/expys/sdk/ExpysClient;Ljava/lang/String;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public final fun listMembers (Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun listMembers$default (Lcom/expys/sdk/ExpysClient;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 	public final fun listMessages (Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static synthetic fun listMessages$default (Lcom/expys/sdk/ExpysClient;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 	public final fun listOffers (Ljava/lang/Integer;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
@@ -564,6 +567,53 @@ public final class com/expys/sdk/models/GetAnalyticsTimeseriesResponse$Companion
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
+public final class com/expys/sdk/models/GetBalanceResponse {
+	public static final field Companion Lcom/expys/sdk/models/GetBalanceResponse$Companion;
+	public fun <init> (IIILcom/expys/sdk/models/GetBalanceResponse$SettlementMode;)V
+	public final fun component1 ()I
+	public final fun component2 ()I
+	public final fun component3 ()I
+	public final fun component4 ()Lcom/expys/sdk/models/GetBalanceResponse$SettlementMode;
+	public final fun copy (IIILcom/expys/sdk/models/GetBalanceResponse$SettlementMode;)Lcom/expys/sdk/models/GetBalanceResponse;
+	public static synthetic fun copy$default (Lcom/expys/sdk/models/GetBalanceResponse;IIILcom/expys/sdk/models/GetBalanceResponse$SettlementMode;ILjava/lang/Object;)Lcom/expys/sdk/models/GetBalanceResponse;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getBalance ()I
+	public final fun getCreditLimit ()I
+	public final fun getLifetimeSpent ()I
+	public final fun getSettlementMode ()Lcom/expys/sdk/models/GetBalanceResponse$SettlementMode;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class com/expys/sdk/models/GetBalanceResponse$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lcom/expys/sdk/models/GetBalanceResponse$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lcom/expys/sdk/models/GetBalanceResponse;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lcom/expys/sdk/models/GetBalanceResponse;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/GetBalanceResponse$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/GetBalanceResponse$SettlementMode : java/lang/Enum {
+	public static final field Companion Lcom/expys/sdk/models/GetBalanceResponse$SettlementMode$Companion;
+	public static final field MEMBER_WALLET Lcom/expys/sdk/models/GetBalanceResponse$SettlementMode;
+	public static final field ORG_POOL Lcom/expys/sdk/models/GetBalanceResponse$SettlementMode;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public final fun getValue ()Ljava/lang/String;
+	public static fun valueOf (Ljava/lang/String;)Lcom/expys/sdk/models/GetBalanceResponse$SettlementMode;
+	public static fun values ()[Lcom/expys/sdk/models/GetBalanceResponse$SettlementMode;
+}
+
+public final class com/expys/sdk/models/GetBalanceResponse$SettlementMode$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
 public final class com/expys/sdk/models/ListConversationsResponse {
 	public static final field Companion Lcom/expys/sdk/models/ListConversationsResponse$Companion;
 	public fun <init> (Ljava/util/List;)V
@@ -588,6 +638,35 @@ public synthetic class com/expys/sdk/models/ListConversationsResponse$$serialize
 }
 
 public final class com/expys/sdk/models/ListConversationsResponse$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/ListMembersResponse {
+	public static final field Companion Lcom/expys/sdk/models/ListMembersResponse$Companion;
+	public fun <init> (Ljava/util/List;Ljava/lang/String;)V
+	public final fun component1 ()Ljava/util/List;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun copy (Ljava/util/List;Ljava/lang/String;)Lcom/expys/sdk/models/ListMembersResponse;
+	public static synthetic fun copy$default (Lcom/expys/sdk/models/ListMembersResponse;Ljava/util/List;Ljava/lang/String;ILjava/lang/Object;)Lcom/expys/sdk/models/ListMembersResponse;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getMembers ()Ljava/util/List;
+	public final fun getNextCursor ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class com/expys/sdk/models/ListMembersResponse$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lcom/expys/sdk/models/ListMembersResponse$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lcom/expys/sdk/models/ListMembersResponse;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lcom/expys/sdk/models/ListMembersResponse;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/ListMembersResponse$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -781,21 +860,23 @@ public final class com/expys/sdk/models/Message$Companion {
 
 public final class com/expys/sdk/models/Offer {
 	public static final field Companion Lcom/expys/sdk/models/Offer$Companion;
-	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
 	public final fun component1 ()Ljava/lang/String;
 	public final fun component2 ()Ljava/lang/String;
 	public final fun component3 ()Ljava/lang/String;
-	public final fun component4 ()Ljava/lang/String;
-	public final fun component5 ()Ljava/lang/Integer;
-	public final fun component6 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/util/List;
+	public final fun component5 ()Ljava/lang/String;
+	public final fun component6 ()Ljava/lang/Integer;
 	public final fun component7 ()Ljava/lang/String;
 	public final fun component8 ()Ljava/lang/String;
-	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/expys/sdk/models/Offer;
-	public static synthetic fun copy$default (Lcom/expys/sdk/models/Offer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lcom/expys/sdk/models/Offer;
+	public final fun component9 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/expys/sdk/models/Offer;
+	public static synthetic fun copy$default (Lcom/expys/sdk/models/Offer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lcom/expys/sdk/models/Offer;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getDescription ()Ljava/lang/String;
 	public final fun getExpiresAt ()Ljava/lang/String;
 	public final fun getId ()Ljava/lang/String;
+	public final fun getImages ()Ljava/util/List;
 	public final fun getKind ()Ljava/lang/String;
 	public final fun getPointsPrice ()Ljava/lang/Integer;
 	public final fun getShortDescription ()Ljava/lang/String;

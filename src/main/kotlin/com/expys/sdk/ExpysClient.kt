@@ -8,7 +8,9 @@ import com.expys.sdk.models.DeleteWebhookResponse
 import com.expys.sdk.models.GetAnalyticsOffersResponse
 import com.expys.sdk.models.GetAnalyticsSummaryResponse
 import com.expys.sdk.models.GetAnalyticsTimeseriesResponse
+import com.expys.sdk.models.GetBalanceResponse
 import com.expys.sdk.models.ListConversationsResponse
+import com.expys.sdk.models.ListMembersResponse
 import com.expys.sdk.models.ListMessagesResponse
 import com.expys.sdk.models.ListRedemptionsResponse
 import com.expys.sdk.models.ListTransactionsResponse
@@ -320,6 +322,34 @@ public class ExpysClient internal constructor(
   }
 
   /**
+   * List the org's members, newest-first. Cursor-paginate with [cursor] until the
+   * response's `nextCursor` is null. Server-only.
+   * @param tier Return only members whose effective tier matches this value exactly.
+   * @param limit Maximum number of members to return (1-100).
+   * @param cursor Pagination cursor from a previous response's `nextCursor`.
+   * @throws ExpysException.NotConfigured when configured with a member token.
+   */
+  public suspend fun listMembers(
+    tier: String? = null,
+    limit: Int? = null,
+    cursor: String? = null,
+  ): ListMembersResponse {
+    assertMachineCredential(configuredToken, "listMembers")
+    return decode(
+      json,
+      transport.execute(
+        method = "GET",
+        path = "/v1/members",
+        query = mapOf(
+          "tier" to tier,
+          "limit" to limit?.toString(),
+          "cursor" to cursor,
+        ),
+      ),
+    )
+  }
+
+  /**
    * Remove (archive) a member by their external id. Idempotent by HTTP semantics
    * (DELETE), so no idempotency key is sent. Server-only.
    * @param externalUserID The member's external user id.
@@ -354,6 +384,20 @@ public class ExpysClient internal constructor(
   public suspend fun analyticsOffers(): GetAnalyticsOffersResponse {
     assertMachineCredential(configuredToken, "analyticsOffers")
     return decode(json, transport.execute(method = "GET", path = "/v1/analytics/offers"))
+  }
+
+  /**
+   * The org's points balance, credit limit, lifetime pool spend, and settlement mode.
+   * Server-only; requires the `BILLING_READ` scope.
+   *
+   * In `ORG_POOL` mode no per-redemption webhook fires, so poll this to track a balance
+   * your VIPs' bookings are drawing down. An org with no pool yet reports zeros rather
+   * than erroring.
+   * @throws ExpysException.NotConfigured when configured with a member token.
+   */
+  public suspend fun balance(): GetBalanceResponse {
+    assertMachineCredential(configuredToken, "balance")
+    return decode(json, transport.execute(method = "GET", path = "/v1/balance"))
   }
 
   /**
