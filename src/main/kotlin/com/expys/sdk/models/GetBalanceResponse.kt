@@ -32,8 +32,13 @@ import kotlinx.serialization.Contextual
  * 
  *
  * @param balance 
+ * @param balanceDisplay 
+ * @param balanceUSD 
  * @param creditLimit 
+ * @param creditLimitUSD 
  * @param lifetimeSpent 
+ * @param lifetimeSpentUSD 
+ * @param ratePerPoint 
  * @param settlementMode 
  */
 @Serializable
@@ -43,11 +48,26 @@ public data class GetBalanceResponse (
     @SerialName(value = "balance")
     val balance: kotlin.Int,
 
+    @SerialName(value = "balanceDisplay")
+    val balanceDisplay: kotlin.Int,
+
+    @SerialName(value = "balanceUSD")
+    val balanceUSD: kotlin.Double,
+
     @SerialName(value = "creditLimit")
     val creditLimit: kotlin.Int,
 
+    @SerialName(value = "creditLimitUSD")
+    val creditLimitUSD: kotlin.Double,
+
     @SerialName(value = "lifetimeSpent")
     val lifetimeSpent: kotlin.Int,
+
+    @SerialName(value = "lifetimeSpentUSD")
+    val lifetimeSpentUSD: kotlin.Double,
+
+    @SerialName(value = "ratePerPoint")
+    val ratePerPoint: kotlin.Double,
 
     @SerialName(value = "settlementMode")
     val settlementMode: GetBalanceResponse.SettlementMode

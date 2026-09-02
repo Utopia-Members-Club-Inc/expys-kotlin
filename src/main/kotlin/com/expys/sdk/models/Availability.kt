@@ -31,22 +31,18 @@ import kotlinx.serialization.Contextual
 /**
  * 
  *
- * @param name 
- * @param symbol 
- * @param unitsPerUSD 
+ * @param isAvailable 
+ * @param quantityRemaining 
  */
 @Serializable
 
-public data class Currency (
+public data class Availability (
 
-    @SerialName(value = "name")
-    val name: kotlin.String,
+    @SerialName(value = "isAvailable")
+    val isAvailable: kotlin.Boolean,
 
-    @SerialName(value = "symbol")
-    val symbol: kotlin.String,
-
-    @SerialName(value = "unitsPerUSD")
-    val unitsPerUSD: kotlin.Double
+    @SerialName(value = "quantityRemaining")
+    val quantityRemaining: kotlin.Int
 
 ) {
 

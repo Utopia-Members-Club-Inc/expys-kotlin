@@ -34,7 +34,8 @@ class ServerMethodsTest {
 
   @Test
   fun creditPointsPostsEncodedRequest() = runTest {
-    val http = FakeHttpClient(listOf(ok("""{"balance":150.0,"currency":{"name":"P","symbol":"P"}}""")))
+    val json = """{"balance":150.0,"currency":{"name":"P","symbol":"P","unitsPerUSD":1.0}}"""
+    val http = FakeHttpClient(listOf(ok(json)))
 
     val result = machineClient(http)
       .creditPoints(CreditWalletRequest(amount = 100, externalUserID = "u1", reason = "bonus"))
@@ -50,7 +51,7 @@ class ServerMethodsTest {
 
   @Test
   fun creditPointsOmitsAbsentReason() = runTest {
-    val http = FakeHttpClient(listOf(ok("""{"balance":1.0,"currency":{"name":"P","symbol":"P"}}""")))
+    val http = FakeHttpClient(listOf(ok("""{"balance":1.0,"currency":{"name":"P","symbol":"P","unitsPerUSD":1.0}}""")))
 
     machineClient(http).creditPoints(CreditWalletRequest(amount = 1, externalUserID = "u1"))
 
@@ -77,7 +78,9 @@ class ServerMethodsTest {
     val json = """{"attributes":null,"displayName":null,"externalUserID":"u 1",""" +
       """"redemptionCounts":{"AWAITING_CUSTOMER":0,"AWAITING_VENDOR":0,"CANCELED":0,"COMPLETED":0,""" +
       """"OPEN":0,"PURCHASED":0,"SUBMITTED":0},"tier":"gold",""" +
-      """"wallet":{"amountReceived":0.0,"amountSpent":0.0,"balance":0.0,"currency":{"name":"P","symbol":"P"}}}"""
+      """"wallet":{"amountReceived":0.0,"amountReceivedDisplay":0,"amountReceivedUSD":0.0,"amountSpent":0.0,""" +
+      """"amountSpentDisplay":0,"amountSpentUSD":0.0,"balance":0.0,"balanceDisplay":0,"balanceUSD":0.0,""" +
+      """"currency":{"name":"P","symbol":"P","unitsPerUSD":1.0}}}"""
     val http = FakeHttpClient(listOf(ok(json)))
 
     val result = machineClient(http).getMember("u 1")
@@ -161,7 +164,8 @@ class ServerMethodsTest {
     val http = FakeHttpClient(
       listOf(
         ok(
-          """{"balance":3800,"creditLimit":1000,"lifetimeSpent":1200,"settlementMode":"ORG_POOL"}""",
+          """{"balance":3800,"balanceDisplay":38,"balanceUSD":38.0,"creditLimit":1000,"creditLimitUSD":10.0,""" +
+            """"lifetimeSpent":1200,"lifetimeSpentUSD":12.0,"ratePerPoint":0.01,"settlementMode":"ORG_POOL"}""",
         ),
       ),
     )

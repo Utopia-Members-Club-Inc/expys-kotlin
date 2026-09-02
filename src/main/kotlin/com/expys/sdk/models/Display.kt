@@ -23,6 +23,7 @@
 
 package com.expys.sdk.models
 
+import com.expys.sdk.models.Currency
 
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.SerialName
@@ -31,22 +32,18 @@ import kotlinx.serialization.Contextual
 /**
  * 
  *
- * @param name 
- * @param symbol 
- * @param unitsPerUSD 
+ * @param amount 
+ * @param currency 
  */
 @Serializable
 
-public data class Currency (
+public data class Display (
 
-    @SerialName(value = "name")
-    val name: kotlin.String,
+    @SerialName(value = "amount")
+    val amount: kotlin.Int,
 
-    @SerialName(value = "symbol")
-    val symbol: kotlin.String,
-
-    @SerialName(value = "unitsPerUSD")
-    val unitsPerUSD: kotlin.Double
+    @SerialName(value = "currency")
+    val currency: Currency
 
 ) {
 

@@ -31,6 +31,8 @@ import kotlinx.serialization.Contextual
 /**
  * 
  *
+ * @param canceledNote 
+ * @param canceledReason 
  * @param createdAt 
  * @param endAt 
  * @param id 
@@ -41,6 +43,12 @@ import kotlinx.serialization.Contextual
 @Serializable
 
 public data class Redemption (
+
+    @SerialName(value = "canceledNote")
+    val canceledNote: kotlin.String?,
+
+    @SerialName(value = "canceledReason")
+    val canceledReason: Redemption.CanceledReason?,
 
     @SerialName(value = "createdAt")
     val createdAt: kotlin.String,
@@ -62,6 +70,20 @@ public data class Redemption (
 
 ) {
 
+    /**
+     * 
+     *
+     * Values: SOLD_OUT,VENDOR_DECLINED,DATE_UNAVAILABLE,MEMBER_REQUESTED,EXPIRED,OTHER
+     */
+    @Serializable
+    public enum class CanceledReason(public val value: kotlin.String) {
+        @SerialName(value = "SOLD_OUT") SOLD_OUT("SOLD_OUT"),
+        @SerialName(value = "VENDOR_DECLINED") VENDOR_DECLINED("VENDOR_DECLINED"),
+        @SerialName(value = "DATE_UNAVAILABLE") DATE_UNAVAILABLE("DATE_UNAVAILABLE"),
+        @SerialName(value = "MEMBER_REQUESTED") MEMBER_REQUESTED("MEMBER_REQUESTED"),
+        @SerialName(value = "EXPIRED") EXPIRED("EXPIRED"),
+        @SerialName(value = "OTHER") OTHER("OTHER");
+    }
 
 }
 

@@ -267,6 +267,35 @@ public final class com/expys/sdk/TokenRefresh {
 	public fun toString ()Ljava/lang/String;
 }
 
+public final class com/expys/sdk/models/Availability {
+	public static final field Companion Lcom/expys/sdk/models/Availability$Companion;
+	public fun <init> (ZI)V
+	public final fun component1 ()Z
+	public final fun component2 ()I
+	public final fun copy (ZI)Lcom/expys/sdk/models/Availability;
+	public static synthetic fun copy$default (Lcom/expys/sdk/models/Availability;ZIILjava/lang/Object;)Lcom/expys/sdk/models/Availability;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getQuantityRemaining ()I
+	public fun hashCode ()I
+	public final fun isAvailable ()Z
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class com/expys/sdk/models/Availability$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lcom/expys/sdk/models/Availability$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lcom/expys/sdk/models/Availability;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lcom/expys/sdk/models/Availability;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/Availability$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
 public final class com/expys/sdk/models/Conversation {
 	public static final field Companion Lcom/expys/sdk/models/Conversation$Companion;
 	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
@@ -422,14 +451,16 @@ public final class com/expys/sdk/models/CreditWalletResponse$Companion {
 
 public final class com/expys/sdk/models/Currency {
 	public static final field Companion Lcom/expys/sdk/models/Currency$Companion;
-	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;D)V
 	public final fun component1 ()Ljava/lang/String;
 	public final fun component2 ()Ljava/lang/String;
-	public final fun copy (Ljava/lang/String;Ljava/lang/String;)Lcom/expys/sdk/models/Currency;
-	public static synthetic fun copy$default (Lcom/expys/sdk/models/Currency;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lcom/expys/sdk/models/Currency;
+	public final fun component3 ()D
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;D)Lcom/expys/sdk/models/Currency;
+	public static synthetic fun copy$default (Lcom/expys/sdk/models/Currency;Ljava/lang/String;Ljava/lang/String;DILjava/lang/Object;)Lcom/expys/sdk/models/Currency;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getName ()Ljava/lang/String;
 	public final fun getSymbol ()Ljava/lang/String;
+	public final fun getUnitsPerUSD ()D
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
@@ -475,6 +506,35 @@ public synthetic class com/expys/sdk/models/DeleteWebhookResponse$$serializer : 
 }
 
 public final class com/expys/sdk/models/DeleteWebhookResponse$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/Display {
+	public static final field Companion Lcom/expys/sdk/models/Display$Companion;
+	public fun <init> (ILcom/expys/sdk/models/Currency;)V
+	public final fun component1 ()I
+	public final fun component2 ()Lcom/expys/sdk/models/Currency;
+	public final fun copy (ILcom/expys/sdk/models/Currency;)Lcom/expys/sdk/models/Display;
+	public static synthetic fun copy$default (Lcom/expys/sdk/models/Display;ILcom/expys/sdk/models/Currency;ILjava/lang/Object;)Lcom/expys/sdk/models/Display;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAmount ()I
+	public final fun getCurrency ()Lcom/expys/sdk/models/Currency;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class com/expys/sdk/models/Display$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lcom/expys/sdk/models/Display$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lcom/expys/sdk/models/Display;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lcom/expys/sdk/models/Display;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/Display$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -569,17 +629,27 @@ public final class com/expys/sdk/models/GetAnalyticsTimeseriesResponse$Companion
 
 public final class com/expys/sdk/models/GetBalanceResponse {
 	public static final field Companion Lcom/expys/sdk/models/GetBalanceResponse$Companion;
-	public fun <init> (IIILcom/expys/sdk/models/GetBalanceResponse$SettlementMode;)V
+	public fun <init> (IIDIDIDDLcom/expys/sdk/models/GetBalanceResponse$SettlementMode;)V
 	public final fun component1 ()I
 	public final fun component2 ()I
-	public final fun component3 ()I
-	public final fun component4 ()Lcom/expys/sdk/models/GetBalanceResponse$SettlementMode;
-	public final fun copy (IIILcom/expys/sdk/models/GetBalanceResponse$SettlementMode;)Lcom/expys/sdk/models/GetBalanceResponse;
-	public static synthetic fun copy$default (Lcom/expys/sdk/models/GetBalanceResponse;IIILcom/expys/sdk/models/GetBalanceResponse$SettlementMode;ILjava/lang/Object;)Lcom/expys/sdk/models/GetBalanceResponse;
+	public final fun component3 ()D
+	public final fun component4 ()I
+	public final fun component5 ()D
+	public final fun component6 ()I
+	public final fun component7 ()D
+	public final fun component8 ()D
+	public final fun component9 ()Lcom/expys/sdk/models/GetBalanceResponse$SettlementMode;
+	public final fun copy (IIDIDIDDLcom/expys/sdk/models/GetBalanceResponse$SettlementMode;)Lcom/expys/sdk/models/GetBalanceResponse;
+	public static synthetic fun copy$default (Lcom/expys/sdk/models/GetBalanceResponse;IIDIDIDDLcom/expys/sdk/models/GetBalanceResponse$SettlementMode;ILjava/lang/Object;)Lcom/expys/sdk/models/GetBalanceResponse;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getBalance ()I
+	public final fun getBalanceDisplay ()I
+	public final fun getBalanceUSD ()D
 	public final fun getCreditLimit ()I
+	public final fun getCreditLimitUSD ()D
 	public final fun getLifetimeSpent ()I
+	public final fun getLifetimeSpentUSD ()D
+	public final fun getRatePerPoint ()D
 	public final fun getSettlementMode ()Lcom/expys/sdk/models/GetBalanceResponse$SettlementMode;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
@@ -611,6 +681,35 @@ public final class com/expys/sdk/models/GetBalanceResponse$SettlementMode : java
 }
 
 public final class com/expys/sdk/models/GetBalanceResponse$SettlementMode$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/Inclusions {
+	public static final field Companion Lcom/expys/sdk/models/Inclusions$Companion;
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;)Lcom/expys/sdk/models/Inclusions;
+	public static synthetic fun copy$default (Lcom/expys/sdk/models/Inclusions;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lcom/expys/sdk/models/Inclusions;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getGroup ()Ljava/lang/String;
+	public final fun getName ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class com/expys/sdk/models/Inclusions$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lcom/expys/sdk/models/Inclusions$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lcom/expys/sdk/models/Inclusions;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lcom/expys/sdk/models/Inclusions;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/Inclusions$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -757,6 +856,43 @@ public final class com/expys/sdk/models/ListTransactionsResponse$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
+public final class com/expys/sdk/models/Location {
+	public static final field Companion Lcom/expys/sdk/models/Location$Companion;
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5 ()Ljava/lang/String;
+	public final fun component6 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/expys/sdk/models/Location;
+	public static synthetic fun copy$default (Lcom/expys/sdk/models/Location;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lcom/expys/sdk/models/Location;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAddress ()Ljava/lang/String;
+	public final fun getCity ()Ljava/lang/String;
+	public final fun getCountryCode ()Ljava/lang/String;
+	public final fun getDisplay ()Ljava/lang/String;
+	public final fun getState ()Ljava/lang/String;
+	public final fun getVenue ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class com/expys/sdk/models/Location$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lcom/expys/sdk/models/Location$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lcom/expys/sdk/models/Location;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lcom/expys/sdk/models/Location;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/Location$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
 public final class com/expys/sdk/models/MemberEligibility {
 	public static final field Companion Lcom/expys/sdk/models/MemberEligibility$Companion;
 	public fun <init> (Ljava/lang/String;Lcom/expys/sdk/models/Wallet;)V
@@ -860,28 +996,46 @@ public final class com/expys/sdk/models/Message$Companion {
 
 public final class com/expys/sdk/models/Offer {
 	public static final field Companion Lcom/expys/sdk/models/Offer$Companion;
-	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-	public final fun component1 ()Ljava/lang/String;
+	public fun <init> (Lcom/expys/sdk/models/Availability;Ljava/lang/String;Ljava/lang/String;Lcom/expys/sdk/models/Display;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/util/List;Ljava/lang/String;Lcom/expys/sdk/models/Location;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Double;)V
+	public final fun component1 ()Lcom/expys/sdk/models/Availability;
+	public final fun component10 ()Ljava/lang/String;
+	public final fun component11 ()Lcom/expys/sdk/models/Location;
+	public final fun component12 ()Ljava/lang/Integer;
+	public final fun component13 ()Ljava/lang/Integer;
+	public final fun component14 ()Ljava/lang/String;
+	public final fun component15 ()Ljava/lang/String;
+	public final fun component16 ()Ljava/lang/String;
+	public final fun component17 ()Ljava/lang/String;
+	public final fun component18 ()Ljava/lang/Double;
 	public final fun component2 ()Ljava/lang/String;
 	public final fun component3 ()Ljava/lang/String;
-	public final fun component4 ()Ljava/util/List;
+	public final fun component4 ()Lcom/expys/sdk/models/Display;
 	public final fun component5 ()Ljava/lang/String;
-	public final fun component6 ()Ljava/lang/Integer;
+	public final fun component6 ()Ljava/lang/String;
 	public final fun component7 ()Ljava/lang/String;
-	public final fun component8 ()Ljava/lang/String;
-	public final fun component9 ()Ljava/lang/String;
-	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/expys/sdk/models/Offer;
-	public static synthetic fun copy$default (Lcom/expys/sdk/models/Offer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lcom/expys/sdk/models/Offer;
+	public final fun component8 ()Ljava/util/List;
+	public final fun component9 ()Ljava/util/List;
+	public final fun copy (Lcom/expys/sdk/models/Availability;Ljava/lang/String;Ljava/lang/String;Lcom/expys/sdk/models/Display;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/util/List;Ljava/lang/String;Lcom/expys/sdk/models/Location;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Double;)Lcom/expys/sdk/models/Offer;
+	public static synthetic fun copy$default (Lcom/expys/sdk/models/Offer;Lcom/expys/sdk/models/Availability;Ljava/lang/String;Ljava/lang/String;Lcom/expys/sdk/models/Display;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/util/List;Ljava/lang/String;Lcom/expys/sdk/models/Location;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Double;ILjava/lang/Object;)Lcom/expys/sdk/models/Offer;
 	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAvailability ()Lcom/expys/sdk/models/Availability;
 	public final fun getDescription ()Ljava/lang/String;
+	public final fun getDisclaimer ()Ljava/lang/String;
+	public final fun getDisplay ()Lcom/expys/sdk/models/Display;
+	public final fun getEndAt ()Ljava/lang/String;
 	public final fun getExpiresAt ()Ljava/lang/String;
 	public final fun getId ()Ljava/lang/String;
 	public final fun getImages ()Ljava/util/List;
+	public final fun getInclusions ()Ljava/util/List;
 	public final fun getKind ()Ljava/lang/String;
+	public final fun getLocation ()Lcom/expys/sdk/models/Location;
+	public final fun getMaxGuests ()Ljava/lang/Integer;
 	public final fun getPointsPrice ()Ljava/lang/Integer;
 	public final fun getShortDescription ()Ljava/lang/String;
+	public final fun getStartAt ()Ljava/lang/String;
 	public final fun getTitle ()Ljava/lang/String;
 	public final fun getType ()Ljava/lang/String;
+	public final fun getValueUSD ()Ljava/lang/Double;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
@@ -967,16 +1121,20 @@ public final class com/expys/sdk/models/OfferList$Companion {
 
 public final class com/expys/sdk/models/Redemption {
 	public static final field Companion Lcom/expys/sdk/models/Redemption$Companion;
-	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+	public fun <init> (Ljava/lang/String;Lcom/expys/sdk/models/Redemption$CanceledReason;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
 	public final fun component1 ()Ljava/lang/String;
-	public final fun component2 ()Ljava/lang/String;
+	public final fun component2 ()Lcom/expys/sdk/models/Redemption$CanceledReason;
 	public final fun component3 ()Ljava/lang/String;
 	public final fun component4 ()Ljava/lang/String;
 	public final fun component5 ()Ljava/lang/String;
 	public final fun component6 ()Ljava/lang/String;
-	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/expys/sdk/models/Redemption;
-	public static synthetic fun copy$default (Lcom/expys/sdk/models/Redemption;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lcom/expys/sdk/models/Redemption;
+	public final fun component7 ()Ljava/lang/String;
+	public final fun component8 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Lcom/expys/sdk/models/Redemption$CanceledReason;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/expys/sdk/models/Redemption;
+	public static synthetic fun copy$default (Lcom/expys/sdk/models/Redemption;Ljava/lang/String;Lcom/expys/sdk/models/Redemption$CanceledReason;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lcom/expys/sdk/models/Redemption;
 	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCanceledNote ()Ljava/lang/String;
+	public final fun getCanceledReason ()Lcom/expys/sdk/models/Redemption$CanceledReason;
 	public final fun getCreatedAt ()Ljava/lang/String;
 	public final fun getEndAt ()Ljava/lang/String;
 	public final fun getId ()Ljava/lang/String;
@@ -996,6 +1154,24 @@ public synthetic class com/expys/sdk/models/Redemption$$serializer : kotlinx/ser
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lcom/expys/sdk/models/Redemption;)V
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/Redemption$CanceledReason : java/lang/Enum {
+	public static final field Companion Lcom/expys/sdk/models/Redemption$CanceledReason$Companion;
+	public static final field DATE_UNAVAILABLE Lcom/expys/sdk/models/Redemption$CanceledReason;
+	public static final field EXPIRED Lcom/expys/sdk/models/Redemption$CanceledReason;
+	public static final field MEMBER_REQUESTED Lcom/expys/sdk/models/Redemption$CanceledReason;
+	public static final field OTHER Lcom/expys/sdk/models/Redemption$CanceledReason;
+	public static final field SOLD_OUT Lcom/expys/sdk/models/Redemption$CanceledReason;
+	public static final field VENDOR_DECLINED Lcom/expys/sdk/models/Redemption$CanceledReason;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public final fun getValue ()Ljava/lang/String;
+	public static fun valueOf (Ljava/lang/String;)Lcom/expys/sdk/models/Redemption$CanceledReason;
+	public static fun values ()[Lcom/expys/sdk/models/Redemption$CanceledReason;
+}
+
+public final class com/expys/sdk/models/Redemption$CanceledReason$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
 public final class com/expys/sdk/models/Redemption$Companion {
@@ -1368,19 +1544,97 @@ public final class com/expys/sdk/models/Transaction$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
+public final class com/expys/sdk/models/UpdateConfigurationRequest {
+	public static final field Companion Lcom/expys/sdk/models/UpdateConfigurationRequest$Companion;
+	public fun <init> ()V
+	public fun <init> (Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Double;)V
+	public synthetic fun <init> (Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Double;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/Boolean;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/lang/Double;
+	public final fun copy (Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Double;)Lcom/expys/sdk/models/UpdateConfigurationRequest;
+	public static synthetic fun copy$default (Lcom/expys/sdk/models/UpdateConfigurationRequest;Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Double;ILjava/lang/Object;)Lcom/expys/sdk/models/UpdateConfigurationRequest;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getConfirmReprice ()Ljava/lang/Boolean;
+	public final fun getCurrencyName ()Ljava/lang/String;
+	public final fun getCurrencySymbol ()Ljava/lang/String;
+	public final fun getCurrencyUnitsPerUSD ()Ljava/lang/Double;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class com/expys/sdk/models/UpdateConfigurationRequest$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lcom/expys/sdk/models/UpdateConfigurationRequest$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lcom/expys/sdk/models/UpdateConfigurationRequest;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lcom/expys/sdk/models/UpdateConfigurationRequest;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/UpdateConfigurationRequest$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/UpdateConfigurationResponse {
+	public static final field Companion Lcom/expys/sdk/models/UpdateConfigurationResponse$Companion;
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;D)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()D
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;D)Lcom/expys/sdk/models/UpdateConfigurationResponse;
+	public static synthetic fun copy$default (Lcom/expys/sdk/models/UpdateConfigurationResponse;Ljava/lang/String;Ljava/lang/String;DILjava/lang/Object;)Lcom/expys/sdk/models/UpdateConfigurationResponse;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCurrencyName ()Ljava/lang/String;
+	public final fun getCurrencySymbol ()Ljava/lang/String;
+	public final fun getCurrencyUnitsPerUSD ()D
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class com/expys/sdk/models/UpdateConfigurationResponse$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lcom/expys/sdk/models/UpdateConfigurationResponse$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lcom/expys/sdk/models/UpdateConfigurationResponse;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lcom/expys/sdk/models/UpdateConfigurationResponse;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/UpdateConfigurationResponse$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
 public final class com/expys/sdk/models/Wallet {
 	public static final field Companion Lcom/expys/sdk/models/Wallet$Companion;
-	public fun <init> (DDDLcom/expys/sdk/models/Currency;)V
+	public fun <init> (DIDDIDDIDLcom/expys/sdk/models/Currency;)V
 	public final fun component1 ()D
-	public final fun component2 ()D
+	public final fun component10 ()Lcom/expys/sdk/models/Currency;
+	public final fun component2 ()I
 	public final fun component3 ()D
-	public final fun component4 ()Lcom/expys/sdk/models/Currency;
-	public final fun copy (DDDLcom/expys/sdk/models/Currency;)Lcom/expys/sdk/models/Wallet;
-	public static synthetic fun copy$default (Lcom/expys/sdk/models/Wallet;DDDLcom/expys/sdk/models/Currency;ILjava/lang/Object;)Lcom/expys/sdk/models/Wallet;
+	public final fun component4 ()D
+	public final fun component5 ()I
+	public final fun component6 ()D
+	public final fun component7 ()D
+	public final fun component8 ()I
+	public final fun component9 ()D
+	public final fun copy (DIDDIDDIDLcom/expys/sdk/models/Currency;)Lcom/expys/sdk/models/Wallet;
+	public static synthetic fun copy$default (Lcom/expys/sdk/models/Wallet;DIDDIDDIDLcom/expys/sdk/models/Currency;ILjava/lang/Object;)Lcom/expys/sdk/models/Wallet;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getAmountReceived ()D
+	public final fun getAmountReceivedDisplay ()I
+	public final fun getAmountReceivedUSD ()D
 	public final fun getAmountSpent ()D
+	public final fun getAmountSpentDisplay ()I
+	public final fun getAmountSpentUSD ()D
 	public final fun getBalance ()D
+	public final fun getBalanceDisplay ()I
+	public final fun getBalanceUSD ()D
 	public final fun getCurrency ()Lcom/expys/sdk/models/Currency;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;

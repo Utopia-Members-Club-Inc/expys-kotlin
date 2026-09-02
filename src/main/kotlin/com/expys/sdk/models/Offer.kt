@@ -23,6 +23,10 @@
 
 package com.expys.sdk.models
 
+import com.expys.sdk.models.Availability
+import com.expys.sdk.models.Display
+import com.expys.sdk.models.Inclusions
+import com.expys.sdk.models.Location
 
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.SerialName
@@ -31,22 +35,43 @@ import kotlinx.serialization.Contextual
 /**
  * 
  *
+ * @param availability 
  * @param description 
+ * @param disclaimer 
+ * @param display 
+ * @param endAt 
  * @param expiresAt 
  * @param id 
  * @param images 
+ * @param inclusions 
  * @param kind 
+ * @param location 
+ * @param maxGuests 
  * @param pointsPrice 
  * @param shortDescription 
+ * @param startAt 
  * @param title 
  * @param type 
+ * @param valueUSD 
  */
 @Serializable
 
 public data class Offer (
 
+    @SerialName(value = "availability")
+    val availability: Availability,
+
     @SerialName(value = "description")
     val description: kotlin.String,
+
+    @SerialName(value = "disclaimer")
+    val disclaimer: kotlin.String?,
+
+    @SerialName(value = "display")
+    val display: Display?,
+
+    @SerialName(value = "endAt")
+    val endAt: kotlin.String?,
 
     @SerialName(value = "expiresAt")
     val expiresAt: kotlin.String?,
@@ -57,8 +82,17 @@ public data class Offer (
     @SerialName(value = "images")
     val images: kotlin.collections.List<kotlin.String>,
 
+    @SerialName(value = "inclusions")
+    val inclusions: kotlin.collections.List<Inclusions>,
+
     @SerialName(value = "kind")
     val kind: kotlin.String,
+
+    @SerialName(value = "location")
+    val location: Location?,
+
+    @SerialName(value = "maxGuests")
+    val maxGuests: kotlin.Int?,
 
     @SerialName(value = "pointsPrice")
     val pointsPrice: kotlin.Int?,
@@ -66,11 +100,17 @@ public data class Offer (
     @SerialName(value = "shortDescription")
     val shortDescription: kotlin.String,
 
+    @SerialName(value = "startAt")
+    val startAt: kotlin.String?,
+
     @SerialName(value = "title")
     val title: kotlin.String,
 
     @SerialName(value = "type")
-    val type: kotlin.String
+    val type: kotlin.String,
+
+    @SerialName(value = "valueUSD")
+    val valueUSD: kotlin.Double?
 
 ) {
 

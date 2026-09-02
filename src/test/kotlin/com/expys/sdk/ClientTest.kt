@@ -26,7 +26,8 @@ class ClientTest {
 
   @Test
   fun createRedemptionAutogeneratesIdempotencyKey() = runTest {
-    val json = """{"createdAt":"t","endAt":null,"id":"r1","offer":"off_1","startAt":null,"status":"OPEN"}"""
+    val json = """{"canceledNote":null,"canceledReason":null,"createdAt":"t","endAt":null,"id":"r1",""" +
+      """"offer":"off_1","startAt":null,"status":"OPEN"}"""
     val http = FakeHttpClient(listOf(ok(json)))
 
     val redemption = client(http).createRedemption(CreateRedemptionRequest(offer = "off_1"))
@@ -40,7 +41,8 @@ class ClientTest {
 
   @Test
   fun getRedemptionEncodesPath() = runTest {
-    val json = """{"createdAt":"t","endAt":null,"id":"r 1","offer":"o","startAt":null,"status":"OPEN"}"""
+    val json = """{"canceledNote":null,"canceledReason":null,"createdAt":"t","endAt":null,"id":"r 1","offer":"o",""" +
+      """"startAt":null,"status":"OPEN"}"""
     val http = FakeHttpClient(listOf(ok(json)))
 
     client(http).getRedemption("r 1")
@@ -50,7 +52,9 @@ class ClientTest {
 
   @Test
   fun walletIssuesGet() = runTest {
-    val json = """{"amountReceived":1.0,"amountSpent":0.0,"balance":1.0,"currency":{"name":"USD","symbol":"X"}}"""
+    val json = """{"amountReceived":1.0,"amountReceivedDisplay":1,"amountReceivedUSD":0.01,"amountSpent":0.0,""" +
+      """"amountSpentDisplay":0,"amountSpentUSD":0.0,"balance":1.0,"balanceDisplay":1,"balanceUSD":0.01,""" +
+      """"currency":{"name":"USD","symbol":"X","unitsPerUSD":100.0}}"""
     val http = FakeHttpClient(listOf(ok(json)))
 
     val wallet = client(http).wallet()
@@ -62,7 +66,8 @@ class ClientTest {
   @Test
   fun eligibilityIssuesGetWithExternalUser() = runTest {
     val json = """{"tier":"GOLD","wallet":{"amountReceived":0.0,"amountSpent":0.0,""" +
-      """"balance":0.0,"currency":{"name":"USD","symbol":"X"}}}"""
+      """"balance":0.0,"balanceDisplay":0,"balanceUSD":0.0,"amountReceivedDisplay":0,"amountReceivedUSD":0.0,""" +
+      """"amountSpentDisplay":0,"amountSpentUSD":0.0,"currency":{"name":"USD","symbol":"X","unitsPerUSD":1.0}}}"""
     val http = FakeHttpClient(listOf(ok(json)))
 
     val result = client(http).eligibility(externalUserID = "u1")
@@ -73,7 +78,8 @@ class ClientTest {
 
   @Test
   fun createRedemptionRespectsIdempotencyOverride() = runTest {
-    val json = """{"createdAt":"t","endAt":null,"id":"r1","offer":"off_1","startAt":null,"status":"OPEN"}"""
+    val json = """{"canceledNote":null,"canceledReason":null,"createdAt":"t","endAt":null,"id":"r1",""" +
+      """"offer":"off_1","startAt":null,"status":"OPEN"}"""
     val http = FakeHttpClient(listOf(ok(json)))
 
     client(http).createRedemption(CreateRedemptionRequest(offer = "off_1"), idempotencyKey = "my-key")

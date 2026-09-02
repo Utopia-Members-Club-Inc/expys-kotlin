@@ -31,22 +31,34 @@ import kotlinx.serialization.Contextual
 /**
  * 
  *
- * @param name 
- * @param symbol 
- * @param unitsPerUSD 
+ * @param address 
+ * @param city 
+ * @param countryCode 
+ * @param display 
+ * @param state 
+ * @param venue 
  */
 @Serializable
 
-public data class Currency (
+public data class Location (
 
-    @SerialName(value = "name")
-    val name: kotlin.String,
+    @SerialName(value = "address")
+    val address: kotlin.String?,
 
-    @SerialName(value = "symbol")
-    val symbol: kotlin.String,
+    @SerialName(value = "city")
+    val city: kotlin.String?,
 
-    @SerialName(value = "unitsPerUSD")
-    val unitsPerUSD: kotlin.Double
+    @SerialName(value = "countryCode")
+    val countryCode: kotlin.String?,
+
+    @SerialName(value = "display")
+    val display: kotlin.String,
+
+    @SerialName(value = "state")
+    val state: kotlin.String?,
+
+    @SerialName(value = "venue")
+    val venue: kotlin.String?
 
 ) {
 

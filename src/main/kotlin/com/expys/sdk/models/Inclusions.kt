@@ -31,22 +31,18 @@ import kotlinx.serialization.Contextual
 /**
  * 
  *
+ * @param group 
  * @param name 
- * @param symbol 
- * @param unitsPerUSD 
  */
 @Serializable
 
-public data class Currency (
+public data class Inclusions (
+
+    @SerialName(value = "group")
+    val group: kotlin.String,
 
     @SerialName(value = "name")
-    val name: kotlin.String,
-
-    @SerialName(value = "symbol")
-    val symbol: kotlin.String,
-
-    @SerialName(value = "unitsPerUSD")
-    val unitsPerUSD: kotlin.Double
+    val name: kotlin.String
 
 ) {
 

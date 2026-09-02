@@ -33,8 +33,14 @@ import kotlinx.serialization.Contextual
  * 
  *
  * @param amountReceived 
+ * @param amountReceivedDisplay 
+ * @param amountReceivedUSD 
  * @param amountSpent 
+ * @param amountSpentDisplay 
+ * @param amountSpentUSD 
  * @param balance 
+ * @param balanceDisplay 
+ * @param balanceUSD 
  * @param currency 
  */
 @Serializable
@@ -44,11 +50,29 @@ public data class Wallet (
     @SerialName(value = "amountReceived")
     val amountReceived: kotlin.Double,
 
+    @SerialName(value = "amountReceivedDisplay")
+    val amountReceivedDisplay: kotlin.Int,
+
+    @SerialName(value = "amountReceivedUSD")
+    val amountReceivedUSD: kotlin.Double,
+
     @SerialName(value = "amountSpent")
     val amountSpent: kotlin.Double,
 
+    @SerialName(value = "amountSpentDisplay")
+    val amountSpentDisplay: kotlin.Int,
+
+    @SerialName(value = "amountSpentUSD")
+    val amountSpentUSD: kotlin.Double,
+
     @SerialName(value = "balance")
     val balance: kotlin.Double,
+
+    @SerialName(value = "balanceDisplay")
+    val balanceDisplay: kotlin.Int,
+
+    @SerialName(value = "balanceUSD")
+    val balanceUSD: kotlin.Double,
 
     @SerialName(value = "currency")
     val currency: Currency

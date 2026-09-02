@@ -61,7 +61,8 @@ class IntegrationTest {
   fun createRedemptionOverRealTransport() = runTest {
     server.enqueue(
       MockResponse().setResponseCode(201).setBody(
-        """{"createdAt":"t","endAt":null,"id":"r1","offer":"off_1","startAt":null,"status":"OPEN"}""",
+        """{"canceledNote":null,"canceledReason":null,"createdAt":"t","endAt":null,"id":"r1","offer":"off_1",""" +
+          """"startAt":null,"status":"OPEN"}""",
       ),
     )
 
