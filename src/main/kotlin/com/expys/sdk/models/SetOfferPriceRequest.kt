@@ -23,7 +23,6 @@
 
 package com.expys.sdk.models
 
-import com.expys.sdk.models.Currency
 
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.SerialName
@@ -33,34 +32,16 @@ import kotlinx.serialization.Contextual
  * 
  *
  * @param amount 
- * @param currency 
- * @param source 
  */
 @Serializable
 
-public data class Display (
+public data class SetOfferPriceRequest (
 
     @SerialName(value = "amount")
-    val amount: kotlin.Double,
-
-    @SerialName(value = "currency")
-    val currency: Currency,
-
-    @SerialName(value = "source")
-    val source: Display.Source
+    val amount: kotlin.Double
 
 ) {
 
-    /**
-     * 
-     *
-     * Values: AUTHORED,DERIVED
-     */
-    @Serializable
-    public enum class Source(public val value: kotlin.String) {
-        @SerialName(value = "AUTHORED") AUTHORED("AUTHORED"),
-        @SerialName(value = "DERIVED") DERIVED("DERIVED");
-    }
 
 }
 

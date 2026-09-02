@@ -49,7 +49,7 @@ public data class GetBalanceResponse (
     val balance: kotlin.Int,
 
     @SerialName(value = "balanceDisplay")
-    val balanceDisplay: kotlin.Int,
+    val balanceDisplay: kotlin.Double,
 
     @SerialName(value = "balanceUSD")
     val balanceUSD: kotlin.Double,

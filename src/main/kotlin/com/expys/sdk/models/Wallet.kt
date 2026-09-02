@@ -51,7 +51,7 @@ public data class Wallet (
     val amountReceived: kotlin.Double,
 
     @SerialName(value = "amountReceivedDisplay")
-    val amountReceivedDisplay: kotlin.Int,
+    val amountReceivedDisplay: kotlin.Double,
 
     @SerialName(value = "amountReceivedUSD")
     val amountReceivedUSD: kotlin.Double,
@@ -60,7 +60,7 @@ public data class Wallet (
     val amountSpent: kotlin.Double,
 
     @SerialName(value = "amountSpentDisplay")
-    val amountSpentDisplay: kotlin.Int,
+    val amountSpentDisplay: kotlin.Double,
 
     @SerialName(value = "amountSpentUSD")
     val amountSpentUSD: kotlin.Double,
@@ -69,7 +69,7 @@ public data class Wallet (
     val balance: kotlin.Double,
 
     @SerialName(value = "balanceDisplay")
-    val balanceDisplay: kotlin.Int,
+    val balanceDisplay: kotlin.Double,
 
     @SerialName(value = "balanceUSD")
     val balanceUSD: kotlin.Double,
