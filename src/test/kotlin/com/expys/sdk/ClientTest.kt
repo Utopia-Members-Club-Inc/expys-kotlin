@@ -26,7 +26,8 @@ class ClientTest {
 
   @Test
   fun createRedemptionAutogeneratesIdempotencyKey() = runTest {
-    val json = """{"canceledNote":null,"canceledReason":null,"createdAt":"t","endAt":null,"id":"r1",""" +
+    val json = """{"canceledNote":null,"canceledReason":null,"conversationId":"cnv_1",""" +
+      """"createdAt":"t","endAt":null,"id":"r1",""" +
       """"offer":"off_1","startAt":null,"status":"OPEN"}"""
     val http = FakeHttpClient(listOf(ok(json)))
 
@@ -41,7 +42,8 @@ class ClientTest {
 
   @Test
   fun getRedemptionEncodesPath() = runTest {
-    val json = """{"canceledNote":null,"canceledReason":null,"createdAt":"t","endAt":null,"id":"r 1","offer":"o",""" +
+    val json = """{"canceledNote":null,"canceledReason":null,"conversationId":"cnv_1",""" +
+      """"createdAt":"t","endAt":null,"id":"r 1","offer":"o",""" +
       """"startAt":null,"status":"OPEN"}"""
     val http = FakeHttpClient(listOf(ok(json)))
 
@@ -78,7 +80,8 @@ class ClientTest {
 
   @Test
   fun createRedemptionRespectsIdempotencyOverride() = runTest {
-    val json = """{"canceledNote":null,"canceledReason":null,"createdAt":"t","endAt":null,"id":"r1",""" +
+    val json = """{"canceledNote":null,"canceledReason":null,"conversationId":"cnv_1",""" +
+      """"createdAt":"t","endAt":null,"id":"r1",""" +
       """"offer":"off_1","startAt":null,"status":"OPEN"}"""
     val http = FakeHttpClient(listOf(ok(json)))
 

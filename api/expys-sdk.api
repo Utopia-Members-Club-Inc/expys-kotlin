@@ -1137,7 +1137,7 @@ public final class com/expys/sdk/models/OfferList$Companion {
 
 public final class com/expys/sdk/models/Redemption {
 	public static final field Companion Lcom/expys/sdk/models/Redemption$Companion;
-	public fun <init> (Ljava/lang/String;Lcom/expys/sdk/models/Redemption$CanceledReason;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+	public fun <init> (Ljava/lang/String;Lcom/expys/sdk/models/Redemption$CanceledReason;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
 	public final fun component1 ()Ljava/lang/String;
 	public final fun component2 ()Lcom/expys/sdk/models/Redemption$CanceledReason;
 	public final fun component3 ()Ljava/lang/String;
@@ -1146,11 +1146,13 @@ public final class com/expys/sdk/models/Redemption {
 	public final fun component6 ()Ljava/lang/String;
 	public final fun component7 ()Ljava/lang/String;
 	public final fun component8 ()Ljava/lang/String;
-	public final fun copy (Ljava/lang/String;Lcom/expys/sdk/models/Redemption$CanceledReason;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/expys/sdk/models/Redemption;
-	public static synthetic fun copy$default (Lcom/expys/sdk/models/Redemption;Ljava/lang/String;Lcom/expys/sdk/models/Redemption$CanceledReason;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lcom/expys/sdk/models/Redemption;
+	public final fun component9 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Lcom/expys/sdk/models/Redemption$CanceledReason;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/expys/sdk/models/Redemption;
+	public static synthetic fun copy$default (Lcom/expys/sdk/models/Redemption;Ljava/lang/String;Lcom/expys/sdk/models/Redemption$CanceledReason;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lcom/expys/sdk/models/Redemption;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getCanceledNote ()Ljava/lang/String;
 	public final fun getCanceledReason ()Lcom/expys/sdk/models/Redemption$CanceledReason;
+	public final fun getConversationId ()Ljava/lang/String;
 	public final fun getCreatedAt ()Ljava/lang/String;
 	public final fun getEndAt ()Ljava/lang/String;
 	public final fun getId ()Ljava/lang/String;

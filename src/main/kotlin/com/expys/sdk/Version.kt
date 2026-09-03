@@ -5,7 +5,7 @@ package com.expys.sdk
  * the spec version. */
 public object ExpysVersion {
   /** This SDK's semantic version (independent of the spec version). */
-  public const val SDK: String = "0.5.0"
+  public const val SDK: String = "0.6.0"
 
   /** The Expys API spec version this SDK targets. */
   public const val SPEC: String = "1.0.0"

@@ -33,6 +33,7 @@ import kotlinx.serialization.Contextual
  *
  * @param canceledNote 
  * @param canceledReason 
+ * @param conversationId 
  * @param createdAt 
  * @param endAt 
  * @param id 
@@ -49,6 +50,9 @@ public data class Redemption (
 
     @SerialName(value = "canceledReason")
     val canceledReason: Redemption.CanceledReason?,
+
+    @SerialName(value = "conversationId")
+    val conversationId: kotlin.String?,
 
     @SerialName(value = "createdAt")
     val createdAt: kotlin.String,
