@@ -267,6 +267,67 @@ public final class com/expys/sdk/TokenRefresh {
 	public fun toString ()Ljava/lang/String;
 }
 
+public final class com/expys/sdk/models/AcceptTermsRequest {
+	public static final field Companion Lcom/expys/sdk/models/AcceptTermsRequest$Companion;
+	public fun <init> (Ljava/util/List;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/util/List;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/util/List;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun copy (Ljava/util/List;Ljava/lang/String;)Lcom/expys/sdk/models/AcceptTermsRequest;
+	public static synthetic fun copy$default (Lcom/expys/sdk/models/AcceptTermsRequest;Ljava/util/List;Ljava/lang/String;ILjava/lang/Object;)Lcom/expys/sdk/models/AcceptTermsRequest;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getExternalUserID ()Ljava/lang/String;
+	public final fun getVersions ()Ljava/util/List;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class com/expys/sdk/models/AcceptTermsRequest$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lcom/expys/sdk/models/AcceptTermsRequest$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lcom/expys/sdk/models/AcceptTermsRequest;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lcom/expys/sdk/models/AcceptTermsRequest;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/AcceptTermsRequest$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/Attachments {
+	public static final field Companion Lcom/expys/sdk/models/Attachments$Companion;
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/expys/sdk/models/Attachments;
+	public static synthetic fun copy$default (Lcom/expys/sdk/models/Attachments;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lcom/expys/sdk/models/Attachments;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getExpiresAt ()Ljava/lang/String;
+	public final fun getName ()Ljava/lang/String;
+	public final fun getUrl ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class com/expys/sdk/models/Attachments$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lcom/expys/sdk/models/Attachments$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lcom/expys/sdk/models/Attachments;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lcom/expys/sdk/models/Attachments;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/Attachments$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
 public final class com/expys/sdk/models/Availability {
 	public static final field Companion Lcom/expys/sdk/models/Availability$Companion;
 	public fun <init> (ZI)V
@@ -293,6 +354,60 @@ public synthetic class com/expys/sdk/models/Availability$$serializer : kotlinx/s
 }
 
 public final class com/expys/sdk/models/Availability$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/ConfirmPhoneVerificationRequest {
+	public static final field Companion Lcom/expys/sdk/models/ConfirmPhoneVerificationRequest$Companion;
+	public fun <init> (Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;)Lcom/expys/sdk/models/ConfirmPhoneVerificationRequest;
+	public static synthetic fun copy$default (Lcom/expys/sdk/models/ConfirmPhoneVerificationRequest;Ljava/lang/String;ILjava/lang/Object;)Lcom/expys/sdk/models/ConfirmPhoneVerificationRequest;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCode ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class com/expys/sdk/models/ConfirmPhoneVerificationRequest$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lcom/expys/sdk/models/ConfirmPhoneVerificationRequest$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lcom/expys/sdk/models/ConfirmPhoneVerificationRequest;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lcom/expys/sdk/models/ConfirmPhoneVerificationRequest;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/ConfirmPhoneVerificationRequest$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/ConfirmPhoneVerificationResponse {
+	public static final field Companion Lcom/expys/sdk/models/ConfirmPhoneVerificationResponse$Companion;
+	public fun <init> (Z)V
+	public final fun component1 ()Z
+	public final fun copy (Z)Lcom/expys/sdk/models/ConfirmPhoneVerificationResponse;
+	public static synthetic fun copy$default (Lcom/expys/sdk/models/ConfirmPhoneVerificationResponse;ZILjava/lang/Object;)Lcom/expys/sdk/models/ConfirmPhoneVerificationResponse;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getVerified ()Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class com/expys/sdk/models/ConfirmPhoneVerificationResponse$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lcom/expys/sdk/models/ConfirmPhoneVerificationResponse$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lcom/expys/sdk/models/ConfirmPhoneVerificationResponse;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lcom/expys/sdk/models/ConfirmPhoneVerificationResponse;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/ConfirmPhoneVerificationResponse$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -329,16 +444,153 @@ public final class com/expys/sdk/models/Conversation$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
-public final class com/expys/sdk/models/CreateRedemptionRequest {
-	public static final field Companion Lcom/expys/sdk/models/CreateRedemptionRequest$Companion;
-	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
-	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+public final class com/expys/sdk/models/CreateInterestRequest {
+	public static final field Companion Lcom/expys/sdk/models/CreateInterestRequest$Companion;
+	public fun <init> (Ljava/lang/String;Ljava/lang/Integer;Ljava/util/List;Ljava/lang/Integer;Lcom/expys/sdk/models/CreateInterestRequest$ContactMethod;Lcom/expys/sdk/models/CreateInterestRequest$ContactWindow;Ljava/lang/String;Lcom/expys/sdk/models/CreateInterestRequest$Occasion;Ljava/lang/String;Ljava/util/List;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Integer;Ljava/util/List;Ljava/lang/Integer;Lcom/expys/sdk/models/CreateInterestRequest$ContactMethod;Lcom/expys/sdk/models/CreateInterestRequest$ContactWindow;Ljava/lang/String;Lcom/expys/sdk/models/CreateInterestRequest$Occasion;Ljava/lang/String;Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component10 ()Ljava/util/List;
+	public final fun component2 ()Ljava/lang/Integer;
+	public final fun component3 ()Ljava/util/List;
+	public final fun component4 ()Ljava/lang/Integer;
+	public final fun component5 ()Lcom/expys/sdk/models/CreateInterestRequest$ContactMethod;
+	public final fun component6 ()Lcom/expys/sdk/models/CreateInterestRequest$ContactWindow;
+	public final fun component7 ()Ljava/lang/String;
+	public final fun component8 ()Lcom/expys/sdk/models/CreateInterestRequest$Occasion;
+	public final fun component9 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/Integer;Ljava/util/List;Ljava/lang/Integer;Lcom/expys/sdk/models/CreateInterestRequest$ContactMethod;Lcom/expys/sdk/models/CreateInterestRequest$ContactWindow;Ljava/lang/String;Lcom/expys/sdk/models/CreateInterestRequest$Occasion;Ljava/lang/String;Ljava/util/List;)Lcom/expys/sdk/models/CreateInterestRequest;
+	public static synthetic fun copy$default (Lcom/expys/sdk/models/CreateInterestRequest;Ljava/lang/String;Ljava/lang/Integer;Ljava/util/List;Ljava/lang/Integer;Lcom/expys/sdk/models/CreateInterestRequest$ContactMethod;Lcom/expys/sdk/models/CreateInterestRequest$ContactWindow;Ljava/lang/String;Lcom/expys/sdk/models/CreateInterestRequest$Occasion;Ljava/lang/String;Ljava/util/List;ILjava/lang/Object;)Lcom/expys/sdk/models/CreateInterestRequest;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAdults ()Ljava/lang/Integer;
+	public final fun getBlackoutDates ()Ljava/util/List;
+	public final fun getChildren ()Ljava/lang/Integer;
+	public final fun getContactMethod ()Lcom/expys/sdk/models/CreateInterestRequest$ContactMethod;
+	public final fun getContactWindow ()Lcom/expys/sdk/models/CreateInterestRequest$ContactWindow;
+	public final fun getExternalUserID ()Ljava/lang/String;
+	public final fun getOccasion ()Lcom/expys/sdk/models/CreateInterestRequest$Occasion;
+	public final fun getOffer ()Ljava/lang/String;
+	public final fun getPhone ()Ljava/lang/String;
+	public final fun getPreferredDates ()Ljava/util/List;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class com/expys/sdk/models/CreateInterestRequest$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lcom/expys/sdk/models/CreateInterestRequest$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lcom/expys/sdk/models/CreateInterestRequest;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lcom/expys/sdk/models/CreateInterestRequest;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/CreateInterestRequest$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/CreateInterestRequest$ContactMethod : java/lang/Enum {
+	public static final field APP_CHAT Lcom/expys/sdk/models/CreateInterestRequest$ContactMethod;
+	public static final field Companion Lcom/expys/sdk/models/CreateInterestRequest$ContactMethod$Companion;
+	public static final field EMAIL Lcom/expys/sdk/models/CreateInterestRequest$ContactMethod;
+	public static final field PHONE Lcom/expys/sdk/models/CreateInterestRequest$ContactMethod;
+	public static final field SMS Lcom/expys/sdk/models/CreateInterestRequest$ContactMethod;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public final fun getValue ()Ljava/lang/String;
+	public static fun valueOf (Ljava/lang/String;)Lcom/expys/sdk/models/CreateInterestRequest$ContactMethod;
+	public static fun values ()[Lcom/expys/sdk/models/CreateInterestRequest$ContactMethod;
+}
+
+public final class com/expys/sdk/models/CreateInterestRequest$ContactMethod$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/CreateInterestRequest$ContactWindow : java/lang/Enum {
+	public static final field AFTERNOON Lcom/expys/sdk/models/CreateInterestRequest$ContactWindow;
+	public static final field ANYTIME Lcom/expys/sdk/models/CreateInterestRequest$ContactWindow;
+	public static final field Companion Lcom/expys/sdk/models/CreateInterestRequest$ContactWindow$Companion;
+	public static final field EVENING Lcom/expys/sdk/models/CreateInterestRequest$ContactWindow;
+	public static final field MORNING Lcom/expys/sdk/models/CreateInterestRequest$ContactWindow;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public final fun getValue ()Ljava/lang/String;
+	public static fun valueOf (Ljava/lang/String;)Lcom/expys/sdk/models/CreateInterestRequest$ContactWindow;
+	public static fun values ()[Lcom/expys/sdk/models/CreateInterestRequest$ContactWindow;
+}
+
+public final class com/expys/sdk/models/CreateInterestRequest$ContactWindow$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/CreateInterestRequest$Occasion : java/lang/Enum {
+	public static final field ANNIVERSARY Lcom/expys/sdk/models/CreateInterestRequest$Occasion;
+	public static final field BIRTHDAY Lcom/expys/sdk/models/CreateInterestRequest$Occasion;
+	public static final field BUSINESS Lcom/expys/sdk/models/CreateInterestRequest$Occasion;
+	public static final field Companion Lcom/expys/sdk/models/CreateInterestRequest$Occasion$Companion;
+	public static final field ENGAGEMENT Lcom/expys/sdk/models/CreateInterestRequest$Occasion;
+	public static final field GRADUATION Lcom/expys/sdk/models/CreateInterestRequest$Occasion;
+	public static final field OTHER Lcom/expys/sdk/models/CreateInterestRequest$Occasion;
+	public static final field PROMOTION Lcom/expys/sdk/models/CreateInterestRequest$Occasion;
+	public static final field WEDDING Lcom/expys/sdk/models/CreateInterestRequest$Occasion;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public final fun getValue ()Ljava/lang/String;
+	public static fun valueOf (Ljava/lang/String;)Lcom/expys/sdk/models/CreateInterestRequest$Occasion;
+	public static fun values ()[Lcom/expys/sdk/models/CreateInterestRequest$Occasion;
+}
+
+public final class com/expys/sdk/models/CreateInterestRequest$Occasion$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/CreateInterestResponse {
+	public static final field Companion Lcom/expys/sdk/models/CreateInterestResponse$Companion;
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/expys/sdk/models/Intake;Ljava/lang/String;Ljava/lang/String;)V
 	public final fun component1 ()Ljava/lang/String;
 	public final fun component2 ()Ljava/lang/String;
-	public final fun copy (Ljava/lang/String;Ljava/lang/String;)Lcom/expys/sdk/models/CreateRedemptionRequest;
-	public static synthetic fun copy$default (Lcom/expys/sdk/models/CreateRedemptionRequest;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lcom/expys/sdk/models/CreateRedemptionRequest;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Lcom/expys/sdk/models/Intake;
+	public final fun component5 ()Ljava/lang/String;
+	public final fun component6 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/expys/sdk/models/Intake;Ljava/lang/String;Ljava/lang/String;)Lcom/expys/sdk/models/CreateInterestResponse;
+	public static synthetic fun copy$default (Lcom/expys/sdk/models/CreateInterestResponse;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/expys/sdk/models/Intake;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lcom/expys/sdk/models/CreateInterestResponse;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getConversationId ()Ljava/lang/String;
+	public final fun getCreatedAt ()Ljava/lang/String;
+	public final fun getId ()Ljava/lang/String;
+	public final fun getIntake ()Lcom/expys/sdk/models/Intake;
+	public final fun getOffer ()Ljava/lang/String;
+	public final fun getStatus ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class com/expys/sdk/models/CreateInterestResponse$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lcom/expys/sdk/models/CreateInterestResponse$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lcom/expys/sdk/models/CreateInterestResponse;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lcom/expys/sdk/models/CreateInterestResponse;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/CreateInterestResponse$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/CreateRedemptionRequest {
+	public static final field Companion Lcom/expys/sdk/models/CreateRedemptionRequest$Companion;
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/expys/sdk/models/CreateRedemptionRequest;
+	public static synthetic fun copy$default (Lcom/expys/sdk/models/CreateRedemptionRequest;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lcom/expys/sdk/models/CreateRedemptionRequest;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getExternalUserID ()Ljava/lang/String;
+	public final fun getInterest ()Ljava/lang/String;
 	public final fun getOffer ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
@@ -554,6 +806,37 @@ public final class com/expys/sdk/models/Display$Source$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
+public final class com/expys/sdk/models/Feedback {
+	public static final field Companion Lcom/expys/sdk/models/Feedback$Companion;
+	public fun <init> (Ljava/lang/String;ILjava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()I
+	public final fun component3 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;ILjava/lang/String;)Lcom/expys/sdk/models/Feedback;
+	public static synthetic fun copy$default (Lcom/expys/sdk/models/Feedback;Ljava/lang/String;ILjava/lang/String;ILjava/lang/Object;)Lcom/expys/sdk/models/Feedback;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getComment ()Ljava/lang/String;
+	public final fun getRating ()I
+	public final fun getSubmittedAt ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class com/expys/sdk/models/Feedback$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lcom/expys/sdk/models/Feedback$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lcom/expys/sdk/models/Feedback;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lcom/expys/sdk/models/Feedback;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/Feedback$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
 public final class com/expys/sdk/models/GetAnalyticsOffersResponse {
 	public static final field Companion Lcom/expys/sdk/models/GetAnalyticsOffersResponse$Companion;
 	public fun <init> (Ljava/util/List;)V
@@ -700,6 +983,82 @@ public final class com/expys/sdk/models/GetBalanceResponse$SettlementMode$Compan
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
+public final class com/expys/sdk/models/GetTermsContentResponse {
+	public static final field Companion Lcom/expys/sdk/models/GetTermsContentResponse$Companion;
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/expys/sdk/models/GetTermsContentResponse$Type;Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Lcom/expys/sdk/models/GetTermsContentResponse$Type;
+	public final fun component5 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/expys/sdk/models/GetTermsContentResponse$Type;Ljava/lang/String;)Lcom/expys/sdk/models/GetTermsContentResponse;
+	public static synthetic fun copy$default (Lcom/expys/sdk/models/GetTermsContentResponse;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/expys/sdk/models/GetTermsContentResponse$Type;Ljava/lang/String;ILjava/lang/Object;)Lcom/expys/sdk/models/GetTermsContentResponse;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getContentHTML ()Ljava/lang/String;
+	public final fun getPublishedAt ()Ljava/lang/String;
+	public final fun getRenderedHash ()Ljava/lang/String;
+	public final fun getType ()Lcom/expys/sdk/models/GetTermsContentResponse$Type;
+	public final fun getVersion ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class com/expys/sdk/models/GetTermsContentResponse$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lcom/expys/sdk/models/GetTermsContentResponse$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lcom/expys/sdk/models/GetTermsContentResponse;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lcom/expys/sdk/models/GetTermsContentResponse;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/GetTermsContentResponse$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/GetTermsContentResponse$Type : java/lang/Enum {
+	public static final field Companion Lcom/expys/sdk/models/GetTermsContentResponse$Type$Companion;
+	public static final field PRIVACY_POLICY Lcom/expys/sdk/models/GetTermsContentResponse$Type;
+	public static final field TERMS_OF_SERVICE Lcom/expys/sdk/models/GetTermsContentResponse$Type;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public final fun getValue ()Ljava/lang/String;
+	public static fun valueOf (Ljava/lang/String;)Lcom/expys/sdk/models/GetTermsContentResponse$Type;
+	public static fun values ()[Lcom/expys/sdk/models/GetTermsContentResponse$Type;
+}
+
+public final class com/expys/sdk/models/GetTermsContentResponse$Type$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/GetTermsResponse {
+	public static final field Companion Lcom/expys/sdk/models/GetTermsResponse$Companion;
+	public fun <init> (Ljava/util/List;)V
+	public final fun component1 ()Ljava/util/List;
+	public final fun copy (Ljava/util/List;)Lcom/expys/sdk/models/GetTermsResponse;
+	public static synthetic fun copy$default (Lcom/expys/sdk/models/GetTermsResponse;Ljava/util/List;ILjava/lang/Object;)Lcom/expys/sdk/models/GetTermsResponse;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getDocuments ()Ljava/util/List;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class com/expys/sdk/models/GetTermsResponse$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lcom/expys/sdk/models/GetTermsResponse$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lcom/expys/sdk/models/GetTermsResponse;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lcom/expys/sdk/models/GetTermsResponse;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/GetTermsResponse$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
 public final class com/expys/sdk/models/Inclusions {
 	public static final field Companion Lcom/expys/sdk/models/Inclusions$Companion;
 	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
@@ -726,6 +1085,150 @@ public synthetic class com/expys/sdk/models/Inclusions$$serializer : kotlinx/ser
 }
 
 public final class com/expys/sdk/models/Inclusions$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/Intake {
+	public static final field Companion Lcom/expys/sdk/models/Intake$Companion;
+	public fun <init> (Ljava/lang/Integer;Ljava/util/List;Ljava/lang/Integer;Lcom/expys/sdk/models/Intake$ContactMethod;Lcom/expys/sdk/models/Intake$ContactWindow;Lcom/expys/sdk/models/Intake$Occasion;Ljava/lang/String;ZLjava/util/List;Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/Integer;
+	public final fun component10 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/util/List;
+	public final fun component3 ()Ljava/lang/Integer;
+	public final fun component4 ()Lcom/expys/sdk/models/Intake$ContactMethod;
+	public final fun component5 ()Lcom/expys/sdk/models/Intake$ContactWindow;
+	public final fun component6 ()Lcom/expys/sdk/models/Intake$Occasion;
+	public final fun component7 ()Ljava/lang/String;
+	public final fun component8 ()Z
+	public final fun component9 ()Ljava/util/List;
+	public final fun copy (Ljava/lang/Integer;Ljava/util/List;Ljava/lang/Integer;Lcom/expys/sdk/models/Intake$ContactMethod;Lcom/expys/sdk/models/Intake$ContactWindow;Lcom/expys/sdk/models/Intake$Occasion;Ljava/lang/String;ZLjava/util/List;Ljava/lang/String;)Lcom/expys/sdk/models/Intake;
+	public static synthetic fun copy$default (Lcom/expys/sdk/models/Intake;Ljava/lang/Integer;Ljava/util/List;Ljava/lang/Integer;Lcom/expys/sdk/models/Intake$ContactMethod;Lcom/expys/sdk/models/Intake$ContactWindow;Lcom/expys/sdk/models/Intake$Occasion;Ljava/lang/String;ZLjava/util/List;Ljava/lang/String;ILjava/lang/Object;)Lcom/expys/sdk/models/Intake;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAdults ()Ljava/lang/Integer;
+	public final fun getBlackoutDates ()Ljava/util/List;
+	public final fun getChildren ()Ljava/lang/Integer;
+	public final fun getContactMethod ()Lcom/expys/sdk/models/Intake$ContactMethod;
+	public final fun getContactWindow ()Lcom/expys/sdk/models/Intake$ContactWindow;
+	public final fun getOccasion ()Lcom/expys/sdk/models/Intake$Occasion;
+	public final fun getPhone ()Ljava/lang/String;
+	public final fun getPhoneVerified ()Z
+	public final fun getPreferredDates ()Ljava/util/List;
+	public final fun getSensitiveDetailsSentAt ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class com/expys/sdk/models/Intake$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lcom/expys/sdk/models/Intake$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lcom/expys/sdk/models/Intake;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lcom/expys/sdk/models/Intake;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/Intake$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/Intake$ContactMethod : java/lang/Enum {
+	public static final field APP_CHAT Lcom/expys/sdk/models/Intake$ContactMethod;
+	public static final field Companion Lcom/expys/sdk/models/Intake$ContactMethod$Companion;
+	public static final field EMAIL Lcom/expys/sdk/models/Intake$ContactMethod;
+	public static final field PHONE Lcom/expys/sdk/models/Intake$ContactMethod;
+	public static final field SMS Lcom/expys/sdk/models/Intake$ContactMethod;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public final fun getValue ()Ljava/lang/String;
+	public static fun valueOf (Ljava/lang/String;)Lcom/expys/sdk/models/Intake$ContactMethod;
+	public static fun values ()[Lcom/expys/sdk/models/Intake$ContactMethod;
+}
+
+public final class com/expys/sdk/models/Intake$ContactMethod$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/Intake$ContactWindow : java/lang/Enum {
+	public static final field AFTERNOON Lcom/expys/sdk/models/Intake$ContactWindow;
+	public static final field ANYTIME Lcom/expys/sdk/models/Intake$ContactWindow;
+	public static final field Companion Lcom/expys/sdk/models/Intake$ContactWindow$Companion;
+	public static final field EVENING Lcom/expys/sdk/models/Intake$ContactWindow;
+	public static final field MORNING Lcom/expys/sdk/models/Intake$ContactWindow;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public final fun getValue ()Ljava/lang/String;
+	public static fun valueOf (Ljava/lang/String;)Lcom/expys/sdk/models/Intake$ContactWindow;
+	public static fun values ()[Lcom/expys/sdk/models/Intake$ContactWindow;
+}
+
+public final class com/expys/sdk/models/Intake$ContactWindow$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/Intake$Occasion : java/lang/Enum {
+	public static final field ANNIVERSARY Lcom/expys/sdk/models/Intake$Occasion;
+	public static final field BIRTHDAY Lcom/expys/sdk/models/Intake$Occasion;
+	public static final field BUSINESS Lcom/expys/sdk/models/Intake$Occasion;
+	public static final field Companion Lcom/expys/sdk/models/Intake$Occasion$Companion;
+	public static final field ENGAGEMENT Lcom/expys/sdk/models/Intake$Occasion;
+	public static final field GRADUATION Lcom/expys/sdk/models/Intake$Occasion;
+	public static final field OTHER Lcom/expys/sdk/models/Intake$Occasion;
+	public static final field PROMOTION Lcom/expys/sdk/models/Intake$Occasion;
+	public static final field WEDDING Lcom/expys/sdk/models/Intake$Occasion;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public final fun getValue ()Ljava/lang/String;
+	public static fun valueOf (Ljava/lang/String;)Lcom/expys/sdk/models/Intake$Occasion;
+	public static fun values ()[Lcom/expys/sdk/models/Intake$Occasion;
+}
+
+public final class com/expys/sdk/models/Intake$Occasion$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/LegalDocument {
+	public static final field Companion Lcom/expys/sdk/models/LegalDocument$Companion;
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Lcom/expys/sdk/models/LegalDocument$Type;Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Lcom/expys/sdk/models/LegalDocument$Type;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Lcom/expys/sdk/models/LegalDocument$Type;Ljava/lang/String;)Lcom/expys/sdk/models/LegalDocument;
+	public static synthetic fun copy$default (Lcom/expys/sdk/models/LegalDocument;Ljava/lang/String;Ljava/lang/String;Lcom/expys/sdk/models/LegalDocument$Type;Ljava/lang/String;ILjava/lang/Object;)Lcom/expys/sdk/models/LegalDocument;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAcceptedAt ()Ljava/lang/String;
+	public final fun getPublishedAt ()Ljava/lang/String;
+	public final fun getType ()Lcom/expys/sdk/models/LegalDocument$Type;
+	public final fun getVersion ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class com/expys/sdk/models/LegalDocument$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lcom/expys/sdk/models/LegalDocument$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lcom/expys/sdk/models/LegalDocument;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lcom/expys/sdk/models/LegalDocument;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/LegalDocument$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/LegalDocument$Type : java/lang/Enum {
+	public static final field Companion Lcom/expys/sdk/models/LegalDocument$Type$Companion;
+	public static final field PRIVACY_POLICY Lcom/expys/sdk/models/LegalDocument$Type;
+	public static final field TERMS_OF_SERVICE Lcom/expys/sdk/models/LegalDocument$Type;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public final fun getValue ()Ljava/lang/String;
+	public static fun valueOf (Ljava/lang/String;)Lcom/expys/sdk/models/LegalDocument$Type;
+	public static fun values ()[Lcom/expys/sdk/models/LegalDocument$Type;
+}
+
+public final class com/expys/sdk/models/LegalDocument$Type$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -977,15 +1480,17 @@ public final class com/expys/sdk/models/MemberSummary$Companion {
 
 public final class com/expys/sdk/models/Message {
 	public static final field Companion Lcom/expys/sdk/models/Message$Companion;
-	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-	public final fun component1 ()Ljava/lang/String;
+	public fun <init> (Ljava/util/List;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+	public final fun component1 ()Ljava/util/List;
 	public final fun component2 ()Ljava/lang/String;
 	public final fun component3 ()Ljava/lang/String;
 	public final fun component4 ()Ljava/lang/String;
 	public final fun component5 ()Ljava/lang/String;
-	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/expys/sdk/models/Message;
-	public static synthetic fun copy$default (Lcom/expys/sdk/models/Message;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lcom/expys/sdk/models/Message;
+	public final fun component6 ()Ljava/lang/String;
+	public final fun copy (Ljava/util/List;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/expys/sdk/models/Message;
+	public static synthetic fun copy$default (Lcom/expys/sdk/models/Message;Ljava/util/List;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lcom/expys/sdk/models/Message;
 	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAttachments ()Ljava/util/List;
 	public final fun getAuthorID ()Ljava/lang/String;
 	public final fun getBody ()Ljava/lang/String;
 	public final fun getCreatedAt ()Ljava/lang/String;
@@ -1073,19 +1578,23 @@ public final class com/expys/sdk/models/Offer$Companion {
 
 public final class com/expys/sdk/models/OfferAnalytics {
 	public static final field Companion Lcom/expys/sdk/models/OfferAnalytics$Companion;
-	public fun <init> (DDLjava/lang/String;DD)V
-	public final fun component1 ()D
+	public fun <init> (Ljava/lang/Double;DDLjava/lang/String;DID)V
+	public final fun component1 ()Ljava/lang/Double;
 	public final fun component2 ()D
-	public final fun component3 ()Ljava/lang/String;
-	public final fun component4 ()D
+	public final fun component3 ()D
+	public final fun component4 ()Ljava/lang/String;
 	public final fun component5 ()D
-	public final fun copy (DDLjava/lang/String;DD)Lcom/expys/sdk/models/OfferAnalytics;
-	public static synthetic fun copy$default (Lcom/expys/sdk/models/OfferAnalytics;DDLjava/lang/String;DDILjava/lang/Object;)Lcom/expys/sdk/models/OfferAnalytics;
+	public final fun component6 ()I
+	public final fun component7 ()D
+	public final fun copy (Ljava/lang/Double;DDLjava/lang/String;DID)Lcom/expys/sdk/models/OfferAnalytics;
+	public static synthetic fun copy$default (Lcom/expys/sdk/models/OfferAnalytics;Ljava/lang/Double;DDLjava/lang/String;DIDILjava/lang/Object;)Lcom/expys/sdk/models/OfferAnalytics;
 	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAverageRating ()Ljava/lang/Double;
 	public final fun getCancellations ()D
 	public final fun getCompletions ()D
 	public final fun getOfferId ()Ljava/lang/String;
 	public final fun getPointsSpent ()D
+	public final fun getRatingCount ()I
 	public final fun getSignups ()D
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
@@ -1137,24 +1646,26 @@ public final class com/expys/sdk/models/OfferList$Companion {
 
 public final class com/expys/sdk/models/Redemption {
 	public static final field Companion Lcom/expys/sdk/models/Redemption$Companion;
-	public fun <init> (Ljava/lang/String;Lcom/expys/sdk/models/Redemption$CanceledReason;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+	public fun <init> (Ljava/lang/String;Lcom/expys/sdk/models/Redemption$CanceledReason;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/expys/sdk/models/Feedback;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
 	public final fun component1 ()Ljava/lang/String;
+	public final fun component10 ()Ljava/lang/String;
 	public final fun component2 ()Lcom/expys/sdk/models/Redemption$CanceledReason;
 	public final fun component3 ()Ljava/lang/String;
 	public final fun component4 ()Ljava/lang/String;
 	public final fun component5 ()Ljava/lang/String;
-	public final fun component6 ()Ljava/lang/String;
+	public final fun component6 ()Lcom/expys/sdk/models/Feedback;
 	public final fun component7 ()Ljava/lang/String;
 	public final fun component8 ()Ljava/lang/String;
 	public final fun component9 ()Ljava/lang/String;
-	public final fun copy (Ljava/lang/String;Lcom/expys/sdk/models/Redemption$CanceledReason;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/expys/sdk/models/Redemption;
-	public static synthetic fun copy$default (Lcom/expys/sdk/models/Redemption;Ljava/lang/String;Lcom/expys/sdk/models/Redemption$CanceledReason;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lcom/expys/sdk/models/Redemption;
+	public final fun copy (Ljava/lang/String;Lcom/expys/sdk/models/Redemption$CanceledReason;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/expys/sdk/models/Feedback;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/expys/sdk/models/Redemption;
+	public static synthetic fun copy$default (Lcom/expys/sdk/models/Redemption;Ljava/lang/String;Lcom/expys/sdk/models/Redemption$CanceledReason;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/expys/sdk/models/Feedback;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lcom/expys/sdk/models/Redemption;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getCanceledNote ()Ljava/lang/String;
 	public final fun getCanceledReason ()Lcom/expys/sdk/models/Redemption$CanceledReason;
 	public final fun getConversationId ()Ljava/lang/String;
 	public final fun getCreatedAt ()Ljava/lang/String;
 	public final fun getEndAt ()Ljava/lang/String;
+	public final fun getFeedback ()Lcom/expys/sdk/models/Feedback;
 	public final fun getId ()Ljava/lang/String;
 	public final fun getOffer ()Ljava/lang/String;
 	public final fun getStartAt ()Ljava/lang/String;
@@ -1361,6 +1872,107 @@ public final class com/expys/sdk/models/SendMessageResponse$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
+public final class com/expys/sdk/models/SetInterestIntakeRequest {
+	public static final field Companion Lcom/expys/sdk/models/SetInterestIntakeRequest$Companion;
+	public fun <init> ()V
+	public fun <init> (Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/util/List;Ljava/lang/Integer;Lcom/expys/sdk/models/SetInterestIntakeRequest$ContactMethod;Lcom/expys/sdk/models/SetInterestIntakeRequest$ContactWindow;Ljava/lang/String;Lcom/expys/sdk/models/SetInterestIntakeRequest$Occasion;Ljava/lang/String;Ljava/util/List;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/util/List;Ljava/lang/Integer;Lcom/expys/sdk/models/SetInterestIntakeRequest$ContactMethod;Lcom/expys/sdk/models/SetInterestIntakeRequest$ContactWindow;Ljava/lang/String;Lcom/expys/sdk/models/SetInterestIntakeRequest$Occasion;Ljava/lang/String;Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component10 ()Ljava/lang/String;
+	public final fun component11 ()Ljava/util/List;
+	public final fun component2 ()Ljava/lang/Integer;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/util/List;
+	public final fun component5 ()Ljava/lang/Integer;
+	public final fun component6 ()Lcom/expys/sdk/models/SetInterestIntakeRequest$ContactMethod;
+	public final fun component7 ()Lcom/expys/sdk/models/SetInterestIntakeRequest$ContactWindow;
+	public final fun component8 ()Ljava/lang/String;
+	public final fun component9 ()Lcom/expys/sdk/models/SetInterestIntakeRequest$Occasion;
+	public final fun copy (Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/util/List;Ljava/lang/Integer;Lcom/expys/sdk/models/SetInterestIntakeRequest$ContactMethod;Lcom/expys/sdk/models/SetInterestIntakeRequest$ContactWindow;Ljava/lang/String;Lcom/expys/sdk/models/SetInterestIntakeRequest$Occasion;Ljava/lang/String;Ljava/util/List;)Lcom/expys/sdk/models/SetInterestIntakeRequest;
+	public static synthetic fun copy$default (Lcom/expys/sdk/models/SetInterestIntakeRequest;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/util/List;Ljava/lang/Integer;Lcom/expys/sdk/models/SetInterestIntakeRequest$ContactMethod;Lcom/expys/sdk/models/SetInterestIntakeRequest$ContactWindow;Ljava/lang/String;Lcom/expys/sdk/models/SetInterestIntakeRequest$Occasion;Ljava/lang/String;Ljava/util/List;ILjava/lang/Object;)Lcom/expys/sdk/models/SetInterestIntakeRequest;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAccessibility ()Ljava/lang/String;
+	public final fun getAdults ()Ljava/lang/Integer;
+	public final fun getAllergies ()Ljava/lang/String;
+	public final fun getBlackoutDates ()Ljava/util/List;
+	public final fun getChildren ()Ljava/lang/Integer;
+	public final fun getContactMethod ()Lcom/expys/sdk/models/SetInterestIntakeRequest$ContactMethod;
+	public final fun getContactWindow ()Lcom/expys/sdk/models/SetInterestIntakeRequest$ContactWindow;
+	public final fun getDietary ()Ljava/lang/String;
+	public final fun getOccasion ()Lcom/expys/sdk/models/SetInterestIntakeRequest$Occasion;
+	public final fun getPhone ()Ljava/lang/String;
+	public final fun getPreferredDates ()Ljava/util/List;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class com/expys/sdk/models/SetInterestIntakeRequest$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lcom/expys/sdk/models/SetInterestIntakeRequest$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lcom/expys/sdk/models/SetInterestIntakeRequest;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lcom/expys/sdk/models/SetInterestIntakeRequest;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/SetInterestIntakeRequest$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/SetInterestIntakeRequest$ContactMethod : java/lang/Enum {
+	public static final field APP_CHAT Lcom/expys/sdk/models/SetInterestIntakeRequest$ContactMethod;
+	public static final field Companion Lcom/expys/sdk/models/SetInterestIntakeRequest$ContactMethod$Companion;
+	public static final field EMAIL Lcom/expys/sdk/models/SetInterestIntakeRequest$ContactMethod;
+	public static final field PHONE Lcom/expys/sdk/models/SetInterestIntakeRequest$ContactMethod;
+	public static final field SMS Lcom/expys/sdk/models/SetInterestIntakeRequest$ContactMethod;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public final fun getValue ()Ljava/lang/String;
+	public static fun valueOf (Ljava/lang/String;)Lcom/expys/sdk/models/SetInterestIntakeRequest$ContactMethod;
+	public static fun values ()[Lcom/expys/sdk/models/SetInterestIntakeRequest$ContactMethod;
+}
+
+public final class com/expys/sdk/models/SetInterestIntakeRequest$ContactMethod$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/SetInterestIntakeRequest$ContactWindow : java/lang/Enum {
+	public static final field AFTERNOON Lcom/expys/sdk/models/SetInterestIntakeRequest$ContactWindow;
+	public static final field ANYTIME Lcom/expys/sdk/models/SetInterestIntakeRequest$ContactWindow;
+	public static final field Companion Lcom/expys/sdk/models/SetInterestIntakeRequest$ContactWindow$Companion;
+	public static final field EVENING Lcom/expys/sdk/models/SetInterestIntakeRequest$ContactWindow;
+	public static final field MORNING Lcom/expys/sdk/models/SetInterestIntakeRequest$ContactWindow;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public final fun getValue ()Ljava/lang/String;
+	public static fun valueOf (Ljava/lang/String;)Lcom/expys/sdk/models/SetInterestIntakeRequest$ContactWindow;
+	public static fun values ()[Lcom/expys/sdk/models/SetInterestIntakeRequest$ContactWindow;
+}
+
+public final class com/expys/sdk/models/SetInterestIntakeRequest$ContactWindow$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/SetInterestIntakeRequest$Occasion : java/lang/Enum {
+	public static final field ANNIVERSARY Lcom/expys/sdk/models/SetInterestIntakeRequest$Occasion;
+	public static final field BIRTHDAY Lcom/expys/sdk/models/SetInterestIntakeRequest$Occasion;
+	public static final field BUSINESS Lcom/expys/sdk/models/SetInterestIntakeRequest$Occasion;
+	public static final field Companion Lcom/expys/sdk/models/SetInterestIntakeRequest$Occasion$Companion;
+	public static final field ENGAGEMENT Lcom/expys/sdk/models/SetInterestIntakeRequest$Occasion;
+	public static final field GRADUATION Lcom/expys/sdk/models/SetInterestIntakeRequest$Occasion;
+	public static final field OTHER Lcom/expys/sdk/models/SetInterestIntakeRequest$Occasion;
+	public static final field PROMOTION Lcom/expys/sdk/models/SetInterestIntakeRequest$Occasion;
+	public static final field WEDDING Lcom/expys/sdk/models/SetInterestIntakeRequest$Occasion;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public final fun getValue ()Ljava/lang/String;
+	public static fun valueOf (Ljava/lang/String;)Lcom/expys/sdk/models/SetInterestIntakeRequest$Occasion;
+	public static fun values ()[Lcom/expys/sdk/models/SetInterestIntakeRequest$Occasion;
+}
+
+public final class com/expys/sdk/models/SetInterestIntakeRequest$Occasion$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
 public final class com/expys/sdk/models/SetMemberRequest {
 	public static final field Companion Lcom/expys/sdk/models/SetMemberRequest$Companion;
 	public fun <init> ()V
@@ -1451,6 +2063,63 @@ public synthetic class com/expys/sdk/models/SetOfferPriceRequest$$serializer : k
 }
 
 public final class com/expys/sdk/models/SetOfferPriceRequest$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/SetRedemptionFeedbackRequest {
+	public static final field Companion Lcom/expys/sdk/models/SetRedemptionFeedbackRequest$Companion;
+	public fun <init> (ILjava/lang/String;)V
+	public synthetic fun <init> (ILjava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()I
+	public final fun component2 ()Ljava/lang/String;
+	public final fun copy (ILjava/lang/String;)Lcom/expys/sdk/models/SetRedemptionFeedbackRequest;
+	public static synthetic fun copy$default (Lcom/expys/sdk/models/SetRedemptionFeedbackRequest;ILjava/lang/String;ILjava/lang/Object;)Lcom/expys/sdk/models/SetRedemptionFeedbackRequest;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getComment ()Ljava/lang/String;
+	public final fun getRating ()I
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class com/expys/sdk/models/SetRedemptionFeedbackRequest$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lcom/expys/sdk/models/SetRedemptionFeedbackRequest$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lcom/expys/sdk/models/SetRedemptionFeedbackRequest;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lcom/expys/sdk/models/SetRedemptionFeedbackRequest;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/SetRedemptionFeedbackRequest$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/StartPhoneVerificationResponse {
+	public static final field Companion Lcom/expys/sdk/models/StartPhoneVerificationResponse$Companion;
+	public fun <init> (Z)V
+	public final fun component1 ()Z
+	public final fun copy (Z)Lcom/expys/sdk/models/StartPhoneVerificationResponse;
+	public static synthetic fun copy$default (Lcom/expys/sdk/models/StartPhoneVerificationResponse;ZILjava/lang/Object;)Lcom/expys/sdk/models/StartPhoneVerificationResponse;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getSent ()Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class com/expys/sdk/models/StartPhoneVerificationResponse$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lcom/expys/sdk/models/StartPhoneVerificationResponse$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lcom/expys/sdk/models/StartPhoneVerificationResponse;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lcom/expys/sdk/models/StartPhoneVerificationResponse;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/expys/sdk/models/StartPhoneVerificationResponse$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 

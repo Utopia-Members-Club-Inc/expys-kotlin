@@ -23,6 +23,7 @@
 
 package com.expys.sdk.models
 
+import com.expys.sdk.models.Intake
 
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.SerialName
@@ -31,38 +32,34 @@ import kotlinx.serialization.Contextual
 /**
  * 
  *
- * @param averageRating 
- * @param cancellations 
- * @param completions 
- * @param offerId 
- * @param pointsSpent 
- * @param ratingCount 
- * @param signups 
+ * @param conversationId 
+ * @param createdAt 
+ * @param id 
+ * @param intake 
+ * @param offer 
+ * @param status 
  */
 @Serializable
 
-public data class OfferAnalytics (
+public data class CreateInterestResponse (
 
-    @SerialName(value = "averageRating")
-    val averageRating: kotlin.Double?,
+    @SerialName(value = "conversationId")
+    val conversationId: kotlin.String?,
 
-    @SerialName(value = "cancellations")
-    val cancellations: kotlin.Double,
+    @SerialName(value = "createdAt")
+    val createdAt: kotlin.String,
 
-    @SerialName(value = "completions")
-    val completions: kotlin.Double,
+    @SerialName(value = "id")
+    val id: kotlin.String,
 
-    @SerialName(value = "offerId")
-    val offerId: kotlin.String,
+    @SerialName(value = "intake")
+    val intake: Intake?,
 
-    @SerialName(value = "pointsSpent")
-    val pointsSpent: kotlin.Double,
+    @SerialName(value = "offer")
+    val offer: kotlin.String,
 
-    @SerialName(value = "ratingCount")
-    val ratingCount: kotlin.Int,
-
-    @SerialName(value = "signups")
-    val signups: kotlin.Double
+    @SerialName(value = "status")
+    val status: kotlin.String
 
 ) {
 

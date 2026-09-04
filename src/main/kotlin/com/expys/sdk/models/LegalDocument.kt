@@ -23,7 +23,6 @@
 
 package com.expys.sdk.models
 
-import com.expys.sdk.models.Attachments
 
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.SerialName
@@ -32,37 +31,39 @@ import kotlinx.serialization.Contextual
 /**
  * 
  *
- * @param attachments 
- * @param authorID 
- * @param body 
- * @param createdAt 
- * @param id 
+ * @param acceptedAt 
+ * @param publishedAt 
  * @param type 
+ * @param version 
  */
 @Serializable
 
-public data class Message (
+public data class LegalDocument (
 
-    @SerialName(value = "attachments")
-    val attachments: kotlin.collections.List<Attachments>,
+    @SerialName(value = "acceptedAt")
+    val acceptedAt: kotlin.String?,
 
-    @SerialName(value = "authorID")
-    val authorID: kotlin.String,
-
-    @SerialName(value = "body")
-    val body: kotlin.String?,
-
-    @SerialName(value = "createdAt")
-    val createdAt: kotlin.String,
-
-    @SerialName(value = "id")
-    val id: kotlin.String,
+    @SerialName(value = "publishedAt")
+    val publishedAt: kotlin.String,
 
     @SerialName(value = "type")
-    val type: kotlin.String
+    val type: LegalDocument.Type,
+
+    @SerialName(value = "version")
+    val version: kotlin.String
 
 ) {
 
+    /**
+     * 
+     *
+     * Values: TERMS_OF_SERVICE,PRIVACY_POLICY
+     */
+    @Serializable
+    public enum class Type(public val value: kotlin.String) {
+        @SerialName(value = "TERMS_OF_SERVICE") TERMS_OF_SERVICE("TERMS_OF_SERVICE"),
+        @SerialName(value = "PRIVACY_POLICY") PRIVACY_POLICY("PRIVACY_POLICY");
+    }
 
 }
 

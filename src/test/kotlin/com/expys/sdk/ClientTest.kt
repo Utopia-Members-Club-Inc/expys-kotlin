@@ -26,7 +26,7 @@ class ClientTest {
 
   @Test
   fun createRedemptionAutogeneratesIdempotencyKey() = runTest {
-    val json = """{"canceledNote":null,"canceledReason":null,"conversationId":"cnv_1",""" +
+    val json = """{"canceledNote":null,"canceledReason":null,"conversationId":"cnv_1","feedback":null,""" +
       """"createdAt":"t","endAt":null,"id":"r1",""" +
       """"offer":"off_1","startAt":null,"status":"OPEN"}"""
     val http = FakeHttpClient(listOf(ok(json)))
@@ -42,7 +42,7 @@ class ClientTest {
 
   @Test
   fun getRedemptionEncodesPath() = runTest {
-    val json = """{"canceledNote":null,"canceledReason":null,"conversationId":"cnv_1",""" +
+    val json = """{"canceledNote":null,"canceledReason":null,"conversationId":"cnv_1","feedback":null,""" +
       """"createdAt":"t","endAt":null,"id":"r 1","offer":"o",""" +
       """"startAt":null,"status":"OPEN"}"""
     val http = FakeHttpClient(listOf(ok(json)))
@@ -80,7 +80,7 @@ class ClientTest {
 
   @Test
   fun createRedemptionRespectsIdempotencyOverride() = runTest {
-    val json = """{"canceledNote":null,"canceledReason":null,"conversationId":"cnv_1",""" +
+    val json = """{"canceledNote":null,"canceledReason":null,"conversationId":"cnv_1","feedback":null,""" +
       """"createdAt":"t","endAt":null,"id":"r1",""" +
       """"offer":"off_1","startAt":null,"status":"OPEN"}"""
     val http = FakeHttpClient(listOf(ok(json)))
@@ -243,7 +243,7 @@ class ClientTest {
   @Test
   fun streamMessagesEncodesPathAndDecodes() = runTest {
     val lines = listOf(
-      """data: {"authorID":"a1","body":"hi","createdAt":"t","id":"m1","type":"member"}""",
+      """data: {"attachments":[],"authorID":"a1","body":"hi","createdAt":"t","id":"m1","type":"member"}""",
       "",
     )
     val http = FakeStreamingHttpClient(listOf(StreamStep.Response(200, lines = lines)))

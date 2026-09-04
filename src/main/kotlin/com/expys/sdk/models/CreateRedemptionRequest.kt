@@ -33,6 +33,7 @@ import kotlinx.serialization.Contextual
  *
  * @param offer 
  * @param externalUserID 
+ * @param interest 
  */
 @Serializable
 
@@ -42,7 +43,10 @@ public data class CreateRedemptionRequest (
     val offer: kotlin.String,
 
     @SerialName(value = "externalUserID")
-    val externalUserID: kotlin.String? = null
+    val externalUserID: kotlin.String? = null,
+
+    @SerialName(value = "interest")
+    val interest: kotlin.String? = null
 
 ) {
 

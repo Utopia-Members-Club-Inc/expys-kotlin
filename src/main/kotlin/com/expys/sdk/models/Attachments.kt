@@ -23,7 +23,6 @@
 
 package com.expys.sdk.models
 
-import com.expys.sdk.models.Attachments
 
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.SerialName
@@ -32,34 +31,22 @@ import kotlinx.serialization.Contextual
 /**
  * 
  *
- * @param attachments 
- * @param authorID 
- * @param body 
- * @param createdAt 
- * @param id 
- * @param type 
+ * @param expiresAt 
+ * @param name 
+ * @param url 
  */
 @Serializable
 
-public data class Message (
+public data class Attachments (
 
-    @SerialName(value = "attachments")
-    val attachments: kotlin.collections.List<Attachments>,
+    @SerialName(value = "expiresAt")
+    val expiresAt: kotlin.String,
 
-    @SerialName(value = "authorID")
-    val authorID: kotlin.String,
+    @SerialName(value = "name")
+    val name: kotlin.String,
 
-    @SerialName(value = "body")
-    val body: kotlin.String?,
-
-    @SerialName(value = "createdAt")
-    val createdAt: kotlin.String,
-
-    @SerialName(value = "id")
-    val id: kotlin.String,
-
-    @SerialName(value = "type")
-    val type: kotlin.String
+    @SerialName(value = "url")
+    val url: kotlin.String?
 
 ) {
 

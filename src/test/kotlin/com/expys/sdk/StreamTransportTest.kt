@@ -12,7 +12,8 @@ import kotlin.test.assertTrue
 private class Boom : Exception("boom")
 
 private fun messageLines(id: String): List<String> = listOf(
-  """data: {"authorID":"a1","body":"hi","createdAt":"2026-01-01T00:00:00Z","id":"$id","type":"member"}""",
+  """data: {"attachments":[],"authorID":"a1","body":"hi",""" +
+    """"createdAt":"2026-01-01T00:00:00Z","id":"$id","type":"member"}""",
   "",
 )
 

@@ -61,7 +61,7 @@ class IntegrationTest {
   fun createRedemptionOverRealTransport() = runTest {
     server.enqueue(
       MockResponse().setResponseCode(201).setBody(
-        """{"canceledNote":null,"canceledReason":null,"conversationId":"cnv_1",""" +
+        """{"canceledNote":null,"canceledReason":null,"conversationId":"cnv_1","feedback":null,""" +
           """"createdAt":"t","endAt":null,"id":"r1","offer":"off_1",""" +
           """"startAt":null,"status":"OPEN"}""",
       ),
@@ -97,7 +97,7 @@ class IntegrationTest {
     // An SSE body over the real OkHttp streaming engine: a heartbeat comment, one
     // message event, then the server closes the connection.
     val body = ": heartbeat\n\n" +
-      """data: {"authorID":"a1","body":"hi","createdAt":"t","id":"m1","type":"member"}""" + "\n\n"
+      """data: {"attachments":[],"authorID":"a1","body":"hi","createdAt":"t","id":"m1","type":"member"}""" + "\n\n"
     server.enqueue(
       MockResponse()
         .setResponseCode(200)

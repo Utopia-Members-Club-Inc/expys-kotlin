@@ -23,6 +23,7 @@
 
 package com.expys.sdk.models
 
+import com.expys.sdk.models.Feedback
 
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.SerialName
@@ -36,6 +37,7 @@ import kotlinx.serialization.Contextual
  * @param conversationId 
  * @param createdAt 
  * @param endAt 
+ * @param feedback 
  * @param id 
  * @param offer 
  * @param startAt 
@@ -59,6 +61,9 @@ public data class Redemption (
 
     @SerialName(value = "endAt")
     val endAt: kotlin.String?,
+
+    @SerialName(value = "feedback")
+    val feedback: Feedback?,
 
     @SerialName(value = "id")
     val id: kotlin.String,
