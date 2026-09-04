@@ -12,8 +12,12 @@ complexity:
     # endpoint) for cross-SDK parity with the TS/Swift clients; the per-class
     # function count tracks the API, not accidental growth. Raised for the
     # server-mode methods (members, wallet credit, analytics, webhooks, token
-    # exchange).
-    thresholdInClasses: 32
+    # exchange, and again for interests, terms, feedback and phone verification).
+    #
+    # This number tracks the /v1 surface by design. If it needs raising again because a
+    # phase added endpoints, that is the rule working; if it needs raising because one
+    # endpoint grew several methods, look at the endpoint.
+    thresholdInClasses: 42
 
 exceptions:
   TooGenericExceptionCaught:

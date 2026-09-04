@@ -1,5 +1,10 @@
 package com.expys.sdk
 
+import com.expys.sdk.models.AcceptTermsRequest
+import com.expys.sdk.models.ConfirmPhoneVerificationRequest
+import com.expys.sdk.models.ConfirmPhoneVerificationResponse
+import com.expys.sdk.models.CreateInterestRequest
+import com.expys.sdk.models.CreateInterestResponse
 import com.expys.sdk.models.CreateRedemptionRequest
 import com.expys.sdk.models.CreateWebhookRequest
 import com.expys.sdk.models.CreditWalletRequest
@@ -9,6 +14,8 @@ import com.expys.sdk.models.GetAnalyticsOffersResponse
 import com.expys.sdk.models.GetAnalyticsSummaryResponse
 import com.expys.sdk.models.GetAnalyticsTimeseriesResponse
 import com.expys.sdk.models.GetBalanceResponse
+import com.expys.sdk.models.GetTermsContentResponse
+import com.expys.sdk.models.GetTermsResponse
 import com.expys.sdk.models.ListConversationsResponse
 import com.expys.sdk.models.ListMembersResponse
 import com.expys.sdk.models.ListMessagesResponse
@@ -22,8 +29,11 @@ import com.expys.sdk.models.Redemption
 import com.expys.sdk.models.RemoveMemberResponse
 import com.expys.sdk.models.SendMessageRequest
 import com.expys.sdk.models.SendMessageResponse
+import com.expys.sdk.models.SetInterestIntakeRequest
 import com.expys.sdk.models.SetMemberRequest
 import com.expys.sdk.models.SetMemberResponse
+import com.expys.sdk.models.SetRedemptionFeedbackRequest
+import com.expys.sdk.models.StartPhoneVerificationResponse
 import com.expys.sdk.models.TokenExchangeRequest
 import com.expys.sdk.models.TokenGrant
 import com.expys.sdk.models.Wallet
@@ -99,6 +109,161 @@ public class ExpysClient internal constructor(
   }
 
   /** Read a redemption by its id. @throws ExpysException.Api (404 if not found). */
+  /**
+   * Register interest in an experience: opens a concierge conversation and carries the
+   * member's dates, with **no points debited and no inventory held**. Sends an
+   * `Idempotency-Key` so a retry replays rather than double-registers.
+   *
+   * Dietary, allergy and accessibility answers are not accepted here - send them to
+   * [setInterestIntake], which does not store them.
+   */
+  public suspend fun createInterest(
+    input: CreateInterestRequest,
+    idempotencyKey: String? = null,
+  ): CreateInterestResponse {
+    val body = json.encodeToString(CreateInterestRequest.serializer(), input)
+    return decode(
+      json,
+      transport.execute(
+        method = "POST",
+        path = "/v1/interests",
+        body = body,
+        idempotencyKey = idempotencyKey ?: generateIdempotencyKey(),
+      ),
+    )
+  }
+
+  /** Read an interest and its intake. */
+  public suspend fun getInterest(id: String): CreateInterestResponse =
+    decode(json, transport.execute(method = "GET", path = "/v1/interests/${encodePathSegment(id)}"))
+
+  /**
+   * Replace an interest's intake. Send the complete answer each time - a partial merge
+   * over a set of dates has no sane meaning.
+   *
+   * The dietary, allergy and accessibility fields are forwarded to the concierge team and
+   * **never stored**: you can send them, you cannot read them back, and the response
+   * records only when they were sent.
+   */
+  public suspend fun setInterestIntake(id: String, input: SetInterestIntakeRequest): CreateInterestResponse {
+    val body = json.encodeToString(SetInterestIntakeRequest.serializer(), input)
+    return decode(
+      json,
+      transport.execute(
+        method = "PUT",
+        path = "/v1/interests/${encodePathSegment(id)}/intake",
+        body = body,
+      ),
+    )
+  }
+
+  /**
+   * Send a verification code to the number on an interest's intake.
+   *
+   * Until a number is verified it is display-only and the concierge team will not text
+   * it: an unverified number is one typo away from sending a stranger somebody else's
+   * itinerary.
+   */
+  public suspend fun startPhoneVerification(id: String): StartPhoneVerificationResponse = decode(
+    json,
+    transport.execute(
+      method = "POST",
+      path = "/v1/interests/${encodePathSegment(id)}/phone/verification",
+    ),
+  )
+
+  /**
+   * Confirm a phone verification code.
+   *
+   * `verified == false` is **not** an error: the code was wrong or expired, which is an
+   * ordinary thing for somebody to do. Ask again.
+   */
+  public suspend fun confirmPhoneVerification(
+    id: String,
+    input: ConfirmPhoneVerificationRequest,
+  ): ConfirmPhoneVerificationResponse {
+    val body = json.encodeToString(ConfirmPhoneVerificationRequest.serializer(), input)
+    return decode(
+      json,
+      transport.execute(
+        method = "PUT",
+        path = "/v1/interests/${encodePathSegment(id)}/phone/verification",
+        body = body,
+      ),
+    )
+  }
+
+  /**
+   * List the legal documents this member has and has not accepted.
+   *
+   * Metadata only - safe to call on every launch. The document text is a separate,
+   * cacheable call: see [getTermsContent].
+   *
+   * `acceptedAt` is null while a document is outstanding, including when the member
+   * accepted an earlier version of it.
+   */
+  public suspend fun getTerms(externalUserID: String? = null): GetTermsResponse = decode(
+    json,
+    transport.execute(
+      method = "GET",
+      path = "/v1/terms",
+      query = mapOf("externalUserID" to externalUserID),
+    ),
+  )
+
+  /**
+   * Read one version's text, rendered for your organisation.
+   *
+   * A published version never changes, so this response is stable forever and is served
+   * `Cache-Control: immutable`. Fetch it when the consent sheet opens, not on launch -
+   * the terms of service are around 28kB.
+   */
+  public suspend fun getTermsContent(version: String): GetTermsContentResponse = decode(
+    json,
+    transport.execute(
+      method = "GET",
+      path = "/v1/terms/${encodePathSegment(version)}/content",
+    ),
+  )
+
+  /**
+   * Record that the member accepted one or more document versions. Sends an
+   * `Idempotency-Key` so a retry replays rather than double-records.
+   *
+   * Re-accepting a version already on file is a no-op, not an error. The response is the
+   * same shape as [getTerms], so a consent sheet can dismiss without a second call.
+   */
+  public suspend fun acceptTerms(input: AcceptTermsRequest, idempotencyKey: String? = null): GetTermsResponse {
+    val body = json.encodeToString(AcceptTermsRequest.serializer(), input)
+    return decode(
+      json,
+      transport.execute(
+        method = "POST",
+        path = "/v1/terms/acceptance",
+        body = body,
+        idempotencyKey = idempotencyKey ?: generateIdempotencyKey(),
+      ),
+    )
+  }
+
+  /**
+   * Record a member's score for a completed experience. 0-10, the NPS scale.
+   *
+   * Throws with code `REDEMPTION_NOT_COMPLETED` when the experience has not happened
+   * yet; its `details.status` names the current one.
+   */
+  public suspend fun setRedemptionFeedback(id: String, input: SetRedemptionFeedbackRequest): Redemption {
+    val body = json.encodeToString(SetRedemptionFeedbackRequest.serializer(), input)
+    return decode(
+      json,
+      transport.execute(
+        method = "PUT",
+        path = "/v1/redemptions/${encodePathSegment(id)}/feedback",
+        body = body,
+      ),
+    )
+  }
+
   public suspend fun getRedemption(id: String): Redemption =
     decode(json, transport.execute(method = "GET", path = "/v1/redemptions/${encodePathSegment(id)}"))
 

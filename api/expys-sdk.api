@@ -35,10 +35,15 @@ public final class com/expys/sdk/ApiErrorKind : java/lang/Enum {
 
 public final class com/expys/sdk/ExpysClient {
 	public static final field Companion Lcom/expys/sdk/ExpysClient$Companion;
+	public final fun acceptTerms (Lcom/expys/sdk/models/AcceptTermsRequest;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun acceptTerms$default (Lcom/expys/sdk/ExpysClient;Lcom/expys/sdk/models/AcceptTermsRequest;Ljava/lang/String;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 	public final fun analyticsOffers (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public final fun analyticsSummary (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public final fun analyticsTimeseries (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public final fun balance (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun confirmPhoneVerification (Ljava/lang/String;Lcom/expys/sdk/models/ConfirmPhoneVerificationRequest;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun createInterest (Lcom/expys/sdk/models/CreateInterestRequest;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun createInterest$default (Lcom/expys/sdk/ExpysClient;Lcom/expys/sdk/models/CreateInterestRequest;Ljava/lang/String;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 	public final fun createRedemption (Lcom/expys/sdk/models/CreateRedemptionRequest;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static synthetic fun createRedemption$default (Lcom/expys/sdk/ExpysClient;Lcom/expys/sdk/models/CreateRedemptionRequest;Ljava/lang/String;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 	public final fun createWebhook (Lcom/expys/sdk/models/CreateWebhookRequest;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
@@ -50,8 +55,12 @@ public final class com/expys/sdk/ExpysClient {
 	public static synthetic fun eligibility$default (Lcom/expys/sdk/ExpysClient;Ljava/lang/String;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 	public final fun exchangeToken (Lcom/expys/sdk/models/TokenExchangeRequest;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static synthetic fun exchangeToken$default (Lcom/expys/sdk/ExpysClient;Lcom/expys/sdk/models/TokenExchangeRequest;Ljava/lang/String;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public final fun getInterest (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public final fun getMember (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public final fun getRedemption (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun getTerms (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun getTerms$default (Lcom/expys/sdk/ExpysClient;Ljava/lang/String;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public final fun getTermsContent (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public final fun listConversations (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static synthetic fun listConversations$default (Lcom/expys/sdk/ExpysClient;Ljava/lang/String;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 	public final fun listMembers (Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
@@ -67,7 +76,10 @@ public final class com/expys/sdk/ExpysClient {
 	public static synthetic fun removeMember$default (Lcom/expys/sdk/ExpysClient;Ljava/lang/String;Ljava/lang/Boolean;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 	public final fun sendMessage (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static synthetic fun sendMessage$default (Lcom/expys/sdk/ExpysClient;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public final fun setInterestIntake (Ljava/lang/String;Lcom/expys/sdk/models/SetInterestIntakeRequest;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public final fun setMember (Ljava/lang/String;Lcom/expys/sdk/models/SetMemberRequest;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun setRedemptionFeedback (Ljava/lang/String;Lcom/expys/sdk/models/SetRedemptionFeedbackRequest;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun startPhoneVerification (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public final fun streamMessages (Ljava/lang/String;)Lkotlinx/coroutines/flow/Flow;
 	public final fun wallet (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public final fun walletTransactions (Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
