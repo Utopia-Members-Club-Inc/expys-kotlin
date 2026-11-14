@@ -35,11 +35,13 @@ import kotlinx.serialization.Contextual
 /**
  * 
  *
+ * @param addOns 
  * @param availability 
  * @param description 
  * @param disclaimer 
  * @param display 
  * @param endAt 
+ * @param exclusions 
  * @param expiresAt 
  * @param id 
  * @param images 
@@ -58,6 +60,9 @@ import kotlinx.serialization.Contextual
 
 public data class Offer (
 
+    @SerialName(value = "addOns")
+    val addOns: kotlin.collections.List<kotlin.String>,
+
     @SerialName(value = "availability")
     val availability: Availability,
 
@@ -72,6 +77,9 @@ public data class Offer (
 
     @SerialName(value = "endAt")
     val endAt: kotlin.String?,
+
+    @SerialName(value = "exclusions")
+    val exclusions: kotlin.collections.List<kotlin.String>,
 
     @SerialName(value = "expiresAt")
     val expiresAt: kotlin.String?,

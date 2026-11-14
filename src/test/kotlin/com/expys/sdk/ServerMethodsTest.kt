@@ -2,8 +2,17 @@ package com.expys.sdk
 
 import com.expys.sdk.models.CreateWebhookRequest
 import com.expys.sdk.models.CreditWalletRequest
+import com.expys.sdk.models.GetAnalyticsSegmentsResponse
 import com.expys.sdk.models.GetBalanceResponse
+import com.expys.sdk.models.ImportMembersRequest
+import com.expys.sdk.models.MemberImportRejection
+import com.expys.sdk.models.MemberImportRow
+import com.expys.sdk.models.MemberSignals
+import com.expys.sdk.models.MemberSignalsInput
+import com.expys.sdk.models.MemberSummary
 import com.expys.sdk.models.SetMemberRequest
+import com.expys.sdk.models.SignalLiftGroup
+import com.expys.sdk.models.SignalSegmentKey
 import com.expys.sdk.models.TokenExchangeRequest
 import kotlinx.coroutines.test.runTest
 import java.net.URI
@@ -60,7 +69,7 @@ class ServerMethodsTest {
 
   @Test
   fun setMemberPutsEncodedPathWithBodyAndNoKey() = runTest {
-    val json = """{"attributes":null,"displayName":"Ada","externalUserID":"u 1","tier":"gold"}"""
+    val json = """{"attributes":null,"displayName":"Ada","externalUserID":"u 1","signals":null,"tier":"gold"}"""
     val http = FakeHttpClient(listOf(ok(json)))
 
     val result = machineClient(http).setMember("u 1", SetMemberRequest(tier = "gold"))
@@ -77,7 +86,8 @@ class ServerMethodsTest {
   fun getMemberGetsEncodedPath() = runTest {
     val json = """{"attributes":null,"displayName":null,"externalUserID":"u 1",""" +
       """"redemptionCounts":{"AWAITING_CUSTOMER":0,"AWAITING_VENDOR":0,"CANCELED":0,"COMPLETED":0,""" +
-      """"OPEN":0,"PURCHASED":0,"SUBMITTED":0},"tier":"gold",""" +
+      """"OPEN":0,"PURCHASED":0,"SUBMITTED":0},"signals":null,"signalsUpdatedAt":null,""" +
+      """"tier":"gold","vipStatus":"UNKNOWN","vipStatusAt":"2026-11-01T04:00:00.000Z",""" +
       """"wallet":{"amountReceived":0.0,"amountReceivedDisplay":0,"amountReceivedUSD":0.0,"amountSpent":0.0,""" +
       """"amountSpentDisplay":0,"amountSpentUSD":0.0,"balance":0.0,"balanceDisplay":0,"balanceUSD":0.0,""" +
       """"currency":{"name":"P","symbol":"P","unitsPerUSD":1.0}}}"""
@@ -86,6 +96,7 @@ class ServerMethodsTest {
     val result = machineClient(http).getMember("u 1")
 
     assertEquals("u 1", result.externalUserID)
+    assertEquals(java.time.OffsetDateTime.parse("2026-11-01T04:00:00Z"), result.vipStatusAt)
     assertEquals("GET", http.requests[0].method)
     assertEquals("https://api.test/v1/members/u%201", http.requests[0].url)
   }
@@ -103,6 +114,95 @@ class ServerMethodsTest {
     assertTrue(http.requests[0].url.contains("tier=gold"))
     assertTrue(http.requests[0].url.contains("limit=2"))
     assertTrue(http.requests[0].url.contains("cursor=c1"))
+  }
+
+  @Test
+  fun importMembersPostsRowsAndParsesReport() = runTest {
+    val json = """{"accepted":1,"rejected":[""" +
+      """{"code":"signal_not_enabled","externalUserID":"u2","field":"valueBand","row":2}]}"""
+    val http = FakeHttpClient(listOf(ok(json)))
+    val rows = listOf(
+      MemberImportRow(
+        externalUserID = "u1",
+        signals = MemberSignalsInput(activityBand = MemberSignalsInput.ActivityBand.HIGH),
+      ),
+      MemberImportRow(externalUserID = "u2", tier = "gold"),
+    )
+
+    val report = machineClient(http).importMembers(ImportMembersRequest(rows = rows))
+
+    assertEquals(1, report.accepted)
+    assertEquals(MemberImportRejection.Code.signal_not_enabled, report.rejected[0].code)
+    assertEquals(2, report.rejected[0].row)
+    assertEquals("POST", http.requests[0].method)
+    assertEquals("https://api.test/v1/members/batch", http.requests[0].url)
+    assertEquals(
+      """{"rows":[{"externalUserID":"u1","signals":{"activityBand":"HIGH"}},""" +
+        """{"externalUserID":"u2","tier":"gold"}]}""",
+      http.requests[0].body,
+    )
+    val key = http.requests[0].headers["Idempotency-Key"]
+    assertNotNull(key)
+    assertTrue(key.isNotEmpty())
+  }
+
+  @Test
+  fun importMembersSendsDryRunAndCustomKey() = runTest {
+    val http = FakeHttpClient(listOf(ok("""{"accepted":0,"rejected":[]}""")))
+
+    machineClient(http).importMembers(
+      ImportMembersRequest(rows = listOf(MemberImportRow(externalUserID = "u1"))),
+      dryRun = true,
+      idempotencyKey = "batch-1",
+    )
+
+    assertEquals("https://api.test/v1/members/batch?dryRun=true", http.requests[0].url)
+    assertEquals("batch-1", http.requests[0].headers["Idempotency-Key"])
+  }
+
+  @Test
+  fun getSignalHistoryPages() = runTest {
+    val page = """{"nextCursor":"c2","snapshots":[{"environment":"LIVE",""" +
+      """"observedAt":"2026-11-01T00:00:00Z","receivedAt":"2026-11-01T00:00:01Z",""" +
+      """"signals":{"activityBand":"HIGH"},"source":"BATCH"}]}"""
+    val http = FakeHttpClient(listOf(ok(page), ok("""{"nextCursor":null,"snapshots":[]}""")))
+    val client = machineClient(http)
+
+    val first = client.getSignalHistory("u 1", limit = 1)
+    val second = client.getSignalHistory("u 1", limit = 1, cursor = first.nextCursor)
+
+    assertEquals(MemberSignals.ActivityBand.HIGH, first.snapshots[0].signals?.activityBand)
+    assertEquals(null, second.nextCursor)
+    assertEquals("GET", http.requests[0].method)
+    assertEquals("https://api.test/v1/members/u%201/signals/history?limit=1", http.requests[0].url)
+    assertTrue(http.requests[1].url.contains("cursor=c2"))
+  }
+
+  @Test
+  fun importMembersEncodesAsOfAsIsoTimestamp() = runTest {
+    val http = FakeHttpClient(listOf(ok("""{"accepted":1,"rejected":[]}""")))
+    val asOf = java.time.OffsetDateTime.parse("2026-10-31T23:59:59Z")
+
+    machineClient(http).importMembers(
+      ImportMembersRequest(rows = listOf(MemberImportRow(externalUserID = "u1", asOf = asOf))),
+    )
+
+    assertEquals("""{"rows":[{"externalUserID":"u1","asOf":"2026-10-31T23:59:59Z"}]}""", http.requests[0].body)
+  }
+
+  @Test
+  fun listMembersSendsSignalFilters() = runTest {
+    val http = FakeHttpClient(listOf(ok("""{"members":[],"nextCursor":null}""")))
+
+    machineClient(http).listMembers(
+      valueBand = MemberSignals.ValueBand.TOP_1,
+      activityBand = MemberSignals.ActivityBand.LOW,
+      vipStatus = MemberSummary.VipStatus.COOLING,
+    )
+
+    assertTrue(http.requests[0].url.contains("valueBand=TOP_1"))
+    assertTrue(http.requests[0].url.contains("activityBand=LOW"))
+    assertTrue(http.requests[0].url.contains("vipStatus=COOLING"))
   }
 
   @Test
@@ -198,6 +298,70 @@ class ServerMethodsTest {
   }
 
   @Test
+  fun getAnalyticsSegmentsGetsWithGroupByAndDecodesSuppressedCell() = runTest {
+    val json = """{"groupBy":["valueBand","vipStatus"],"segments":[""" +
+      """{"bookings":9,"key":{"valueBand":"TOP_1","vipStatus":"ACTIVE"},"members":12,""" +
+      """"membersWhoBooked":7,"suppressed":false,""" +
+      """"topCategories":[{"members":5,"name":"NBA","slug":"nba"}]},""" +
+      """{"bookings":null,"key":{"valueBand":"TOP_5","vipStatus":"LAPSED"},"members":null,""" +
+      """"membersWhoBooked":null,"suppressed":true,"topCategories":[]}]}"""
+    val http = FakeHttpClient(listOf(ok(json)))
+
+    val result = machineClient(http).getAnalyticsSegments(
+      from = "2026-10-01T00:00:00Z",
+      to = "2026-11-01T00:00:00Z",
+      groupBy = listOf(
+        GetAnalyticsSegmentsResponse.GroupBy.valueBand,
+        GetAnalyticsSegmentsResponse.GroupBy.vipStatus,
+      ),
+    )
+
+    assertEquals(
+      listOf(GetAnalyticsSegmentsResponse.GroupBy.valueBand, GetAnalyticsSegmentsResponse.GroupBy.vipStatus),
+      result.groupBy,
+    )
+    assertEquals(12, result.segments[0].members)
+    assertEquals(SignalSegmentKey.ValueBand.TOP_1, result.segments[0].key.valueBand)
+    assertEquals("nba", result.segments[0].topCategories[0].slug)
+    val hidden = result.segments[1]
+    assertTrue(hidden.suppressed)
+    assertEquals(null, hidden.members)
+    assertEquals(null, hidden.bookings)
+    assertEquals(null, hidden.membersWhoBooked)
+    assertEquals(SignalSegmentKey.VipStatus.LAPSED, hidden.key.vipStatus)
+    assertEquals("GET", http.requests[0].method)
+    val url = http.requests[0].url
+    assertTrue(url.startsWith("https://api.test/v1/analytics/segments?"))
+    assertTrue(url.contains("from=2026-10-01T00%3A00%3A00Z"))
+    assertTrue(url.contains("to=2026-11-01T00%3A00%3A00Z"))
+    assertTrue(url.contains("groupBy=valueBand%2CvipStatus"))
+  }
+
+  @Test
+  fun getAnalyticsLiftGetsWithPeriodAndDecodesSuppressedCohort() = runTest {
+    val json = """{"groups":[{"booked":{"fell":0.1,"held":0.5,"members":20,"rose":0.4,"suppressed":false},""" +
+      """"notBooked":{"fell":null,"held":null,"members":null,"rose":null,"suppressed":true},""" +
+      """"valueBand":"TOP_1","vipStatus":"ACTIVE"}]}"""
+    val http = FakeHttpClient(listOf(ok(json)))
+
+    val result = machineClient(http).getAnalyticsLift(from = "2026-10-01T00:00:00Z", to = "2026-11-01T00:00:00Z")
+
+    val group = result.groups[0]
+    assertEquals(SignalLiftGroup.ValueBand.TOP_1, group.valueBand)
+    assertEquals(SignalLiftGroup.VipStatus.ACTIVE, group.vipStatus)
+    assertEquals(20, group.booked.members)
+    assertEquals(0.4, group.booked.rose)
+    assertTrue(group.notBooked.suppressed)
+    assertEquals(null, group.notBooked.members)
+    assertEquals(null, group.notBooked.rose)
+    assertEquals("GET", http.requests[0].method)
+    assertEquals(
+      "https://api.test/v1/analytics/lift?from=2026-10-01T00%3A00%3A00Z&to=2026-11-01T00%3A00%3A00Z",
+      http.requests[0].url,
+    )
+  }
+
+  @Test
   fun createWebhookPostsAndAutogeneratesKey() = runTest {
     val json = """{"createdAt":"t","environment":"LIVE","events":["redemption.created"],"id":"wh_1",""" +
       """"signingSecret":"whsec_x","url":"https://example.com/hook"}"""
@@ -262,6 +426,16 @@ class ServerMethodsTest {
       { client.createWebhook(CreateWebhookRequest(events = emptyList(), url = URI("https://x"))) },
       { client.listWebhooks() },
       { client.deleteWebhook("wh_1") },
+      { client.importMembers(ImportMembersRequest(rows = emptyList())) },
+      { client.getSignalHistory("u1") },
+      {
+        client.getAnalyticsSegments(
+          from = "a",
+          to = "b",
+          groupBy = listOf(GetAnalyticsSegmentsResponse.GroupBy.valueBand),
+        )
+      },
+      { client.getAnalyticsLift(from = "a", to = "b") },
     )
 
     for (call in calls) {

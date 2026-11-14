@@ -23,6 +23,7 @@
 
 package com.expys.sdk.models
 
+import com.expys.sdk.models.MemberSignals
 import com.expys.sdk.models.RedemptionCounts
 import com.expys.sdk.models.Wallet
 
@@ -37,7 +38,11 @@ import kotlinx.serialization.Contextual
  * @param displayName 
  * @param externalUserID 
  * @param redemptionCounts 
+ * @param signals 
+ * @param signalsUpdatedAt 
  * @param tier 
+ * @param vipStatus 
+ * @param vipStatusAt 
  * @param wallet 
  */
 @Serializable
@@ -56,14 +61,40 @@ public data class MemberSummary (
     @SerialName(value = "redemptionCounts")
     val redemptionCounts: RedemptionCounts,
 
+    @SerialName(value = "signals")
+    val signals: MemberSignals?,
+
+    @Contextual @SerialName(value = "signalsUpdatedAt")
+    val signalsUpdatedAt: java.time.OffsetDateTime?,
+
     @SerialName(value = "tier")
     val tier: kotlin.String,
+
+    @SerialName(value = "vipStatus")
+    val vipStatus: MemberSummary.VipStatus,
+
+    @Contextual @SerialName(value = "vipStatusAt")
+    val vipStatusAt: java.time.OffsetDateTime?,
 
     @SerialName(value = "wallet")
     val wallet: Wallet
 
 ) {
 
+    /**
+     * 
+     *
+     * Values: UNKNOWN,LAPSED,REACTIVATED,COOLING,NEW,ACTIVE
+     */
+    @Serializable
+    public enum class VipStatus(public val value: kotlin.String) {
+        @SerialName(value = "UNKNOWN") UNKNOWN("UNKNOWN"),
+        @SerialName(value = "LAPSED") LAPSED("LAPSED"),
+        @SerialName(value = "REACTIVATED") REACTIVATED("REACTIVATED"),
+        @SerialName(value = "COOLING") COOLING("COOLING"),
+        @SerialName(value = "NEW") NEW("NEW"),
+        @SerialName(value = "ACTIVE") ACTIVE("ACTIVE");
+    }
 
 }
 

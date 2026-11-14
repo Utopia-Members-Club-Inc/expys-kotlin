@@ -27,7 +27,11 @@ internal object UriSerializer : KSerializer<URI> {
   override fun deserialize(decoder: Decoder): URI = URI(decoder.decodeString())
 }
 
-/** The serializers module registering [UriSerializer] for the SDK's `Json`. */
+/**
+ * The serializers module registering the contextual serializers the generated
+ * models need ([UriSerializer], [OffsetDateTimeSerializer]) for the SDK's `Json`.
+ */
 internal val expysSerializersModule: SerializersModule = SerializersModule {
   contextual(URI::class, UriSerializer)
+  contextual(java.time.OffsetDateTime::class, OffsetDateTimeSerializer)
 }

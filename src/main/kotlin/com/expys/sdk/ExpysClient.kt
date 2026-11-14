@@ -10,20 +10,27 @@ import com.expys.sdk.models.CreateWebhookRequest
 import com.expys.sdk.models.CreditWalletRequest
 import com.expys.sdk.models.CreditWalletResponse
 import com.expys.sdk.models.DeleteWebhookResponse
+import com.expys.sdk.models.GetAnalyticsLiftResponse
 import com.expys.sdk.models.GetAnalyticsOffersResponse
+import com.expys.sdk.models.GetAnalyticsSegmentsResponse
 import com.expys.sdk.models.GetAnalyticsSummaryResponse
 import com.expys.sdk.models.GetAnalyticsTimeseriesResponse
 import com.expys.sdk.models.GetBalanceResponse
 import com.expys.sdk.models.GetTermsContentResponse
 import com.expys.sdk.models.GetTermsResponse
+import com.expys.sdk.models.ImportMembersRequest
 import com.expys.sdk.models.ListConversationsResponse
+import com.expys.sdk.models.ListMemberSignalHistoryResponse
 import com.expys.sdk.models.ListMembersResponse
 import com.expys.sdk.models.ListMessagesResponse
 import com.expys.sdk.models.ListRedemptionsResponse
 import com.expys.sdk.models.ListTransactionsResponse
 import com.expys.sdk.models.MemberEligibility
+import com.expys.sdk.models.MemberImportReport
+import com.expys.sdk.models.MemberSignals
 import com.expys.sdk.models.MemberSummary
 import com.expys.sdk.models.Message
+import com.expys.sdk.models.Offer
 import com.expys.sdk.models.OfferList
 import com.expys.sdk.models.Redemption
 import com.expys.sdk.models.RemoveMemberResponse
@@ -32,10 +39,13 @@ import com.expys.sdk.models.SendMessageResponse
 import com.expys.sdk.models.SetInterestIntakeRequest
 import com.expys.sdk.models.SetMemberRequest
 import com.expys.sdk.models.SetMemberResponse
+import com.expys.sdk.models.SetOfferPriceRequest
 import com.expys.sdk.models.SetRedemptionFeedbackRequest
 import com.expys.sdk.models.StartPhoneVerificationResponse
 import com.expys.sdk.models.TokenExchangeRequest
 import com.expys.sdk.models.TokenGrant
+import com.expys.sdk.models.UpdateConfigurationRequest
+import com.expys.sdk.models.UpdateConfigurationResponse
 import com.expys.sdk.models.Wallet
 import com.expys.sdk.models.WebhookEndpointList
 import com.expys.sdk.models.WebhookEndpointWithSecret
@@ -72,16 +82,29 @@ public class ExpysClient internal constructor(
    * `nextCursor` is null.
    * @param limit Maximum number of offers to return.
    * @param cursor Pagination cursor from a previous response's `nextCursor`.
+   * @param available `true` leaves out sold-out offers (`quantityRemaining` of 0).
+   *   Null or `false` returns every offer, sold-out ones included.
    * @throws ExpysException.Api on a non-2xx response.
    */
-  public suspend fun listOffers(limit: Int? = null, cursor: String? = null): OfferList = decode(
-    json,
-    transport.execute(
-      method = "GET",
-      path = "/v1/offers",
-      query = mapOf("limit" to limit?.toString(), "cursor" to cursor),
-    ),
-  )
+  public suspend fun listOffers(limit: Int? = null, cursor: String? = null, available: Boolean? = null): OfferList =
+    decode(
+      json,
+      transport.execute(
+        method = "GET",
+        path = "/v1/offers",
+        query = mapOf("limit" to limit?.toString(), "cursor" to cursor, "available" to available?.toString()),
+      ),
+    )
+
+  /**
+   * Read one offer by its id: the same shape [listOffers] returns, for a deep link.
+   * Works with a member token or a machine credential.
+   * @param id The offer id.
+   * @throws ExpysException.Api with `kind == ApiErrorKind.NOT_FOUND` when no offer with
+   *   that id is visible to your org (another tenant's id gets the same 404).
+   */
+  public suspend fun getOffer(id: String): Offer =
+    decode(json, transport.execute(method = "GET", path = "/v1/offers/${encodePathSegment(id)}"))
 
   /**
    * Book (request) an offer for the member. Sends an `Idempotency-Key` so a retry
@@ -487,17 +510,90 @@ public class ExpysClient internal constructor(
   }
 
   /**
-   * List the org's members, newest-first. Cursor-paginate with [cursor] until the
-   * response's `nextCursor` is null. Server-only.
-   * @param tier Return only members whose effective tier matches this value exactly.
-   * @param limit Maximum number of members to return (1-100).
+   * Read a member's VIP signal history: one snapshot of their full signal set per
+   * change, newest first by `observedAt`. Cursor-paginate with [cursor] until the
+   * response's `nextCursor` is null. Server-only; requires the `MEMBERS_READ` scope.
+   * @param externalUserID The member's external user id.
+   * @param from Only snapshots observed at or after this time (ISO 8601, inclusive).
+   * @param to Only snapshots observed at or before this time (ISO 8601, inclusive).
+   * @param limit Maximum number of snapshots to return (1-100).
    * @param cursor Pagination cursor from a previous response's `nextCursor`.
    * @throws ExpysException.NotConfigured when configured with a member token.
    */
+  public suspend fun getSignalHistory(
+    externalUserID: String,
+    from: String? = null,
+    to: String? = null,
+    limit: Int? = null,
+    cursor: String? = null,
+  ): ListMemberSignalHistoryResponse {
+    assertMachineCredential(configuredToken, "getSignalHistory")
+    return decode(
+      json,
+      transport.execute(
+        method = "GET",
+        path = "/v1/members/${encodePathSegment(externalUserID)}/signals/history",
+        query = mapOf(
+          "from" to from,
+          "to" to to,
+          "limit" to limit?.toString(),
+          "cursor" to cursor,
+        ),
+      ),
+    )
+  }
+
+  /**
+   * Upsert up to 1,000 members in one call; each row takes the fields of [setMember]
+   * (`tier`, `signals`, `attributes`, `asOf`). A bad row is skipped and listed in the
+   * report with its 1-based row number, field and code; every other row is written.
+   * Sends an `Idempotency-Key` (the route requires one) so a retry replays the
+   * original report. Server-only; requires the `MEMBERS_WRITE` scope.
+   * @param input The rows to import.
+   * @param dryRun Check every row and return the report without writing anything.
+   * @param idempotencyKey Override the auto-generated key.
+   * @throws ExpysException.NotConfigured when configured with a member token.
+   */
+  public suspend fun importMembers(
+    input: ImportMembersRequest,
+    dryRun: Boolean = false,
+    idempotencyKey: String? = null,
+  ): MemberImportReport {
+    assertMachineCredential(configuredToken, "importMembers")
+    val body = json.encodeToString(ImportMembersRequest.serializer(), input)
+    return decode(
+      json,
+      transport.execute(
+        method = "POST",
+        path = "/v1/members/batch",
+        query = mapOf("dryRun" to if (dryRun) "true" else null),
+        body = body,
+        idempotencyKey = idempotencyKey ?: generateIdempotencyKey(),
+      ),
+    )
+  }
+
+  /**
+   * List the org's members, newest-first. Cursor-paginate with [cursor] until the
+   * response's `nextCursor` is null. Filters combine with AND. Server-only.
+   * @param tier Return only members whose effective tier matches this value exactly.
+   * @param limit Maximum number of members to return (1-100).
+   * @param cursor Pagination cursor from a previous response's `nextCursor`.
+   * @param valueBand Return only members whose current `valueBand` signal is this value.
+   * @param activityBand Return only members whose current `activityBand` signal is this value.
+   * @param vipStatus Return only members with this derived VIP status.
+   * @throws ExpysException.NotConfigured when configured with a member token.
+   */
+  // One named, defaulted parameter per query filter of GET /v1/members, the same
+  // shape as the other list methods; a filter object would break existing callers.
+  @Suppress("LongParameterList")
   public suspend fun listMembers(
     tier: String? = null,
     limit: Int? = null,
     cursor: String? = null,
+    valueBand: MemberSignals.ValueBand? = null,
+    activityBand: MemberSignals.ActivityBand? = null,
+    vipStatus: MemberSummary.VipStatus? = null,
   ): ListMembersResponse {
     assertMachineCredential(configuredToken, "listMembers")
     return decode(
@@ -509,6 +605,9 @@ public class ExpysClient internal constructor(
           "tier" to tier,
           "limit" to limit?.toString(),
           "cursor" to cursor,
+          "valueBand" to valueBand?.value,
+          "activityBand" to activityBand?.value,
+          "vipStatus" to vipStatus?.value,
         ),
       ),
     )
@@ -531,6 +630,58 @@ public class ExpysClient internal constructor(
         query = mapOf("retainBalance" to retainBalance?.toString()),
       ),
     )
+  }
+
+  /**
+   * Set the org's own display price for one experience, in your currency. Your members
+   * see this amount instead of the derived figure; the points debited on redemption are
+   * unchanged. Idempotent by HTTP semantics (PUT), so no idempotency key is sent.
+   * Server-only; requires the `CONFIG_WRITE` scope.
+   * @param id The offer id.
+   * @param input The `amount` to display (0 or more; decimals allowed).
+   * @return The offer as your members now see it (`display.source == AUTHORED`).
+   * @throws ExpysException.NotConfigured when configured with a member token.
+   * @throws ExpysException.Api with `kind == ApiErrorKind.NOT_FOUND` when the offer is not
+   *   visible to your org, or `ApiErrorKind.VALIDATION` when the amount is negative.
+   */
+  public suspend fun setOfferPrice(id: String, input: SetOfferPriceRequest): Offer {
+    assertMachineCredential(configuredToken, "setOfferPrice")
+    val body = json.encodeToString(SetOfferPriceRequest.serializer(), input)
+    return decode(
+      json,
+      transport.execute(method = "PUT", path = "/v1/offers/${encodePathSegment(id)}/price", body = body),
+    )
+  }
+
+  /**
+   * Clear the org's authored display price for one experience, reverting it to the figure
+   * derived from the dollar price and your currency ratio. Idempotent by HTTP semantics
+   * (DELETE), so no idempotency key is sent. Server-only; requires the `CONFIG_WRITE` scope.
+   * @param id The offer id.
+   * @return The offer as your members now see it (`display.source == DERIVED`).
+   * @throws ExpysException.NotConfigured when configured with a member token.
+   */
+  public suspend fun deleteOfferPrice(id: String): Offer {
+    assertMachineCredential(configuredToken, "deleteOfferPrice")
+    return decode(json, transport.execute(method = "DELETE", path = "/v1/offers/${encodePathSegment(id)}/price"))
+  }
+
+  /**
+   * Name the org's display currency and set how many units of it make a dollar. Send only
+   * the fields you are changing. Idempotent by HTTP semantics (PUT), so no idempotency key
+   * is sent. Server-only; requires the `CONFIG_WRITE` scope. A ratio change large enough
+   * to reprice the catalogue past the guard factor is refused unless `confirmReprice` is
+   * true.
+   * @param input Any of `currencyName`, `currencySymbol`, `currencyUnitsPerUSD`, `confirmReprice`.
+   * @return The org's currency after the change.
+   * @throws ExpysException.NotConfigured when configured with a member token.
+   * @throws ExpysException.Api with status 400 when the input is invalid or the reprice
+   *   needs confirming, or with code `FIELD_NOT_WRITABLE` when it names a commercial term.
+   */
+  public suspend fun updateConfiguration(input: UpdateConfigurationRequest): UpdateConfigurationResponse {
+    assertMachineCredential(configuredToken, "updateConfiguration")
+    val body = json.encodeToString(UpdateConfigurationRequest.serializer(), input)
+    return decode(json, transport.execute(method = "PUT", path = "/v1/configuration", body = body))
   }
 
   /**
@@ -580,6 +731,55 @@ public class ExpysClient internal constructor(
         method = "GET",
         path = "/v1/analytics/timeseries",
         query = mapOf("from" to from, "to" to to, "interval" to interval),
+      ),
+    )
+  }
+
+  /**
+   * VIP counts, bookings and top categories per segment, grouping VIPs by one or two
+   * signal fields (`vipStatus` counts as a field). Reads live data only, so a sandbox
+   * key gets no segments. A segment with fewer than 5 VIPs comes back with
+   * `suppressed = true` and its counts null. Server-only; requires the `ANALYTICS_READ` scope.
+   * @param from Start of the period (inclusive), an ISO-8601 date-time string. Required.
+   * @param to End of the period (exclusive), an ISO-8601 date-time string. Required.
+   * @param groupBy One or two fields, each switched on for your org (`vipStatus` needs
+   *   `activityBand`). Required.
+   * @throws ExpysException.NotConfigured when configured with a member token.
+   */
+  public suspend fun getAnalyticsSegments(
+    from: String,
+    to: String,
+    groupBy: List<GetAnalyticsSegmentsResponse.GroupBy>,
+  ): GetAnalyticsSegmentsResponse {
+    assertMachineCredential(configuredToken, "getAnalyticsSegments")
+    return decode(
+      json,
+      transport.execute(
+        method = "GET",
+        path = "/v1/analytics/segments",
+        query = mapOf("from" to from, "to" to to, "groupBy" to groupBy.joinToString(",") { it.value }),
+      ),
+    )
+  }
+
+  /**
+   * How the activity of VIPs who booked an experience in the period moved, against similar
+   * VIPs (same `valueBand` + `vipStatus` at the period start) who did not. Association, not
+   * cause. Reads live data only, so a sandbox key gets no groups. A cohort with fewer than
+   * 5 VIPs comes back with `suppressed = true` and every number null. Server-only;
+   * requires the `ANALYTICS_READ` scope.
+   * @param from Start of the period (inclusive), an ISO-8601 date-time string. Required.
+   * @param to End of the period (exclusive), an ISO-8601 date-time string. Required.
+   * @throws ExpysException.NotConfigured when configured with a member token.
+   */
+  public suspend fun getAnalyticsLift(from: String, to: String): GetAnalyticsLiftResponse {
+    assertMachineCredential(configuredToken, "getAnalyticsLift")
+    return decode(
+      json,
+      transport.execute(
+        method = "GET",
+        path = "/v1/analytics/lift",
+        query = mapOf("from" to from, "to" to to),
       ),
     )
   }

@@ -117,6 +117,15 @@ do {
 } while (cursor != null)
 ```
 
+Pass `available = true` to leave out sold-out offers; null (or `false`) returns every
+offer. `getOffer(id)` reads the same shape for a deep link and throws
+`ExpysException.Api` with `kind == ApiErrorKind.NOT_FOUND` for an id your org cannot see:
+
+```kotlin
+val bookable = client.listOffers(limit = 50, available = true)
+val offer = client.getOffer("off_123")
+```
+
 ## Redemptions
 
 ```kotlin
@@ -222,9 +231,17 @@ ship an Org-API-Key in an Android app or any client.
 | `client.setMember(externalUserID, input)`                       | `PUT /v1/members/{externalUserID}`    |
 | `client.getMember(externalUserID)`                              | `GET /v1/members/{externalUserID}`    |
 | `client.removeMember(externalUserID, retainBalance)`            | `DELETE /v1/members/{externalUserID}` |
+| `client.importMembers(input, dryRun, idempotencyKey)` | `POST /v1/members/batch` |
+| `client.getSignalHistory(externalUserID, from, to, limit, cursor)` | `GET /v1/members/{externalUserID}/signals/history` |
 | `client.analyticsSummary()`                                     | `GET /v1/analytics/summary`       |
 | `client.analyticsOffers()`                                      | `GET /v1/analytics/offers`        |
 | `client.analyticsTimeseries(from, to, interval)`                | `GET /v1/analytics/timeseries`    |
+| `client.getAnalyticsSegments(from, to, groupBy)` | `GET /v1/analytics/segments` |
+| `client.getAnalyticsLift(from, to)` | `GET /v1/analytics/lift` |
+| `client.balance()`                                              | `GET /v1/balance`                 |
+| `client.setOfferPrice(id, input)`                               | `PUT /v1/offers/{id}/price`       |
+| `client.deleteOfferPrice(id)`                                   | `DELETE /v1/offers/{id}/price`    |
+| `client.updateConfiguration(input)`                             | `PUT /v1/configuration`           |
 | `client.createWebhook(input, idempotencyKey)`                   | `POST /v1/webhooks`               |
 | `client.listWebhooks()`                                         | `GET /v1/webhooks`                |
 | `client.deleteWebhook(id)`                                      | `DELETE /v1/webhooks/{id}`        |
@@ -233,9 +250,11 @@ If you configure the SDK with a member token (a `v4.local.…` PASETO) and call 
 of these, the SDK **fails fast client-side** with `ExpysException.NotConfigured`
 **before any network request** — the credential is classified as a machine
 credential iff it starts with `expys_`. The server **also** enforces this: a member
-token is `403`'d via the route auth matrix. The three POSTs (`exchangeToken`,
-`creditPoints`, `createWebhook`) auto-send an `Idempotency-Key` like the other
-writes; the `PUT` and `DELETE`s are idempotent by HTTP semantics and send no key.
+token is `403`'d via the route auth matrix. The four POSTs (`exchangeToken`,
+`creditPoints`, `createWebhook`, `importMembers`) auto-send an `Idempotency-Key` like
+the other writes; the `PUT`s and `DELETE`s are idempotent by HTTP semantics and send no
+key. `setOfferPrice`, `deleteOfferPrice` and `updateConfiguration` need the
+`CONFIG_WRITE` scope, which a new key does not have by default.
 
 ```kotlin
 // Backend only — never in a client app.

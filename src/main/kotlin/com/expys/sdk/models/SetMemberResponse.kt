@@ -23,6 +23,7 @@
 
 package com.expys.sdk.models
 
+import com.expys.sdk.models.MemberSignals
 
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.SerialName
@@ -34,6 +35,7 @@ import kotlinx.serialization.Contextual
  * @param attributes 
  * @param displayName 
  * @param externalUserID 
+ * @param signals 
  * @param tier 
  */
 @Serializable
@@ -48,6 +50,9 @@ public data class SetMemberResponse (
 
     @SerialName(value = "externalUserID")
     val externalUserID: kotlin.String,
+
+    @SerialName(value = "signals")
+    val signals: MemberSignals?,
 
     @SerialName(value = "tier")
     val tier: kotlin.String

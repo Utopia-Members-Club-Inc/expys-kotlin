@@ -23,6 +23,7 @@
 
 package com.expys.sdk.models
 
+import com.expys.sdk.models.MemberSignalsInput
 
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.SerialName
@@ -31,19 +32,27 @@ import kotlinx.serialization.Contextual
 /**
  * 
  *
+ * @param asOf 
  * @param attributes 
  * @param displayName 
+ * @param signals 
  * @param tier 
  */
 @Serializable
 
 public data class SetMemberRequest (
 
+    @Contextual @SerialName(value = "asOf")
+    val asOf: java.time.OffsetDateTime? = null,
+
     @SerialName(value = "attributes")
     val attributes: kotlinx.serialization.json.JsonObject? = null,
 
     @SerialName(value = "displayName")
     val displayName: kotlin.String? = null,
+
+    @SerialName(value = "signals")
+    val signals: MemberSignalsInput? = null,
 
     @SerialName(value = "tier")
     val tier: kotlin.String? = null
