@@ -10,6 +10,9 @@ import com.expys.sdk.models.CreateWebhookRequest
 import com.expys.sdk.models.CreditWalletRequest
 import com.expys.sdk.models.CreditWalletResponse
 import com.expys.sdk.models.DeleteWebhookResponse
+import com.expys.sdk.models.ExperienceImpactPage
+import com.expys.sdk.models.ExperienceImpactRow
+import com.expys.sdk.models.ExperienceImpactSummary
 import com.expys.sdk.models.GetAnalyticsLiftResponse
 import com.expys.sdk.models.GetAnalyticsOffersResponse
 import com.expys.sdk.models.GetAnalyticsSegmentsResponse
@@ -18,6 +21,7 @@ import com.expys.sdk.models.GetAnalyticsTimeseriesResponse
 import com.expys.sdk.models.GetBalanceResponse
 import com.expys.sdk.models.GetTermsContentResponse
 import com.expys.sdk.models.GetTermsResponse
+import com.expys.sdk.models.ImportMemberActivityRequest
 import com.expys.sdk.models.ImportMembersRequest
 import com.expys.sdk.models.ListConversationsResponse
 import com.expys.sdk.models.ListMemberSignalHistoryResponse
@@ -25,6 +29,9 @@ import com.expys.sdk.models.ListMembersResponse
 import com.expys.sdk.models.ListMessagesResponse
 import com.expys.sdk.models.ListRedemptionsResponse
 import com.expys.sdk.models.ListTransactionsResponse
+import com.expys.sdk.models.MemberActivity
+import com.expys.sdk.models.MemberActivityImportReport
+import com.expys.sdk.models.MemberActivityWriteResult
 import com.expys.sdk.models.MemberEligibility
 import com.expys.sdk.models.MemberImportReport
 import com.expys.sdk.models.MemberSignals
@@ -37,6 +44,7 @@ import com.expys.sdk.models.RemoveMemberResponse
 import com.expys.sdk.models.SendMessageRequest
 import com.expys.sdk.models.SendMessageResponse
 import com.expys.sdk.models.SetInterestIntakeRequest
+import com.expys.sdk.models.SetMemberActivityRequest
 import com.expys.sdk.models.SetMemberRequest
 import com.expys.sdk.models.SetMemberResponse
 import com.expys.sdk.models.SetOfferPriceRequest
@@ -574,6 +582,82 @@ public class ExpysClient internal constructor(
   }
 
   /**
+   * Write a member's monthly activity: 1-24 calendar months, each with `deposits` and
+   * `spend` as an index of the VIP's usual month (`index`, 100 = usual) or, for an org
+   * allowed amounts, as totals in minor units (`amount` + `currency`), and `activeDays`.
+   * A month sent again replaces the stored one; an identical resend writes nothing. The
+   * member must exist. Sends no idempotency key unless [idempotencyKey] is given.
+   * Server-only; requires the `MEMBERS_WRITE` scope.
+   * @param externalUserID The member's external user id.
+   * @param input The months to write, all in one form.
+   * @param idempotencyKey An optional key; a retry with the same key replays the response.
+   * @throws ExpysException.NotConfigured when configured with a member token.
+   */
+  public suspend fun setMemberActivity(
+    externalUserID: String,
+    input: SetMemberActivityRequest,
+    idempotencyKey: String? = null,
+  ): MemberActivityWriteResult {
+    assertMachineCredential(configuredToken, "setMemberActivity")
+    val body = json.encodeToString(SetMemberActivityRequest.serializer(), input)
+    return decode(
+      json,
+      transport.execute(
+        method = "PUT",
+        path = "/v1/members/${encodePathSegment(externalUserID)}/activity",
+        body = body,
+        idempotencyKey = idempotencyKey,
+      ),
+    )
+  }
+
+  /**
+   * Read a member's monthly activity: the stored months, newest first, in the form they
+   * were sent (`form` is null when there are none). Server-only; requires the
+   * `MEMBERS_READ` scope.
+   * @param externalUserID The member's external user id.
+   * @throws ExpysException.NotConfigured when configured with a member token.
+   */
+  public suspend fun getMemberActivity(externalUserID: String): MemberActivity {
+    assertMachineCredential(configuredToken, "getMemberActivity")
+    return decode(
+      json,
+      transport.execute(method = "GET", path = "/v1/members/${encodePathSegment(externalUserID)}/activity"),
+    )
+  }
+
+  /**
+   * Write monthly activity for up to 1,000 VIPs and 24,000 months in one call; each row
+   * is an external user id and that VIP's months, each the shape of one month of
+   * [setMemberActivity]. A bad month is listed in the report with its 1-based row,
+   * field and code; every other month is written. Counts are months. Sends an
+   * `Idempotency-Key` (the route requires one) so a retry replays the original report.
+   * Server-only; requires the `MEMBERS_WRITE` scope.
+   * @param input The rows to import.
+   * @param dryRun Check and diff every month and return the report without writing.
+   * @param idempotencyKey Override the auto-generated key.
+   * @throws ExpysException.NotConfigured when configured with a member token.
+   */
+  public suspend fun importMemberActivity(
+    input: ImportMemberActivityRequest,
+    dryRun: Boolean = false,
+    idempotencyKey: String? = null,
+  ): MemberActivityImportReport {
+    assertMachineCredential(configuredToken, "importMemberActivity")
+    val body = json.encodeToString(ImportMemberActivityRequest.serializer(), input)
+    return decode(
+      json,
+      transport.execute(
+        method = "POST",
+        path = "/v1/members/activity/batch",
+        query = mapOf("dryRun" to if (dryRun) "true" else null),
+        body = body,
+        idempotencyKey = idempotencyKey ?: generateIdempotencyKey(),
+      ),
+    )
+  }
+
+  /**
    * List the org's members, newest-first. Cursor-paginate with [cursor] until the
    * response's `nextCursor` is null. Filters combine with AND. Server-only.
    * @param tier Return only members whose effective tier matches this value exactly.
@@ -780,6 +864,85 @@ public class ExpysClient internal constructor(
         method = "GET",
         path = "/v1/analytics/lift",
         query = mapOf("from" to from, "to" to to),
+      ),
+    )
+  }
+
+  /**
+   * Experience impact per redemption: for each confirmed redemption in the period (on
+   * the redemption date), newest first, how the VIP's monthly deposits and spend moved
+   * in the months after against the months before, next to the median change of similar
+   * VIPs who redeemed nothing over the same months, and the net. Reads live data only, so
+   * a sandbox key gets no rows. Cursor-paginate with [cursor] until the response's
+   * `nextCursor` is null. Server-only; requires the `ANALYTICS_READ` scope.
+   * @param from Start of the period (inclusive), an ISO-8601 date-time string. Required.
+   * @param to End of the period (exclusive), an ISO-8601 date-time string. Required.
+   * @param window Months each side of the redemption month: 3 (the default) or 6.
+   * @param offer Only this experience's redemptions (an offer id as in [listOffers]).
+   * @param status Only rows in this state.
+   * @param limit Maximum number of rows to return (1-200, default 50).
+   * @param cursor Pagination cursor from a previous response's `nextCursor`.
+   * @throws ExpysException.NotConfigured when configured with a member token.
+   */
+  @Suppress("LongParameterList")
+  public suspend fun getExperienceImpact(
+    from: String,
+    to: String,
+    window: Int? = null,
+    offer: String? = null,
+    status: ExperienceImpactRow.State? = null,
+    limit: Int? = null,
+    cursor: String? = null,
+  ): ExperienceImpactPage {
+    assertMachineCredential(configuredToken, "getExperienceImpact")
+    return decode(
+      json,
+      transport.execute(
+        method = "GET",
+        path = "/v1/analytics/impact",
+        query = mapOf(
+          "from" to from,
+          "to" to to,
+          "window" to window?.toString(),
+          "offer" to offer,
+          "status" to status?.value,
+          "limit" to limit?.toString(),
+          "cursor" to cursor,
+        ),
+      ),
+    )
+  }
+
+  /**
+   * Experience impact by experience and for all experiences, for one metric: redeemers,
+   * their median change, similar VIPs' median change and the net lift, plus the win-back
+   * line (cooling VIPs a host sent an experience to against those sent nothing, on
+   * deposits). A cell under 5 redeemers comes back with `suppressed = true` and every
+   * figure null. Reads live data only. Server-only; requires the `ANALYTICS_READ` scope.
+   * @param from Start of the period (inclusive), an ISO-8601 date-time string. Required.
+   * @param to End of the period (exclusive), an ISO-8601 date-time string. Required.
+   * @param window Months each side of the redemption month: 3 (the default) or 6.
+   * @param metric The metric to summarise: deposits (the default) or spend.
+   * @throws ExpysException.NotConfigured when configured with a member token.
+   */
+  public suspend fun getExperienceImpactSummary(
+    from: String,
+    to: String,
+    window: Int? = null,
+    metric: ExperienceImpactSummary.Metric? = null,
+  ): ExperienceImpactSummary {
+    assertMachineCredential(configuredToken, "getExperienceImpactSummary")
+    return decode(
+      json,
+      transport.execute(
+        method = "GET",
+        path = "/v1/analytics/impact/summary",
+        query = mapOf(
+          "from" to from,
+          "to" to to,
+          "window" to window?.toString(),
+          "metric" to metric?.value,
+        ),
       ),
     )
   }

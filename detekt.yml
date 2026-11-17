@@ -17,7 +17,10 @@ complexity:
     # This number tracks the /v1 surface by design. If it needs raising again because a
     # phase added endpoints, that is the rule working; if it needs raising because one
     # endpoint grew several methods, look at the endpoint.
-    thresholdInClasses: 42
+    # Raised to 47 for the VIP activity and experience impact methods
+    # (setMemberActivity, getMemberActivity, importMemberActivity, getExperienceImpact,
+    # getExperienceImpactSummary): five new endpoints.
+    thresholdInClasses: 47
 
 exceptions:
   TooGenericExceptionCaught:
